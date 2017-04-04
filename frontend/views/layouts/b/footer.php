@@ -29,6 +29,7 @@ use yii\helpers\Url;
             <ul>
                 <li><a href="/page/about">О портале</a></li>
                 <li><a href="/page/reklam">Реклама</a></li>
+                <li><a href="/tariffs">Тарифы</a></li>
                 <li><a href="/page/pravila">Правила</a></li>
                 <li><a href="/page/kontakt">Контакты</a></li>
             </ul>

@@ -8,6 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $form yii\widgets\ActiveForm */
 /* @var $model \common\base\MultiModel */
+/* @var $tariffs array */
 
 $this->title = Yii::t('frontend', 'Signup');
 $this->params['breadcrumbs'][] = $this->title;
@@ -56,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php echo $form->field($model->getModel('profile'), 'company')->textInput(['class' => '', 'placeholder' => 'Название компании'])->label(false) ?>
             </div>
             <div class="row firm-form">
-                <?php echo $form->field($model->getModel('profile'), 'tariff')->dropDownList(['1'=>'Доллар','2'=>'Рубль','3'=>'Евро'],['class' => 'select user-form', 'prompt' => 'Тариф'])->label(false) ?>
+                <?php echo $form->field($model->getModel('profile'), 'tariff')->dropDownList($tariffs, ['class' => 'select user-form', 'prompt' => 'Тариф'])->label(false) ?>
             </div>
             <div class="row user-form">
                 <?php echo $form->field($model->getModel('profile'), 'gender')->dropDownList(

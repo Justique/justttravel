@@ -2,64 +2,64 @@
     font-family: 'RalewayRegular';
     src: url('../fonts/RalewayRegular.eot');
     src: url('../fonts/RalewayRegular.eot') format('embedded-opentype'),
-         url('../fonts/RalewayRegular.woff2') format('woff2'),
+         url('../fonts/RalewayRegular.woff2.html') format('woff2'),
          url('../fonts/RalewayRegular.woff') format('woff'),
          url('../fonts/RalewayRegular.ttf') format('truetype'),
-         url('../fonts/RalewayRegular.svg#RalewayRegular') format('svg');
+         url('../fonts/RalewayRegular.svg') format('svg');
 }
 @font-face {
     font-family: 'RalewaySemiBold';
     src: url('../fonts/RalewaySemiBold.eot');
     src: url('../fonts/RalewaySemiBold.eot') format('embedded-opentype'),
-         url('../fonts/RalewaySemiBold.woff2') format('woff2'),
+         url('../fonts/RalewaySemiBold.woff2.html') format('woff2'),
          url('../fonts/RalewaySemiBold.woff') format('woff'),
          url('../fonts/RalewaySemiBold.ttf') format('truetype'),
-         url('../fonts/RalewaySemiBold.svg#RalewaySemiBold') format('svg');
+         url('../fonts/RalewaySemiBold.svg') format('svg');
 }
 @font-face {
     font-family: 'RalewayExtraLight';
     src: url('../fonts/RalewayExtraLight.eot');
     src: url('../fonts/RalewayExtraLight.eot') format('embedded-opentype'),
-         url('../fonts/RalewayExtraLight.woff2') format('woff2'),
+         url('../fonts/RalewayExtraLight.woff2.html') format('woff2'),
          url('../fonts/RalewayExtraLight.woff') format('woff'),
          url('../fonts/RalewayExtraLight.ttf') format('truetype'),
-         url('../fonts/RalewayExtraLight.svg#RalewayExtraLight') format('svg');
+         url('../fonts/RalewayExtraLight.svg') format('svg');
 }
 @font-face {
     font-family: 'RalewayThin';
     src: url('../fonts/RalewayThin.eot');
     src: url('../fonts/RalewayThin.eot') format('embedded-opentype'),
-         url('../fonts/RalewayThin.woff2') format('woff2'),
+         url('../fonts/RalewayThin.woff2.html') format('woff2'),
          url('../fonts/RalewayThin.woff') format('woff'),
          url('../fonts/RalewayThin.ttf') format('truetype'),
-         url('../fonts/RalewayThin.svg#RalewayThin') format('svg');
+         url('../fonts/RalewayThin.svg') format('svg');
 }
 
 @font-face {
     font-family: 'RalewayLight';
     src: url('../fonts/RalewayLight.eot');
     src: url('../fonts/RalewayLight.eot') format('embedded-opentype'),
-         url('../fonts/RalewayLight.woff2') format('woff2'),
+         url('../fonts/RalewayLight.woff2.html') format('woff2'),
          url('../fonts/RalewayLight.woff') format('woff'),
          url('../fonts/RalewayLight.ttf') format('truetype'),
-         url('../fonts/RalewayLight.svg#RalewayLight') format('svg');
+         url('../fonts/RalewayLight.svg') format('svg');
 }
 
 @font-face {
     font-family: 'RalewayMedium';
     src: url('../fonts/RalewayMedium.eot');
     src: url('../fonts/RalewayMedium.eot') format('embedded-opentype'),
-         url('../fonts/RalewayMedium.woff2') format('woff2'),
+         url('../fonts/RalewayMedium.woff2.html') format('woff2'),
          url('../fonts/RalewayMedium.woff') format('woff'),
          url('../fonts/RalewayMedium.ttf') format('truetype'),
-         url('../fonts/RalewayMedium.svg#RalewayMedium') format('svg');
+         url('../fonts/RalewayMedium.svg') format('svg');
 }
 
 
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('../fonts/glyphicons-halflings-regular.eot');
-  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');}
+  src: url('http://beta1.justtravel.by/v1/fonts/glyphicons-halflings-regular.eot');
+  src: url('http://beta1.justtravel.by/v1/fonts/glyphicons-halflings-regular.eot?') format('embedded-opentype'), url('http://beta1.justtravel.by/v1/fonts/glyphicons-halflings-regular.woff') format('woff'), url('http://beta1.justtravel.by/v1/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('http://beta1.justtravel.by/v1/fonts/glyphicons-halflings-regular.svg') format('svg');}
 
 * {margin:0; padding:0; box-sizing:border-box; border:none; outline:none; list-style:none; font-family: "RalewayRegular"}
 html {font-size: 75%}
@@ -68,13 +68,13 @@ body {font: normal 1em/1.3 'RalewayRegular', sans-serif}
 .content-wrapper {padding: 0 7%;}
 .office .wrapper {max-width: 1040px; padding: 0 20px;}
 .content-tours{
-	max-width:980px;
-	margin:0 auto;
+    max-width:980px;
+    margin:0 auto;
 }
 .content-tours:after{
-	clear:both;
-	content:'';
-	display:block;
+    clear:both;
+    content:'';
+    display:block;
 }
 h1,
 .prices-page .additional h3,
@@ -131,15 +131,15 @@ header a {text-decoration: none;}
 header .wrapper { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-justify-content: space-between; -ms-flex-pack: justify; justify-content: space-between;}
 a.logo {position: relative; display: inline-block; padding: 8px 0 0 11px;}
 footer a.logo{
-	padding: 8px 0 21px 11px;
+    padding: 8px 0 21px 11px;
 }
 a.logo i{
-	position:absolute;
-	right:0;
-	top:0;
-	background:url(../img/ico-004.png) no-repeat;
-	width:43px;
-	height:20px;
+    position:absolute;
+    right:0;
+    top:0;
+    background:url(../img/ico-004.png) no-repeat;
+    width:43px;
+    height:20px;
 }
 a.logo div {background: url(../img/logo_medium.png); width: 165px; height: 54px;}
 a.logo span {position: absolute; right: -2px; top: 57px; color: #ea2a53; font-size: 14px; font-weight: 500;}
@@ -201,36 +201,36 @@ a.blue {color: #0096ff;}
 
 /*Tours styles*/
 .tour-name>a {
-	font: 15px/20px 'RalewayMedium', Helvetica, sans-serif;
-	color:#0096ff;
+    font: 15px/20px 'RalewayMedium', Helvetica, sans-serif;
+    color:#0096ff;
 }
 .tour-destination{
-	position:relative;
+    position:relative;
 }
 .tour-destination .fa-map-marker{
-	position:absolute;
-	left:-25px;
-	top:19px;
-	font-size:20px;
-	color:#787878;
+    position:absolute;
+    left:-25px;
+    top:19px;
+    font-size:20px;
+    color:#787878;
 }
 .tour-duration{
-	position:relative;
+    position:relative;
 }
 .tour-duration .fa-clock-o{
-	position:absolute;
-	left:-30px;
-	top:20px;
-	font-size:20px;
-	color:#787878;
+    position:absolute;
+    left:-30px;
+    top:20px;
+    font-size:20px;
+    color:#787878;
 }
 .tour-name>p {font-size: 12px; color: #515151;}
 .tour-capacity, .tour-transport, .tour-destination, .tour-duration {margin: 0 30px;}
 .tour-destination a, .tour-destination p, .tour-duration p, .tour-transport p, .tour-capacity p {display: block; margin: 5px auto; font-size: 15px; color: #515151;}
 .tour-destination a.blue {font:18px/20px 'RalewayMedium', Helvetica, sans-serif;color: #0096ff; margin-bottom: 11px;}
 .tour-destination a.tour-destination__city{
-	font:14px/20px 'RalewayMedium', Helvetica, sans-serif;
-	color:#515151;
+    font:14px/20px 'RalewayMedium', Helvetica, sans-serif;
+    color:#515151;
 }
 .tour-rate {margin: 8px 0;}
 .tour-hotel-rate {margin: 8px 0;}
@@ -245,17 +245,17 @@ a.blue {color: #0096ff;}
 .rating-grade.brown {background-color: #c57900;}
 .rating-grade.red {background-color: #e2442b;}
 .tour-hotel>a {
-	font:15px/20px 'RalewayRegular', Helvetica, sans-serif;
-	color:#0096ff;
-	}
+    font:15px/20px 'RalewayRegular', Helvetica, sans-serif;
+    color:#0096ff;
+    }
 .tour-hot {position: absolute; visibility: hidden; height: 21px; background: #f31717; padding: 0 35px; color: #fff; line-height: 21px; font-size: 14px; right: 0px; top: 0px;}
 .tour-hot.visible {visibility: visible;}
 .tour-hot::before {content: ""; display: block; position: absolute; left: 10px; top: 2px; width: 11px; height: 16px; background: url("../img/ico-002.png") no-repeat;}
 .tour-price {padding-top: 18px; min-width: 150px;}
 .tour-price>p {
-	margin-bottom: 10px;
-	font: 26px/20px 'RalewayMedium', Helvetica, sans-serif;
-	text-align: center; color: #787878;}
+    margin-bottom: 10px;
+    font: 26px/20px 'RalewayMedium', Helvetica, sans-serif;
+    text-align: center; color: #787878;}
 .tour-price>p span {position: relative; font-size: 15px; top: -10px; display: inline-block; left: 5px;}
 .tour-price>div:last-of-type {padding: 0 20px;}
 .tour-compare {float: left; width: 14px; height: 14px; cursor: pointer; background-position: center;}
@@ -324,8 +324,8 @@ a.blue {color: #0096ff;}
 .button-hollow {display: inline-block; height: 36px; padding: 0 60px; line-height: 33px; background-color: white; border: 1px solid #ffd800; color: #828282; font-size: 15px; cursor: pointer; text-decoration: none;  transition: background .5s ease-in-out;}
 .button-hollow:hover {background-color:#ffd800;}
 .extended .extended_serch_trigger:hover{
-	text-decoration:none;
-	color:#00aeff !important;
+    text-decoration:none;
+    color:#00aeff !important;
 }
 /*Tours-list & visa-list styles*/
 .visa-page {padding: 50px 0;}
@@ -689,10 +689,10 @@ height: 31px; font-size: 12px; line-height: 31px;}
 /*Popups styles*/
 .w_popup {background:#fff; position:fixed; display:none; width: 540px; top:0; margin:0 auto; left:0; right:0; z-index:1; padding: 20px 65px 28px; border: 1px solid #ffd800; box-shadow: 0 0 4px rgba(0, 0, 1, 0.23);}
 .w_popup.mini-popup{
-	padding: 20px 25px 28px;
-	border: none;
-	width:720px;
-	
+    padding: 20px 25px 28px;
+    border: none;
+    width:720px;
+    
 }
 select{
     
@@ -904,27 +904,27 @@ font-size: 14px; top: 9px; right: 9px; -webkit-transition: color 0.3s ease; -o-t
 .office-container .make-order-form .container.buttons .button:hover i {color: #7a7a7a; transition: 0.5s ease;}
 .tours-list li {padding-top: 20px;}
 .tours-list .general {
-	position:absolute;
-	left:0;
-	right:0;
-	top:-10px;
-	width:100%;
+    position:absolute;
+    left:0;
+    right:0;
+    top:-10px;
+    width:100%;
 }
 .tours-list .general .tour-type{
-	position:absolute;
-	left:30px;
-	top:0;
+    position:absolute;
+    left:30px;
+    top:0;
 }
 .tours-list .general .tour-capacity{
-	left:50%;
-	top:0;
-	margin-left:-80px;
-	position:absolute;
+    left:50%;
+    top:0;
+    margin-left:-80px;
+    position:absolute;
 }
 .tours-list .general .tour-hot{
-	right:30px;
-	position:absolute;
-	top:0;
+    right:30px;
+    position:absolute;
+    top:0;
 }
 .tours-list .general {color: #fff;}
 .tours-list .general i {position: relative; top: 2px; color: #fff;}
@@ -933,7 +933,7 @@ font-size: 14px; top: 9px; right: 9px; -webkit-transition: color 0.3s ease; -o-t
 
 .tours-list .general .tour-capacity {background-color: #00b5e2; overflow: hidden;}
 .tours-list .general .tour-type{
-	background-color: #10acf5; overflow: hidden;
+    background-color: #10acf5; overflow: hidden;
 }
 .textareas.container {display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; flex-wrap: wrap; justify-content: flex-start;}
 .textareas.container > * {border: 1px solid #d0d0d0; color: #7c7c7c; font-size: 14px; line-height: 20px; padding: 5px; width: 100%; margin-bottom: 20px; max-width: 48%; resize: none; background: #fff;}
@@ -1177,74 +1177,74 @@ transition: opacity 0.3s ease;}
 
 
 .content-tours h1{
-	font: 36px/40px 'RalewayThin', Helvetica, sans-serif;
-	color:#505050;
-	margin:0 0 15px;
+    font: 36px/40px 'RalewayThin', Helvetica, sans-serif;
+    color:#505050;
+    margin:0 0 15px;
 }
 
 .content-tours h2{
-	font: 15px/20px 'RalewayLight', Helvetica, sans-serif;
-	color:#505050;
-	margin:0 0 50px;
-	color:#828282;
+    font: 15px/20px 'RalewayLight', Helvetica, sans-serif;
+    color:#505050;
+    margin:0 0 50px;
+    color:#828282;
 }
 .content-tours .tours-list .tour-type{
-	font: 14px/20px 'RalewayMedium', Helvetica, sans-serif;
+    font: 14px/20px 'RalewayMedium', Helvetica, sans-serif;
 }
 .content-tours .tours-list .tour-type .fa{
-	font-size: 18px;
-	line-height: 19px;
+    font-size: 18px;
+    line-height: 19px;
 }
 .content-tours .tours-list .tour-capacity{
-	font: 14px/20px 'RalewayMedium', Helvetica, sans-serif;
+    font: 14px/20px 'RalewayMedium', Helvetica, sans-serif;
 }
 .form-group .select2-container--krajee .select2-selection--single .select2-selection__arrow{
-	border:none;
+    border:none;
 }
 
 .form-group .select2-container--krajee .select2-selection--single{
-	border: 1px solid #d0d0d0;
-	font-size:15px;
-	line-height:20px;
-	color:#828282;
+    border: 1px solid #d0d0d0;
+    font-size:15px;
+    line-height:20px;
+    color:#828282;
 }
 .form-group #tours-toursearchfilter-date_from{
-	border: 1px solid #d0d0d0;
-	font-size:15px;
-	line-height:20px;
-	color:#828282;
-	padding: 5px 23px 5px 8px;
-	height: 30px;
+    border: 1px solid #d0d0d0;
+    font-size:15px;
+    line-height:20px;
+    color:#828282;
+    padding: 5px 23px 5px 8px;
+    height: 30px;
 }
 .form-group .select2-container--krajee .select2-selection--single{
-	padding: 5px 23px 5px 8px;
-	height: 30px;
+    padding: 5px 23px 5px 8px;
+    height: 30px;
 }
 
 
 .form-group .select2-container--krajee .select2-selection--single .select2-selection__arrow b{
-	border:none;
-	background:url(../img/ico-005.png) no-repeat;
-	width:8px;
-	height:6px;
-	top: 46%;
+    border:none;
+    background:url(../img/ico-005.png) no-repeat;
+    width:8px;
+    height:6px;
+    top: 46%;
 }
 .form-group .select2-container--krajee.select2-container--open .select2-selection--single .select2-selection__arrow b{
-	background:url(../img/ico-006.png) no-repeat;
+    background:url(../img/ico-006.png) no-repeat;
 }
 .field-tours-toursearchfilter-transport_type select{
-	background: url("../img/ico-005.png") no-repeat 95% 12px;
-	-moz-appearance: none;
-	appearance: none;
-	-webkit-appearance: none;
-		border: 1px solid #d0d0d0;
-	font-size:15px;
-	line-height:20px;
-	color:#828282;
-	height:30px;
+    background: url("../img/ico-005.png") no-repeat 95% 12px;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-appearance: none;
+        border: 1px solid #d0d0d0;
+    font-size:15px;
+    line-height:20px;
+    color:#828282;
+    height:30px;
 }
 .field-tours-toursearchfilter-transport_type select:focus{
-	background: url("../img/ico-006.png") no-repeat 95% 12px;
+    background: url("../img/ico-006.png") no-repeat 95% 12px;
 }
 
 .field-countries-searchcountries select{
@@ -1263,43 +1263,43 @@ transition: opacity 0.3s ease;}
 }
 
 .beta__popup .ttl{
-	text-align:center;
-	margin:0 0 20px;
-	font-size:18px;
-	line-height:20px;
-	color:#414141;
-	text-transform:uppercase;
+    text-align:center;
+    margin:0 0 20px;
+    font-size:18px;
+    line-height:20px;
+    color:#414141;
+    text-transform:uppercase;
 }
 .beta__popup{
-	color:#949494;
+    color:#949494;
 }
 
 .beta__popup .beta__popup-form{
-	margin:10px 0 30px;
+    margin:10px 0 30px;
 }
 .beta__popup .beta__popup-form .row{
-	overflow:hidden;
-	margin:0 -35px;
+    overflow:hidden;
+    margin:0 -35px;
 }
 .beta__popup .beta__popup-form .row .col{
-	float:left;
-	width:50%;
-	padding:0 35px;
+    float:left;
+    width:50%;
+    padding:0 35px;
 }
 .beta__popup .beta__popup-form .txt-input{
-		font-size:14px;
-	line-height:20px;
-	color:#949494;
-	border:1px solid #949494;
-	padding:5px 10px;
+        font-size:14px;
+    line-height:20px;
+    color:#949494;
+    border:1px solid #949494;
+    padding:5px 10px;
 }
 .beta__popup .beta__popup-form textarea.txt-input{
-	min-height:130px;
-	max-height:130px;
-	padding:5px 10px;
+    min-height:130px;
+    max-height:130px;
+    padding:5px 10px;
 }
 .beta__popup .beta__popup-form .button.yellow:hover{
-	background:#ffd800;
+    background:#ffd800;
 }
 .text-center{
     text-align: center;
@@ -1482,15 +1482,15 @@ transition: opacity 0.3s ease;}
 }
 
 @media screen and (max-width: 850px){
-	.w_popup.mini-popup{
-		padding: 10px 15px 18px;
-		border: none;
-		width:420px;
-		
-	}
-	.beta__popup .ttl{
-		font-size: 14px;
-	}
+    .w_popup.mini-popup{
+        padding: 10px 15px 18px;
+        border: none;
+        width:420px;
+        
+    }
+    .beta__popup .ttl{
+        font-size: 14px;
+    }
     .tour-info {margin-top: 25px; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center;}
     .tour-info {display: block; text-align: center;}
     .tour-info .tour-duration, .tour-info .tour-transport, .tour-info .tour-capacity, .tour-info .tour-name,.tour-info .tour-price {display: inline-block; margin: 20px; text-align: left;  vertical-align: top;}
@@ -1506,7 +1506,7 @@ transition: opacity 0.3s ease;}
     .graduation-form textarea{
         width:100%;
     }
-	
+    
     .tour-capacity {text-align: left;}
     .tour-capacity p span {text-align: left;}
     .tour-capacity > p:first-child {text-align: left;}
@@ -1527,12 +1527,12 @@ transition: opacity 0.3s ease;}
 }
 
 @media screen and (max-width: 600px){
-	.tours-list .general .tour-type{
-		left:5px;
-	}
-	.tours-list .general .tour-hot{
-		right:5px;
-	}
+    .tours-list .general .tour-type{
+        left:5px;
+    }
+    .tours-list .general .tour-hot{
+        right:5px;
+    }
     .burger-trigger {display: inline-block;}
     .office .burger-trigger {display: block; margin: 20px auto 0;}
     .header-spacer {height: 120px;}
@@ -1570,19 +1570,19 @@ transition: opacity 0.3s ease;}
 }
 
 @media screen and (max-width: 530px){
-		.w_popup.mini-popup{
-		padding: 10px 15px 18px;
-		border: none;
-		width:300px;
-		
-	}
-	.beta__popup .beta__popup-form .row{
-		margin:0 -5px;
-	}
-	.beta__popup .beta__popup-form .row .col{
-		padding:0 5px;
-	}
-	.extended .row .label__stars{display:block; margin-bottom:20px;}
+        .w_popup.mini-popup{
+        padding: 10px 15px 18px;
+        border: none;
+        width:300px;
+        
+    }
+    .beta__popup .beta__popup-form .row{
+        margin:0 -5px;
+    }
+    .beta__popup .beta__popup-form .row .col{
+        padding:0 5px;
+    }
+    .extended .row .label__stars{display:block; margin-bottom:20px;}
     .header-spacer {height: 150px;}
     .tours-list li>div {width: 70%; margin: 10px auto;}
     .tours-page form {float: none;}
@@ -1621,4 +1621,590 @@ transition: opacity 0.3s ease;}
 
 
 
+/*.tariffs-box */
+.wrapper-tariffs {
+    max-width: 1160px !important;
+}
+.tariffs-box {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 52px 0 23px;
+}
+.tariff-item {
+    max-width: 222px;
+    width: 20%;
+    background-color: #FFF;
+    border-radius: 4px;
+    border: 1px solid #EAEAEA;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    margin-left: -1px;
+}
+.tariff-item:hover {
+    background-color: #FFF;
+    border: 4px solid #FFD800;
+    margin-bottom: -3px;
+    margin-top: -3px;
+    -moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+.tariff-header {
+    transition: all 0.2s ease;
+    border-bottom : 1px solid #EAEAEA;
+    padding: 27px 5px 20px;
+    position: relative;
+}
+.tariff-item:hover .tariff-header {
+    background-color: #FFD800;
+    border-bottom-color: #FFD800;
+}
+.tariff-name {
+    color: #333;
+    font-family: "RalewayRegular";
+    font-size: 24px;
+    font-weight: 400;
+}
+.tariff-name:after {
+    content: '';
+    display: block;
+    margin: 15px auto;
+    width: 40px;
+    height: 1px;
+    background-color: #000;
+    background-image: -moz-linear-gradient(left, #00F0FF 0%, #EBACFD 100%);
+    background-image: -o-linear-gradient(left, #00F0FF 0%, #EBACFD 100%);
+    background-image: -webkit-linear-gradient(left, #00F0FF 0%, #EBACFD 100%);
+    background-image: linear-gradient(to right, #00F0FF 0%, #EBACFD 100%);
+}
+.tariff-price {
+    color: #333;
+    font-family: "RalewayRegular";
+    font-size: 24px;
+    font-weight: 400;
+}
+.tariff-price sup {
+    font-size: 16px;
+    font-weight: 400;
+}
+.tariff-recommend {
+    text-indent: -9999px;
+    width: 82px;
+    height: 83px;  
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: url(../img/recommend.png) no-repeat 0 0;
+    transition: top 0.2s ease;
+}
+.tariff-item:hover .tariff-recommend {
+    left: -5px;
+    top: -5px;
+}
 
+.tariff-content {
+    padding: 5px 5px 20px;
+}
+.tariff-points {
+    margin: 0;
+    margin-bottom: 20px;
+}
+.tariff-points li {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    font-family: "RalewayRegular";
+    padding: 6px 0;;
+}
+.tariff-points li:after {
+    content: '';
+    display: block;
+    width: 166px;
+    height: 2px;
+    background-color: #EAEAEA;
+    margin: 3px auto 2px;
+}
+.tariff-points li .fa {
+    padding-right: 5px;
+}
+.tariff-points li .fa-check {
+    color: #9BCB5B;
+}
+.tariff-points li .fa-times {
+    color: #CB5B5B;
+}
+.btn-blue {
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none;
+    min-width: 126px;
+    padding: 7px 15px;
+    text-align: center;
+    background-color: #00A1FF;
+    border: 1px solid #1991D8;
+    border-radius: 3px;
+    color: #FFF;
+    font-family: "RalewayRegular";
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+.btn-blue:hover, .btn-blue:active {
+    text-decoration: none;
+    background-color: #FFD800;
+    border: 1px solid #EED02B;
+    color: #FFF;
+}
+
+.c-text {
+    color: #505050;
+    font-family: "RalewayRegular";
+    font-size: 18px;
+    font-weight: 400;
+    margin: 20px 0;
+}
+
+/*.cnp-tariff */
+.cnp-tariff {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0 23px;
+    align-items: flex-end;
+}
+.cnp-col {
+    width: 25%;
+    text-align: center;
+    padding: 0 10px;
+}
+.cnp-col-board {
+    min-width: 241px;
+}
+.cnp-col .form-group,
+.cnp-col .button,
+.cnp-col .fs-dropdown {
+    width: 100%;
+    margin-bottom: 15px;
+}
+.cnp-col .fs-dropdown.fs-light .fs-dropdown-selected {
+    min-width: 0;
+}
+.cnp-title {
+    color: #505050;
+    font-family: "RalewayMedium";
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-transform: uppercase;
+    margin-bottom: 13px;
+}
+.cnp-board {
+    background-color: #FFF;
+    border-radius: 3px;
+    border: 1px solid #eaeaea;
+    min-width: 222px;
+    min-height: 142px;
+    height: 142px;
+    max-height: 142px;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cnp-tariff-title {
+    color: #333;
+    font-family: "RalewayRegular";
+    font-size: 24px;
+    font-weight: 400;
+}
+.cnp-tariff-title:after {
+    content: '';
+    display: block;
+    margin: 16px auto;
+    width: 40px;
+    height: 1px;
+    background-color: #000;
+    background-image: -moz-linear-gradient(left, #00F0FF 0%, #EBACFD 100%);
+    background-image: -o-linear-gradient(left, #00F0FF 0%, #EBACFD 100%);
+    background-image: -webkit-linear-gradient(left, #00F0FF 0%, #EBACFD 100%);
+    background-image: linear-gradient(to right, #00F0FF 0%, #EBACFD 100%);
+}
+.cnp-tariff-price {
+    color: #333;
+    font-family: "RalewayRegular";
+    font-size: 26px;
+    font-weight: 400;
+}
+.cnp-tariff-price sup {
+    color: #333;
+    font-family: "RalewayRegular";
+    font-size: 16px;
+    font-weight: 400;
+}
+.cnp-remain-date {
+    color: #333;
+    font-family: "RalewayRegular";
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+.cnp-remain-note {
+    color: #333;
+    font-family: "RalewayRegular";
+    font-size: 18px;
+    font-weight: 400;
+}
+.cnp-remain-value {
+    color: #333;
+    font-family: "RalewayRegular";
+    font-size: 36px;
+}
+
+.cnp-add {
+    margin: 20px 0;
+}
+.cnp-serives {
+    display: flex;
+    border-bottom: 1px solid #CACACA;
+    padding-bottom: 10px;
+    margin-bottom: 8px;
+}
+.cnp-select {
+    flex-grow: 1;
+    margin-right: 5px;
+}
+.cnp-warn {
+    font-family: "RalewayMedium";
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #00BAFF;
+}
+.cnp-button {
+    width: 30px;
+    height: 30px;
+    background-color: #FFF;
+    border: 1px solid #00BAFF;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 2px;
+}
+.cnp-button .fa {
+    color: #00B4FF;
+    font-family: "FontAwesome";
+    font-size: 18px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+.cnp-button:hover {
+    background-color: #00BAFF;
+}
+.cnp-button:hover .fa {
+    color: #fff;
+}
+
+/*.topay */
+.topay {
+    border-bottom: 1px solid #CACACA;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.topay-header {
+    color: #333;
+    font-family: "RalewayLight";
+    font-size: 30px;
+    font-weight: 300;
+    text-align: center;
+}
+.topay-value {
+    max-width: 410px;
+    margin: 14px auto;
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
+    background-color: #EA2A53;
+    color: #FFF;
+    font-family: "RalewayMedium";
+    font-size: 24px;
+    font-weight: 500;
+}
+.topay-items {
+    margin-bottom: 30px;
+    
+}
+.topay-item {
+    display: flex;
+    margin: 10px 0;
+}
+.topay-item-title {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    color: #333;
+    font-family: "Raleway";
+    font-size: 14px;
+    font-weight: 500;
+    padding: 2px 5px;
+    background-color: #EFEFEF;
+}
+.topay-item-name {
+    padding-right: 20px;
+}
+.topay-item-price {
+    
+}
+.topay-item-delete {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background-color: #FFF;
+    border: 1px solid #EA2A53;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-left: 8px;
+}
+.topay-item-delete .fa {
+    color: #EA2A53;
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+.topay-item-delete:hover, 
+.topay-item-delete:active {
+    background-color: #EA2A53;
+}
+.topay-item-delete:hover .fa,
+.topay-item-delete:active .fa {
+    color: #fff;
+}
+
+
+/*.tariff-uses */
+.tariff-uses {
+    padding: 17px 0;
+}
+.tariff-uses-header {
+    padding: 15px 15px;
+    background-color: #FFF;
+    border-radius: 3px;
+    border: 1px solid #eaeaea;
+    color: #333;
+    font-family: "RalewayRegular";
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+    margin: 20px auto 12px;
+}
+.table-responsive {
+    
+}
+.tariff-uses-table {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.tariff-uses-table th, .tariff-uses-table td {
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    font-family: "RalewayRegular";
+    text-align: center;
+    border: 0;
+    padding: 9px 2px;
+}
+.tariff-uses-table td {
+    border-bottom: 1px solid #eaeaea;
+}
+.tariff-uses-table .fa-check {
+    font-size: 14px;
+    color: #9BCB5B;
+    margin-right: 10px;
+}
+.tariff-uses-table .fa-times {
+    font-size: 14px;
+    color: #CB5B5B;
+    margin-right: 10px;
+}
+
+.c-discount {
+
+}
+.discount-header {
+    color: #505050;
+    font-family: "RalewayLight";
+    font-size: 36px;
+    font-weight: 100;
+    text-shadow: 0.5px 0.9px 0 #FFF;
+    text-align: center;
+}
+.discount-header span {
+    display: block;
+    color: #505050;
+    font-family: "RalewayLight";
+    font-size: 70px;
+}
+.discount-row {
+    display: flex;
+    justify-content: space-between;
+    max-width: 450px;
+    margin: 20px auto;
+}
+.discount-item {
+    text-align: center;
+    margin: 11px auto;
+    max-width: 160px;
+}
+.discount-value {
+    color: #505050;
+    font-family: "RalewayMedium";
+    font-size: 60px;
+    font-weight: 500;
+    background: linear-gradient(#ff8a00, #e94c2b);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 5px;
+}
+.discount-value sup {
+    font-size: 40px;
+}
+.discount-title {
+    color: #505050;
+    font-family: "RalewayRegular";
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/* tooltips */
+[data-tooltip] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+/* Hide the tooltip content by default */
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+/* Position tooltip above the element */
+[data-tooltip]:before {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-bottom: 5px;
+  margin-left: -80px;
+  padding: 10px;
+  width: 200px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #000;
+  background-color: hsla(0, 0%, 20%, 0.9);
+  content: attr(data-tooltip);
+  text-align: center;
+  color: #FFF;
+  font-family: "RalewayMedium";
+  font-size: 14px;
+}
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]:after {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  width: 0;
+  border-top: 15px solid #000;
+  border-top: 15px solid hsla(0, 0%, 20%, 0.9);
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  content: " ";
+  font-size: 0;
+  line-height: 0;
+}
+/* Show tooltip content on hover */
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+
+.fs-dropdown.fs-light .fs-dropdown-selected {
+    background: #fff url("../img/ico-005.png") no-repeat right 10px top 11px !important;
+}
+
+@media only screen and (max-width : 1199px) {
+    .tariffs-box {
+        flex-wrap: wrap;
+    }
+    .tariff-item {
+        width: 33.3%;
+        max-width: none;
+    }
+
+    .cnp-tariff {
+        flex-wrap: wrap;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .cnp-col {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .cnp-add {
+        text-align: center;
+    }
+    .tariff-uses-table {
+        min-width: 620px;
+    }
+    .table-responsive {
+        overflow: auto;
+    }
+}
+@media only screen and (max-width : 767px) {
+    .tariff-item {
+        width: 50%;
+    }
+}
+@media only screen and (max-width : 639px) {
+    .topay-item-title {
+        display: block;
+    }
+    .topay-item-name, .topay-item-price {
+        display: block;
+        padding: 0;
+        margin: 5px 0;
+    }
+    .topay-item-price {
+        margin-top: 10px;
+    }
+    .cnp-col-board, .cnp-board {
+        min-width: 0;
+    }
+}
+@media only screen and (max-width : 574px) {
+    .tariffs-box {
+        flex-direction: column;
+    }
+    .tariff-item {
+        width: 100%;
+        max-width: 225px;
+        margin: 0 auto;
+    }
+}
+@media only screen and (max-width : 399px) {
+    .discount-row {
+        flex-direction: column;
+    }
+    .discount-item {
+        width: 100%;
+    }
+}

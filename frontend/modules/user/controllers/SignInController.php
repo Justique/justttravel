@@ -9,6 +9,7 @@ use common\models\Countries;
 use common\models\query\CountriesQuery;
 use common\models\User;
 use common\models\UserProfile;
+use common\models\Tariffs;
 use frontend\modules\user\models\LoginForm;
 use frontend\modules\user\models\PasswordResetRequestForm;
 use frontend\modules\user\models\ResetPasswordForm;
@@ -95,7 +96,7 @@ class SignInController extends \yii\web\Controller
         return $this->goHome();
     }
 
-    public function actionSignup()
+    public function actionSignup($t = null)
     {
         $signup = new SignupForm();
         $profile = new UserProfile();
@@ -126,7 +127,12 @@ class SignInController extends \yii\web\Controller
             }
         }
 
-        return $this->render('signup', compact(['model','countries']));
+        $model->getModel('profile')->tariff = $t;
+
+        return $this->render('signup', [
+            'model' => $model,
+            'tariffs' => ArrayHelper::map(Tariffs::find()->all(), 'id', 'name'),
+        ]);
     }
 
     public function actionRequestPasswordReset()

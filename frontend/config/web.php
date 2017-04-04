@@ -38,6 +38,9 @@ $config = [
         'article' => [
             'class' => 'frontend\modules\article\Module',
         ],
+        'tariffs' => [
+            'class' => 'frontend\modules\tariffs\Module',
+        ],
     ],
     'components' => [
         'mymessages' => [
