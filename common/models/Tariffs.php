@@ -85,7 +85,7 @@ class Tariffs extends \yii\db\ActiveRecord
             case 'count_visas':
                 $text = $this->count_visas == 0 ? 'визы' :
                     Yii::t('app',
-                        '{0, plural, one{# виза} few{# виз} other{# визы}}',
+                        '{0, plural, one{# виза} few{# визы} other{# виз}}',
                         $this->count_visas
                     );
                 break;
