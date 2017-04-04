@@ -1,0 +1,133 @@
+.customSelect { 
+	position: relative;			
+	font-size: 12px;
+	font-family: "Lucida Grande", Arial, Helvetica, sans-serif; 
+	float: left;
+	margin-right: 10px;
+}		
+.selectValueWrap{
+	position: relative;
+}
+.customSelect .selectedValue {
+	font-size: 14px;
+	height: 30px;
+	border: 1px solid #d0d0d0;
+	color: #828282;
+	line-height: 26px;
+	padding: 0 8px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.customSelect .selectList {
+	z-index: 100;
+	position: absolute;
+	left: -999em;
+	top: -999em;
+  padding: 8px 0;
+  margin:0;
+	border-left: 1px solid #d0d0d0;
+	border-right: 1px solid #d0d0d0;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+.customSelect.select-open .selectList {
+	left: 0 !important;
+	top: auto !important;
+}
+.customSelect .selectList dl {
+	background: #fff;	
+}
+.customSelect .selectList dl.defaultScrollbar {
+	overflow-x: hidden;
+	overflow-y: scroll;	
+}
+.customSelect dl, .customSelect dd {
+	margin: 0;
+}
+.customSelect dd {
+	zoom: 1;
+	cursor: pointer;
+}
+.customSelect .disabled {
+	color: #999;
+	cursor: default;
+}
+.customSelect .selected {
+	color: #0096ff;
+}
+.customSelect .selectList dd.hovered {
+	background: #999;
+	color: #fff;
+}
+.customSelect .selectList dd.disabled.hovered {
+	background: none;
+	color: #999;
+}
+.customSelect dt {
+	font-weight: bold;
+	font-style: italic;
+	padding: 2px 10px 2px 6px;
+}	
+.customSelect dd {
+	padding: 5px 10px 5px 8px;
+} 
+.hasJS select.custom {
+	position: absolute;
+	left: -999em;
+}
+.hasJS select.custom.use-default {
+	position: absolute;
+	left: auto;
+	height: auto;
+	width: 100%;
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	opacity: 0;
+	/* prevents iOS from zooming in on field */
+	font-size: 16px;
+}
+.customSelect.focused .selectedValue {
+	box-shadow: 0 0 2px #00aedb;
+}
+.customSelect.disabled .selectedValue {
+	border: 1px solid #ccc;
+	color: #ccc;
+	cursor: default;
+}
+.customSelect .caret {
+	background: rgba(0, 0, 0, 0) url("../v1/img/ico-005.png") no-repeat;
+	width:8px;
+	height:6px;
+}
+.customSelect.select-open .caret {
+	background: rgba(0, 0, 0, 0) url("../v1/img/ico-006.png") no-repeat;
+	width:8px;
+	height:6px;
+}
+.customSelect .selectValueWrap .caret {
+	position: absolute;
+	top: 12px;
+	right: 10px;
+	cursor: pointer;
+
+}
+.customSelect .jspPane {
+	overflow-x: hidden;
+}
+.customSelect .jspVerticalBar {
+	background: none;
+	width: 8px;
+}
+.customSelect .jspHorizontalBar {
+	height: 0;
+	overflow: hidden;
+}
+.customSelect .jspTrack {
+	background: none;
+	right: 5px;
+	border-radius: 5px;
+}
+.customSelect .jspDrag {
+	width:3px;
+	background: #666;
+}
