@@ -4,6 +4,7 @@ namespace common\models;
 
 use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
+use frontend\helpers\PaymentHelper;
 
 /**
  * This is the model class for table "user_profile".
@@ -107,14 +108,18 @@ class UserProfile extends \yii\db\ActiveRecord
     {
         if (parent::beforeSave($insert)) {
             if($this->isNewRecord && $this->user->type == User::TOUR_OPERATOR) {
-                $trf = Tariffs::findOne(['id' => $this->tariff]);
-                if (!$trf) $this->tariff = 1;
                 $tariff = new UserTariff();
                 $tariff->user_id = $this->user_id;
-                $tariff->tariff_id = $this->tariff;
+                $tariff->tariff_id = 1;
                 $tariff->activated_at = time();
                 $tariff->valid_at = time();
                 $tariff->save();
+
+                // добавляем тариф к оплате
+                $trf = Tariffs::findOne(['id' => $this->tariff]);
+                if ($trf) {
+                    PaymentHelper::add(Payment::TYPE_TARIFF, $this->tariff);
+                }
             }
             return true;
         }
