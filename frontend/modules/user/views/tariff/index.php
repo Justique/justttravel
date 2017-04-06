@@ -139,18 +139,18 @@ use yii\helpers\Html;
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->news == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i>новости, акции</td>
-                    <td>1 новость, акция в сутки</td>
-                    <td>0 новостей, акций в сутки</td>
+                    <td><?= $user_tariff->getNewsCount() ?> новость, акция в сутки</td>
+                    <td><?= $user_tariff->getNewsCount() == 1 ? 0 : 1 ?> новостей, акций в сутки</td>
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->count_responses == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i><?= $user_tariff->tariff->getText('count_responses') ?></td>
-                    <td>5 откликов на заявки</td>
-                    <td>0 откликов на заявки в сутки</td>
+                    <td><?= $user_tariff->getResponseCount() ?> откликов на заявки</td>
+                    <td><?= $user_tariff->getResponseCount() > $user_tariff->tariff->count_responses ? 0 : $user_tariff->tariff->count_responses - $user_tariff->getResponseCount() ?> откликов на заявки в сутки</td>
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->count_managers == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i><?= $user_tariff->tariff->getText('count_managers') ?></td>
-                    <td>1 аккаунт менеджера</td>
-                    <td>0 аккаунтов менеджера</td>
+                    <td><?= $user_tariff->getManagersCount() ?> аккаунт менеджера</td>
+                    <td><?= $user_tariff->getManagersCount() > $user_tariff->tariff->count_managers ? 0 : $user_tariff->tariff->count_managers - $user_tariff->getManagersCount() ?> аккаунтов менеджера</td>
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->placement == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i>размещение в каталоге</td>

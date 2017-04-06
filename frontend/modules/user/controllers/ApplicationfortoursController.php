@@ -81,10 +81,13 @@ class ApplicationfortoursController extends Controller
     {
         $model = new ApplicationForTours();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            echo Json::encode([
-                'success'=>'Заявка создана'
-            ]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->user_id = userModel()->id;
+            if ($model->save()) {
+                echo Json::encode([
+                    'success'=>'Заявка создана'
+                ]);
+            }
         } else {
             echo Json::encode([
                 'error'=>'Заполните все поля'

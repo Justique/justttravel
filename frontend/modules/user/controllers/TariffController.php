@@ -111,6 +111,15 @@ class TariffController extends Controller
         Payment::deleteAll(['user_id' => $user_id]);
         if ($type == Payment::TYPE_TARIFF) {
             $tariff = Tariffs::findOne(['id' => $data]);
+            if ($tariff->price == 0) {
+                /** @var \common\models\UserTariff $user_tariff */
+                $user_tariff = userModel()->tariff;
+                $user_tariff->tariff_id = $tariff->id;
+                $user_tariff->activated_at = time();
+                $user_tariff->valid_at = time();
+                $user_tariff->save();
+                return $this->redirect(['index']);
+            }
         } elseif ($type == Payment::TYPE_TARIFF_EXTENSION) {
             $tariff = userModel()->tariff->tariff;
         }

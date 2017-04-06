@@ -67,4 +67,24 @@ class UserTariff extends \yii\db\ActiveRecord
         else
             return time() <= $this->valid_at;
     }
+
+    public function getNewsCount() {
+        return Article::find()
+            ->where(['user_id' => $this->user_id])
+            ->andWhere('FROM_UNIXTIME(created_at, \'%Y-%m-%d\') = CURDATE()')
+            ->count();
+    }
+
+    public function getResponseCount() {
+        return ApplicationForTours::find()
+            ->where(['user_id' => $this->user_id])
+            ->andWhere('FROM_UNIXTIME(date_create, \'%Y-%m-%d\') = CURDATE()')
+            ->count();
+    }
+
+    public function getManagersCount() {
+        return TouroperatorsManagers::find()
+            ->where(['profile_touroperator_id' => $this->user_id])
+            ->count();
+    }
 }

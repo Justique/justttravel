@@ -21,6 +21,8 @@ use yii\db\Expression;
  * @property integer $user_application_id
  * @property integer $date_create
  * @property integer $date_update
+ * @property integer $tourfirm_id
+ * @property integer $user_id
  */
 class ApplicationForTours extends \yii\db\ActiveRecord
 {
@@ -47,8 +49,8 @@ class ApplicationForTours extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['country_to_id', 'city_to_id', 'date', 'price', 'adults', 'country_from_id', 'city_from_id', 'user_application_id', 'days', 'nights','tourfirm_id', 'manager_id','transport_type'], 'required'],
-            [['country_to_id', 'city_to_id', 'price', 'adults', 'childrens', 'country_from_id', 'city_from_id', 'user_application_id', 'date_create', 'date_update'], 'integer'],
+            [['country_to_id', 'city_to_id', 'date', 'price', 'adults', 'country_from_id', 'city_from_id', 'user_application_id', 'days', 'nights','tourfirm_id','user_id', 'manager_id','transport_type'], 'required'],
+            [['country_to_id', 'city_to_id', 'price', 'adults', 'childrens', 'country_from_id', 'city_from_id', 'user_application_id', 'date_create', 'date_update','user_id'], 'integer'],
             [['date'], 'string', 'max' => 255]
         ];
     }
