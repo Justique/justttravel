@@ -6,6 +6,7 @@ use kartik\depdrop\DepDrop;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 
 $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(),'country_id','name');

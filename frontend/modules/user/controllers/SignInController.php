@@ -109,7 +109,6 @@ class SignInController extends \yii\web\Controller
             ]
         ]);
 
-
         if ($model->load(Yii::$app->request->post())) {
             $user = $model->getModel('signup')->signup( $model->getModel('profile'));
             if ($user && Yii::$app->getUser()->login($user)) {

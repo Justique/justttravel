@@ -56,6 +56,12 @@ $this->beginContent('@frontend/views/layouts/base.php')
 //                            'visible' => userModel()->isUserTourOperator()
 //                        ],
                         [
+                            'label' => '<span class="pic"><i class="fa fa-cog"></i></span><span class="hideable">Тариф</span>',
+                            'url' => ['/profile/tariff'],
+                            'linkOptions' => [],
+                            'visible' => userModel()->isUserTourOperator()
+                        ],
+                        [
                             'label' => '<span class="pic"><i class="fa fa-cog"></i></span><span class="hideable">Данные акаунта</span>',
                             'url' => ['/user/default/settings'],
                             'linkOptions' => [],

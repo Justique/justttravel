@@ -28,9 +28,11 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property integer $logged_at
+ * @property integer $type
  * @property string $password write-only password
  *
- * @property \common\models\UserProfile $userProfile
+ * @property UserProfile $userProfile
+ * @property Tariffs $tariff
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -251,6 +253,11 @@ class User extends ActiveRecord implements IdentityInterface
 
     public function getPhone() {
         return $this->hasOne(ManagersPhone::className(), ['manager_id' => 'id']);
+    }
+
+    public function getTariff()
+    {
+        return $this->hasOne(UserTariff::className(), ['user_id' => 'id']);
     }
 
     /**

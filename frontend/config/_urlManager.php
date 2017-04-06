@@ -74,6 +74,7 @@ return [
         ['pattern'=>'profile/visafavorites','route'=>'/user/visafavorites/index'],
         ['pattern'=>'profile/toursfavorites','route'=>'/user/toursfavorites/index'],
         ['pattern'=>'profile/userapplication','route'=>'/user/userapplication/index'],
+        ['pattern'=>'profile/tariff','route'=>'/user/tariff/index'],
 
 
         // Api

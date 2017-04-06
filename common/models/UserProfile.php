@@ -18,6 +18,7 @@ use Yii;
  * @property string $avatar_path
  * @property string $avatar_base_url
  * @property integer $gender
+ * @property integer $tariff
  *
  * @property User $user
  */
@@ -27,7 +28,7 @@ class UserProfile extends \yii\db\ActiveRecord
     const GENDER_FEMALE = 2;
 
     public $picture;
-
+    public $tariff;
     public $user_fullname;
 
     /**
@@ -67,7 +68,7 @@ class UserProfile extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id', 'gender','tariff'], 'integer'],
+            [['user_id', 'gender', 'tariff'], 'integer'],
             [['gender'], 'in', 'range'=>[NULL, self::GENDER_FEMALE, self::GENDER_MALE]],
             [['firstname', 'middlename', 'lastname', 'avatar_path', 'avatar_base_url','company', 'ur_address', 'address','phone','fullname'], 'string', 'max' => 255],
             ['locale', 'default', 'value' => 'ru-RU'],
@@ -91,6 +92,33 @@ class UserProfile extends \yii\db\ActiveRecord
             'picture' => Yii::t('common', 'Picture'),
             'gender' => Yii::t('common', 'Gender'),
         ];
+    }
+
+    public function attributes() {
+        return array_merge(parent::attributes(), [
+            'tariff',
+        ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if($this->isNewRecord && $this->user->type == User::TOUR_OPERATOR) {
+                $trf = Tariffs::findOne(['id' => $this->tariff]);
+                if (!$trf) $this->tariff = 1;
+                $tariff = new UserTariff();
+                $tariff->user_id = $this->user_id;
+                $tariff->tariff_id = $this->tariff;
+                $tariff->activated_at = time();
+                $tariff->valid_at = time();
+                $tariff->save();
+            }
+            return true;
+        }
+        return false;
     }
 
     public function afterSave($insert, $changedAttributes)
@@ -134,5 +162,4 @@ class UserProfile extends \yii\db\ActiveRecord
     public function getCountry(){
         return $this->hasOne(Countries::className(),'country','country_id');
     }
-
 }
