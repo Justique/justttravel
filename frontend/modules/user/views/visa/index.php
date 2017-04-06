@@ -7,6 +7,7 @@ use yii\widgets\ListView;
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\search\VisaSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $canCreate boolean */
 
 $this->title = 'Визы Компании';
 $this->params['breadcrumbs'][] = $this->title;
@@ -16,11 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php if($flagTourfirm){ ?>
-
+        <?php if ($canCreate): ?>
+            <p>
+                <?= Html::a('Создать визу', ['create'], ['class' => 'button yellow button_main']) ?>
+            </p>
+        <?php endif; ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-    <p>
-        <?= Html::a('Создать визу', ['create'], ['class' => 'button yellow button_main']) ?>
-    </p>
+
     <div style="display: none">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

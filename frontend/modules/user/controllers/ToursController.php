@@ -44,7 +44,9 @@ class ToursController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'model' => $this->getTourfirms(),
-            'flagTourfirm' => $flagTourfirm
+            'flagTourfirm' => $flagTourfirm,
+            'canCreate' => userModel()->tariff->canCreateTour(),
+            'canUp' => userModel()->tariff->canUpTour(),
         ]);
     }
 
@@ -90,15 +92,19 @@ class ToursController extends Controller
      */
     public function actionCreate()
     {
-        $this->layout = '/profile';
-        $model = new Tours();
+        if (userModel()->tariff->canCreateTour()) {
+            $this->layout = '/profile';
+            $model = new Tours();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['index']);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+            return $this->redirect(['index']);
         }
     }
 
@@ -136,10 +142,12 @@ class ToursController extends Controller
     }
 
     public function actionUp($id) {
-        $model = $this->findModel($id);
-        $model->price = (string)$model->price;
-        $model->published_at = time();
-        $model->save();
+        if (userModel()->tariff->canUpTour()) {
+            $model = $this->findModel($id);
+            $model->price = (string)$model->price;
+            $model->published_at = time();
+            $model->save();
+        }
         return $this->redirect(['index']);
     }
 }

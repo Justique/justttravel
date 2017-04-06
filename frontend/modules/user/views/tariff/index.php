@@ -2,11 +2,14 @@
 
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+use common\models\Tariffs;
 
 /* @var $tariffs common\models\Tariffs[] */
 /* @var $user_tariff common\models\UserTariff */
 /* @var $payments common\models\Payment[] */
 /* @var $payment_total integer */
+
+$this->title = 'Тариф';
 ?>
 
 <div class="head-symbol"><i class="fa fa-tachometer" aria-hidden="true"></i></div>
@@ -119,18 +122,22 @@ use yii\helpers\Html;
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->count_tours == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i><?= $user_tariff->tariff->getText('count_tours') ?></td>
-                    <td>10 туров в каталоге</td>
-                    <td>0 туров в каталоге</td>
+                    <td><?= $user_tariff->getToursCount() ?> туров в каталоге</td>
+                    <?php if ($user_tariff->tariff->count_tours == Tariffs::INFINITY_NUMBER): ?>
+                        <td>∞ туров в каталоге</td>
+                    <?php else: ?>
+                        <td><?= $user_tariff->getToursCount() > $user_tariff->tariff->count_tours ? 0 : $user_tariff->tariff->count_tours - $user_tariff->getToursCount() ?> туров в каталоге</td>
+                    <?php endif; ?>
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->count_up_tours == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i><?= $user_tariff->tariff->getText('count_up_tours') ?></td>
-                    <td>5 апа туров в сутки</td>
-                    <td>3 апа туров в сутки</td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->count_visas == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i><?= $user_tariff->tariff->getText('count_visas') ?></td>
-                    <td></td>
-                    <td></td>
+                    <td><?= $user_tariff->getVisasCount() ?> виз</td>
+                    <td><?= $user_tariff->getVisasCount() > $user_tariff->tariff->count_visas ? 0 : $user_tariff->tariff->count_visas - $user_tariff->getVisasCount() ?> виз</td>
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->count_up_visas == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i><?= $user_tariff->tariff->getText('count_up_visas') ?></td>
@@ -145,7 +152,11 @@ use yii\helpers\Html;
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->count_responses == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i><?= $user_tariff->tariff->getText('count_responses') ?></td>
                     <td><?= $user_tariff->getResponseCount() ?> откликов на заявки</td>
-                    <td><?= $user_tariff->getResponseCount() > $user_tariff->tariff->count_responses ? 0 : $user_tariff->tariff->count_responses - $user_tariff->getResponseCount() ?> откликов на заявки в сутки</td>
+                    <?php if ($user_tariff->tariff->count_responses == Tariffs::INFINITY_NUMBER): ?>
+                        <td>∞ откликов на заявки в сутки</td>
+                    <?php else: ?>
+                        <td><?= $user_tariff->getResponseCount() > $user_tariff->tariff->count_responses ? 0 : $user_tariff->tariff->count_responses - $user_tariff->getResponseCount() ?> откликов на заявки в сутки</td>
+                    <?php endif; ?>
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->count_managers == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i><?= $user_tariff->tariff->getText('count_managers') ?></td>

@@ -6,15 +6,18 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\modules\user\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $canCreate boolean */
 
 $this->title = 'Менеджеры';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="head-symbol"><i class="fa fa-smile-o"></i></div>
 <h1><?= Html::encode($this->title) ?></h1>
-<p>
-    <?= Html::a('Добавить менеджера', ['create'], ['class' => 'button yellow button_main']) ?>
-</p>
+<?php if ($canCreate): ?>
+    <p>
+        <?= Html::a('Добавить менеджера', ['create'], ['class' => 'button yellow button_main']) ?>
+    </p>
+<?php endif; ?>
 <div class="user-index" style="display: none">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
     <?= GridView::widget([

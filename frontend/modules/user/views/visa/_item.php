@@ -30,11 +30,13 @@ use yii\helpers\Html;
 <div class="tour-price">
     <p><?php echo $model->price; ?> <span>руб.</span></p>
 </div>
-    <?= Html::a('апнуть', ['up', 'id' => $model->id], [
-        'data-method' => 'POST',
-        'class' => 'orders_form_trigger',
-        'style' => 'margin-right: 230px;'
-    ]) ?>
+    <?php if (userModel()->tariff->canUpVisa()): ?>
+        <?= Html::a('апнуть', ['up', 'id' => $model->id], [
+            'data-method' => 'POST',
+            'class' => 'orders_form_trigger',
+            'style' => 'margin-right: 230px;'
+        ]) ?>
+    <?php endif; ?>
     <a onclick="locationRe(<?php echo $model->id ?>)" href="#" class="orders_form_trigger">Изменить</a>
 </li>
 <!--<li class="form container">-->

@@ -45,6 +45,7 @@ class VisaController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'flagTourfirm' => $flagTourfirm,
+            'canCreate' => userModel()->tariff->canCreateVisa(),
         ]);
     }
 
@@ -83,14 +84,19 @@ class VisaController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Visa();
-        if ($model->load(Yii::$app->request->post())&& $model->save()) {
-            return $this->actionIndex();
-//            return $this->redirect(['index', 'id' => $model->id]);
-        } else {
+        if (userModel()->tariff->canCreateVisa()) {
+            $model = new Visa();
+            if ($model->load(Yii::$app->request->post())) {
+                $model->user_id = userModel()->id;
+                if ($model->save()) {
+                    return $this->actionIndex();
+                }
+            }
             return $this->render('create', [
                 'model' => $model,
             ]);
+        } else {
+            return $this->redirect(['index']);
         }
     }
 
@@ -127,9 +133,11 @@ class VisaController extends Controller
     }
 
     public function actionUp($id) {
-        $model = $this->findModel($id);
-        $model->published_at = time();
-        $model->save();
+        if (userModel()->tariff->canUpVisa()) {
+            $model = $this->findModel($id);
+            $model->published_at = time();
+            $model->save();
+        }
         return $this->redirect(['index']);
     }
 }

@@ -43,6 +43,7 @@ class ManagerController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'canCreate' => userModel()->tariff->canCreateManagers(),
         ]);
     }
 
@@ -83,23 +84,27 @@ class ManagerController extends Controller
      */
     public function actionCreate()
     {
-        $this->layout = '/profile';
-        $model = new User();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $model->setPassword(Yii::$app->request->post('User')['password_hash']);
-            if ($model->save()){
-                $post = Yii::$app->request->post();
-                $lastId = yii::$app->db->lastInsertID;
-                TouroperatorsManagers::saveUsersManagers(user()->id, $lastId);
-                ManagersPhone::savePhoneManager($this->getModelManagersPhone(),$post, $lastId);
-                UserProfile::saveManager($lastId);
-                return $this->redirect(['index', 'id' => $model->id]);
+        if (userModel()->tariff->canCreateManagers()) {
+            $this->layout = '/profile';
+            $model = new User();
+            if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+                $model->setPassword(Yii::$app->request->post('User')['password_hash']);
+                if ($model->save()) {
+                    $post = Yii::$app->request->post();
+                    $lastId = yii::$app->db->lastInsertID;
+                    TouroperatorsManagers::saveUsersManagers(user()->id, $lastId);
+                    ManagersPhone::savePhoneManager($this->getModelManagersPhone(), $post, $lastId);
+                    UserProfile::saveManager($lastId);
+                    return $this->redirect(['index', 'id' => $model->id]);
+                }
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                    'modelManagerPhone' => $this->getModelManagersPhone(),
+                ]);
             }
-        }else {
-            return $this->render('create', [
-                'model' => $model,
-                'modelManagerPhone' => $this->getModelManagersPhone(),
-            ]);
+        } else {
+            return $this->redirect(['index']);
         }
     }
 

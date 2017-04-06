@@ -44,6 +44,7 @@ class NewsController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'canCreate' => userModel()->tariff->canCreateNews(),
         ]);
     }
 
@@ -83,17 +84,21 @@ class NewsController extends Controller
      */
     public function actionCreate()
     {
-        $this->layout = '/profile';
-        $model = new Article();
+        if (userModel()->tariff->canCreateNews()) {
+            $this->layout = '/profile';
+            $model = new Article();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->actionIndex();
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->actionIndex();
 //            return $this->redirect(['index', 'id' => $model->id]);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                    'categories' => ArticleCategory::find()->active()->all(),
+                ]);
+            }
         } else {
-            return $this->render('create', [
-                'model' => $model,
-                'categories' => ArticleCategory::find()->active()->all(),
-            ]);
+            return $this->redirect(['index']);
         }
     }
 

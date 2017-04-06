@@ -7,6 +7,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\modules\user\models\ArticleSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $canCreate boolean */
 
 $this->title = 'Новости';
 $this->params['breadcrumbs'][] = $this->title;
@@ -17,9 +18,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php if(Tourfirms::getTourfirmId(user()->id)){ ?>
 
-    <p>
-        <?= Html::a('Создать новость', ['create'], ['class' => 'button yellow button_main']) ?>
-    </p>
+    <?php if ($canCreate): ?>
+        <p>
+            <?= Html::a('Создать новость', ['create'], ['class' => 'button yellow button_main']) ?>
+        </p>
+    <?php endif; ?>
 <div class="article-index" style="display: none;">
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 

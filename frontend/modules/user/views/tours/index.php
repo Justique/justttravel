@@ -8,6 +8,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\modules\user\models\ToursSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $canCreate boolean */
+/* @var $canUp boolean */
 
 $this->title = 'Туры Компании';
 $this->params['breadcrumbs'][] = $this->title;
@@ -16,9 +18,11 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="head-symbol"><i class="fa fa-paper-plane" aria-hidden="true"></i></div>
 <h1><?= Html::encode($this->title) ?></h1>
 <?php if($flagTourfirm){ ?>
-    <p>
-        <?= Html::a('Добавить тур', ['create'], ['class' => 'button yellow button_main']) ?>
-    </p>
+    <?php if ($canCreate): ?>
+        <p>
+            <?= Html::a('Добавить тур', ['create'], ['class' => 'button yellow button_main']) ?>
+        </p>
+    <?php endif; ?>
 <div style="display: none">
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -72,7 +76,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     <p><?php echo $item->price ?><span>rub.</span></p>
                 </div>
                 <div class="bottom_buttons">
-                    <?= Html::a('апнуть', ['up', 'id' => $item->id], ['data-method' => 'POST', 'class' => 'up_trigger']) ?>
+                    <?php if ($canUp): ?>
+                        <?= Html::a('апнуть', ['up', 'id' => $item->id], ['data-method' => 'POST', 'class' => 'up_trigger']) ?>
+                    <?php endif; ?>
                     <a href="#" class="orders_form_trigger expand">Изменить</a>
                 </div>
             </li>
