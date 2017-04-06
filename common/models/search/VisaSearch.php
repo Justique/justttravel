@@ -50,7 +50,8 @@ class VisaSearch extends Visa
             'query' => $query,
             'pagination' => [
                 'pageSize' => 6
-            ]
+            ],
+            'sort'=> ['defaultOrder' => ['published_at' => SORT_DESC]]
         ]);
         $this->load($params);
 
@@ -86,7 +87,8 @@ class VisaSearch extends Visa
             'query' => $query,
             'pagination'=>[
                 'pageSize'=>5
-            ]
+            ],
+            'sort'=> ['defaultOrder' => ['published_at' => SORT_DESC]]
         ]);
 
         $this->load($params);

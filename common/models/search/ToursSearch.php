@@ -75,6 +75,7 @@ class ToursSearch extends Tours
             'pagination' => [
                 'pageSize' => 5,
             ],
+            'sort'=> ['defaultOrder' => ['published_at' => SORT_DESC]]
         ]);
         $this->load($params);
 //        dump($this);

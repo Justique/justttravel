@@ -28,6 +28,7 @@ use yii\db\Expression;
  * @property string $thumbnail_base_url
  * @property string $thumbnail_path
  * @property integer $created_at
+ * @property integer $updated_at
  * @property integer $published_at
  */
 class Tours extends \yii\db\ActiveRecord
@@ -66,7 +67,7 @@ class Tours extends \yii\db\ActiveRecord
             [
                 'class' => TimestampBehavior::className(),
                 'createdAtAttribute' => 'created_at',
-                'updatedAtAttribute' => 'published_at',
+                'updatedAtAttribute' => 'updated_at',
                 'value' => new Expression(time()),
             ],
             [
@@ -111,16 +112,30 @@ class Tours extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if($this->isNewRecord) {
+                $this->published_at = time();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
             [['title','price', 'country_to_id', 'city_to_id', 'city_from_id', 'date_from', 'count_old', 'transport_type','user_id', 'body'], 'required'],
-            [['country_to_id','country_from_id', 'city_to_id', 'city_from_id', 'count_old', 'count_kids', 'hotel_id', 'user_id','tourfirm_id', 'created_at', 'published_at','hot'], 'integer'],
+            [['country_to_id','country_from_id', 'city_to_id', 'city_from_id', 'count_old', 'count_kids', 'hotel_id', 'user_id','tourfirm_id', 'created_at', 'updated_at', 'published_at', 'hot'], 'integer'],
             [['body'], 'string'],
             [['title'], 'unique'],
             [['title', 'slug', 'status', 'price', 'date_from'], 'string', 'max' => 255],
             [['thumbnail_base_url', 'thumbnail_path'], 'string', 'max' => 1024],
-            [['slug','status','user_id','thumbnail_base_url', 'thumbnail_path', 'created_at', 'published_at', 'count_kids','count_days','count_nights', 'transport_type','attachments'],'safe'],
+            [['slug','status','user_id','thumbnail_base_url', 'thumbnail_path', 'created_at', 'updated_at', 'published_at', 'count_kids','count_days','count_nights', 'transport_type','attachments'],'safe'],
             [['hotel_title', 'hotel_url'], 'string', 'max' => 255],
             [['hotel_rating'], 'number', 'min' => 0, 'max' => 5]
         ];
@@ -150,6 +165,7 @@ class Tours extends \yii\db\ActiveRecord
             'thumbnail_base_url' => 'Основная картинка',
             'thumbnail_path' => 'Дополнительные изображения',
             'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
             'published_at' => 'Published At',
             'attachments' => 'картинки',
             'hotel_title' => 'Название отеля',

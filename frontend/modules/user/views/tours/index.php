@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <p><?php echo $item->price ?><span>rub.</span></p>
                 </div>
                 <div class="bottom_buttons">
-                    <a href="#" class="up_trigger">апнуть</a>
+                    <?= Html::a('апнуть', ['up', 'id' => $item->id], ['data-method' => 'POST', 'class' => 'up_trigger']) ?>
                     <a href="#" class="orders_form_trigger expand">Изменить</a>
                 </div>
             </li>

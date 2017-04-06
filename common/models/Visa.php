@@ -17,6 +17,7 @@ use yii\db\Expression;
  * @property integer $price
  * @property integer $date_create
  * @property integer $date_update
+ * @property integer $published_at
  * @property integer $city_id
  * @property string $documents
  * @property integer $registration_period
@@ -59,6 +60,20 @@ class Visa extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if($this->isNewRecord) {
+                $this->published_at = time();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
@@ -82,6 +97,7 @@ class Visa extends \yii\db\ActiveRecord
             'price' => 'Price',
             'date_create' => 'Date Create',
             'date_update' => 'Date Update',
+            'published_at' => 'Published Update',
             'city_id' => 'City ID',
             'documents' => 'Documents',
             'registration_period' => 'Registration Period',

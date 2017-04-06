@@ -25,6 +25,7 @@ class VisaController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                    'up' => ['post'],
                 ],
             ],
         ];
@@ -122,6 +123,13 @@ class VisaController extends Controller
     {
         $this->findModel($id)->delete();
 
+        return $this->redirect(['index']);
+    }
+
+    public function actionUp($id) {
+        $model = $this->findModel($id);
+        $model->published_at = time();
+        $model->save();
         return $this->redirect(['index']);
     }
 }

@@ -23,6 +23,7 @@ class ToursController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                    'up' => ['post'],
                 ],
             ],
         ];
@@ -131,6 +132,14 @@ class ToursController extends Controller
     {
         $this->findModel($id)->delete();
 
+        return $this->redirect(['index']);
+    }
+
+    public function actionUp($id) {
+        $model = $this->findModel($id);
+        $model->price = (string)$model->price;
+        $model->published_at = time();
+        $model->save();
         return $this->redirect(['index']);
     }
 }

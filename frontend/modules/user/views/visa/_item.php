@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mopkau
- * Date: 22.02.2016
- * Time: 14:32
- */
+use yii\helpers\Html;
 ?>
 <script>
    function locationRe(id){
@@ -35,6 +30,11 @@
 <div class="tour-price">
     <p><?php echo $model->price; ?> <span>руб.</span></p>
 </div>
+    <?= Html::a('апнуть', ['up', 'id' => $model->id], [
+        'data-method' => 'POST',
+        'class' => 'orders_form_trigger',
+        'style' => 'margin-right: 230px;'
+    ]) ?>
     <a onclick="locationRe(<?php echo $model->id ?>)" href="#" class="orders_form_trigger">Изменить</a>
 </li>
 <!--<li class="form container">-->
