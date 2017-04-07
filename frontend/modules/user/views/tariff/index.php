@@ -4,12 +4,21 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use common\models\Tariffs;
 
+/* @var $this \yii\web\View */
 /* @var $tariffs common\models\Tariffs[] */
 /* @var $user_tariff common\models\UserTariff */
 /* @var $payments common\models\Payment[] */
 /* @var $payment_total integer */
 
 $this->title = 'Тариф';
+if (Yii::$app->session->hasFlash('canNotChangeTariff')) {
+    $this->registerJs('
+        swal({
+            type: "warning",
+            title: "Тариф можно менять только раз в месяц!"
+        });
+    ');
+}
 ?>
 
 <div class="head-symbol"><i class="fa fa-tachometer" aria-hidden="true"></i></div>

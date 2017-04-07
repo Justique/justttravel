@@ -42,7 +42,13 @@ class TariffController extends Controller
         $this->layout = '/profile';
 
         if (Yii::$app->request->post('tariff')) {
-            $this->addPayment(Payment::TYPE_TARIFF, Yii::$app->request->post('tariff'));
+            /** @var \common\models\UserTariff $tariff */
+            $tariff = userModel()->tariff;
+            if (strtotime('+1 month', $tariff->activated_at) > time()) {
+                Yii::$app->session->setFlash('canNotChangeTariff');
+            } else {
+                $this->addPayment(Payment::TYPE_TARIFF, Yii::$app->request->post('tariff'));
+            }
         }
 
         if (Yii::$app->request->post('time')) {
