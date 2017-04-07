@@ -44,7 +44,7 @@ $this->title = 'Тарифы';
     <div class="c-text">
         <p>Описательный текст</p>
     </div>
-    
+
     <div class="c-discount">
         <div class="discount-header"><span><img src="v1/img/percent.jpg" alt=""></span>Скидки на размещние</div>
         <div class="discount-row">

@@ -2,7 +2,7 @@
     font-family: 'RalewayRegular';
     src: url('../fonts/RalewayRegular.eot');
     src: url('../fonts/RalewayRegular.eot') format('embedded-opentype'),
-         url('../fonts/RalewayRegular.woff2.html') format('woff2'),
+         url('../fonts/RalewayRegular.woff2') format('woff2'),
          url('../fonts/RalewayRegular.woff') format('woff'),
          url('../fonts/RalewayRegular.ttf') format('truetype'),
          url('../fonts/RalewayRegular.svg') format('svg');
@@ -11,7 +11,7 @@
     font-family: 'RalewaySemiBold';
     src: url('../fonts/RalewaySemiBold.eot');
     src: url('../fonts/RalewaySemiBold.eot') format('embedded-opentype'),
-         url('../fonts/RalewaySemiBold.woff2.html') format('woff2'),
+         url('../fonts/RalewaySemiBold.woff2') format('woff2'),
          url('../fonts/RalewaySemiBold.woff') format('woff'),
          url('../fonts/RalewaySemiBold.ttf') format('truetype'),
          url('../fonts/RalewaySemiBold.svg') format('svg');
@@ -20,7 +20,7 @@
     font-family: 'RalewayExtraLight';
     src: url('../fonts/RalewayExtraLight.eot');
     src: url('../fonts/RalewayExtraLight.eot') format('embedded-opentype'),
-         url('../fonts/RalewayExtraLight.woff2.html') format('woff2'),
+         url('../fonts/RalewayExtraLight.woff2') format('woff2'),
          url('../fonts/RalewayExtraLight.woff') format('woff'),
          url('../fonts/RalewayExtraLight.ttf') format('truetype'),
          url('../fonts/RalewayExtraLight.svg') format('svg');
@@ -29,7 +29,7 @@
     font-family: 'RalewayThin';
     src: url('../fonts/RalewayThin.eot');
     src: url('../fonts/RalewayThin.eot') format('embedded-opentype'),
-         url('../fonts/RalewayThin.woff2.html') format('woff2'),
+         url('../fonts/RalewayThin.woff2') format('woff2'),
          url('../fonts/RalewayThin.woff') format('woff'),
          url('../fonts/RalewayThin.ttf') format('truetype'),
          url('../fonts/RalewayThin.svg') format('svg');
@@ -39,7 +39,7 @@
     font-family: 'RalewayLight';
     src: url('../fonts/RalewayLight.eot');
     src: url('../fonts/RalewayLight.eot') format('embedded-opentype'),
-         url('../fonts/RalewayLight.woff2.html') format('woff2'),
+         url('../fonts/RalewayLight.woff2') format('woff2'),
          url('../fonts/RalewayLight.woff') format('woff'),
          url('../fonts/RalewayLight.ttf') format('truetype'),
          url('../fonts/RalewayLight.svg') format('svg');
@@ -49,7 +49,7 @@
     font-family: 'RalewayMedium';
     src: url('../fonts/RalewayMedium.eot');
     src: url('../fonts/RalewayMedium.eot') format('embedded-opentype'),
-         url('../fonts/RalewayMedium.woff2.html') format('woff2'),
+         url('../fonts/RalewayMedium.woff2') format('woff2'),
          url('../fonts/RalewayMedium.woff') format('woff'),
          url('../fonts/RalewayMedium.ttf') format('truetype'),
          url('../fonts/RalewayMedium.svg') format('svg');
