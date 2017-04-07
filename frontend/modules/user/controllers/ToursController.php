@@ -2,13 +2,14 @@
 
 namespace frontend\modules\user\controllers;
 
-use common\models\search\TourfirmToursSearch;
-use common\models\Tourfirms;
-use common\models\Tours;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use common\models\search\TourfirmToursSearch;
+use common\models\Tourfirms;
+use common\models\Tours;
+use common\models\UpTour;
 
 /**
  * ToursController implements the CRUD actions for Tours model.
@@ -146,7 +147,13 @@ class ToursController extends Controller
             $model = $this->findModel($id);
             $model->price = (string)$model->price;
             $model->published_at = time();
-            $model->save();
+            if ($model->save()) {
+                $up = new UpTour();
+                $up->user_id = userModel()->id;
+                $up->tour_id = $model->id;
+                $up->timestamp = time();
+                $up->save();
+            }
         }
         return $this->redirect(['index']);
     }

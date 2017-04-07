@@ -71,6 +71,22 @@ class UserTariff extends \yii\db\ActiveRecord
             return time() <= $this->valid_at;
     }
 
+    public function getUpToursCount()
+    {
+        return UpTour::find()
+            ->where(['user_id' => $this->user_id])
+            ->andWhere('FROM_UNIXTIME(timestamp, \'%Y-%m-%d\') = CURDATE()')
+            ->count();
+    }
+
+    public function getUpVisasCount()
+    {
+        return UpVisa::find()
+            ->where(['user_id' => $this->user_id])
+            ->andWhere('FROM_UNIXTIME(timestamp, \'%Y-%m-%d\') = CURDATE()')
+            ->count();
+    }
+
     public function getToursCount()
     {
         return Tours::find()
@@ -110,12 +126,12 @@ class UserTariff extends \yii\db\ActiveRecord
 
     public function canUpTour()
     {
-        return true;
+        return $this->getUpToursCount() < $this->tariff->count_up_tours;
     }
 
     public function canUpVisa()
     {
-        return true;
+        return $this->getUpVisasCount() < $this->tariff->count_up_visas;
     }
 
     public function canCreateTour()

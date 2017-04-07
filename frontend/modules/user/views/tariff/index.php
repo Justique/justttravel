@@ -131,8 +131,8 @@ $this->title = 'Тариф';
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->count_up_tours == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i><?= $user_tariff->tariff->getText('count_up_tours') ?></td>
-                    <td></td>
-                    <td></td>
+                    <td><?= $user_tariff->getUpToursCount() ?> апа туров в сутки</td>
+                    <td><?= $user_tariff->getUpToursCount() > $user_tariff->tariff->count_up_tours ? 0 : $user_tariff->tariff->count_up_tours - $user_tariff->getUpToursCount() ?> апа туров в каталоге</td>
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->count_visas == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i><?= $user_tariff->tariff->getText('count_visas') ?></td>
@@ -141,8 +141,8 @@ $this->title = 'Тариф';
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->count_up_visas == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i><?= $user_tariff->tariff->getText('count_up_visas') ?></td>
-                    <td></td>
-                    <td></td>
+                    <td><?= $user_tariff->getUpVisasCount() ?> апа виз в сутки</td>
+                    <td><?= $user_tariff->getUpVisasCount() > $user_tariff->tariff->count_up_visas ? 0 : $user_tariff->tariff->count_up_visas - $user_tariff->getUpVisasCount() ?> апа виз</td>
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->news == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i>новости, акции</td>
@@ -165,8 +165,8 @@ $this->title = 'Тариф';
                 </tr>
                 <tr>
                     <td><i class="fa fa-<?= $user_tariff->tariff->placement == 0 ? 'times' : 'check' ?>" aria-hidden="true"></i>размещение в каталоге</td>
-                    <td>размещение в каталоге</td>
-                    <td></td>
+                    <td><i class="fa fa-check" aria-hidden="true"></i></td>
+                    <td><i class="fa fa-check" aria-hidden="true"></i></td>
                 </tr>
             </table><!-- .tariff-uses-table -->
         </div><!-- .table-responsive -->

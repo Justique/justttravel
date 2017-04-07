@@ -2,13 +2,14 @@
 
 namespace frontend\modules\user\controllers;
 
-use common\models\search\VisaSearch;
-use common\models\Tourfirms;
-use common\models\Visa;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use common\models\search\VisaSearch;
+use common\models\Tourfirms;
+use common\models\Visa;
+use common\models\UpVisa;
 
 /**
  * VisaController implements the CRUD actions for Visa model.
@@ -136,7 +137,13 @@ class VisaController extends Controller
         if (userModel()->tariff->canUpVisa()) {
             $model = $this->findModel($id);
             $model->published_at = time();
-            $model->save();
+            if ($model->save()) {
+                $up = new UpVisa();
+                $up->user_id = userModel()->id;
+                $up->visa_id = $model->id;
+                $up->timestamp = time();
+                $up->save();
+            }
         }
         return $this->redirect(['index']);
     }
