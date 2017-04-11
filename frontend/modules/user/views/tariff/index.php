@@ -3,10 +3,12 @@
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use common\models\Tariffs;
+use common\models\Payment;
 
 /* @var $this \yii\web\View */
 /* @var $tariffs common\models\Tariffs[] */
 /* @var $user_tariff common\models\UserTariff */
+/* @var $to_pay common\models\Payment[] */
 /* @var $payments common\models\Payment[] */
 /* @var $payment_total integer */
 
@@ -16,6 +18,13 @@ if (Yii::$app->session->hasFlash('canNotChangeTariff')) {
         swal({
             type: "warning",
             title: "Тариф можно менять только раз в месяц!"
+        });
+    ');
+} elseif (Yii::$app->session->hasFlash('existUnpaidInvoice')) {
+    $this->registerJs('
+        swal({
+            type: "warning",
+            title: "Есть неоплаченные счета!"
         });
     ');
 }
@@ -95,12 +104,12 @@ if (Yii::$app->session->hasFlash('canNotChangeTariff')) {
     <?php endif; ?>
 </div><!-- .cnp-tariff -->
 
-<?php if ($payments): ?>
+<?php if ($to_pay): ?>
     <div class="topay">
         <div class="topay-header">К оплате</div>
         <div class="topay-value"><?= $payment_total ?> р. </div>
         <div class="topay-items">
-            <?php foreach ($payments as $payment): ?>
+            <?php foreach ($to_pay as $payment): ?>
                 <div class="topay-item">
                     <div class="topay-item-title">
                         <span class="topay-item-name"><?= $payment->name ?></span>
@@ -116,6 +125,24 @@ if (Yii::$app->session->hasFlash('canNotChangeTariff')) {
         </div><!-- .topay-items -->
 
         <?= Html::a('оплатить', ['pay'], ['data-method' => 'POST', 'class' => 'button yellow']) ?>
+    </div><!-- .topay -->
+<?php endif; ?>
+
+<?php if ($payments): ?>
+    <div class="topay">
+        <div class="topay-header">Платежи</div>
+        <div class="topay-items">
+            <?php foreach ($payments as $payment): ?>
+                <?php if ($payment->invoice_id): ?>
+                    <div class="topay-item">
+                        <div class="topay-item-title">
+                            <span class="topay-item-name">№ счета: <?= $payment->invoice_id ?></span>
+                            <span class="topay-item-price">Статус: <?= Payment::$statusList[$payment->status] ?></span>
+                        </div>
+                    </div><!-- .topay-item -->
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div><!-- .topay-items -->
     </div><!-- .topay -->
 <?php endif; ?>
 

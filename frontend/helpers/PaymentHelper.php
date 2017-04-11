@@ -11,7 +11,10 @@ class PaymentHelper
     {
         $tariff = null;
         $user_id = userModel()->id;
-        Payment::deleteAll(['user_id' => $user_id]);
+        Payment::deleteAll([
+            'user_id' => $user_id,
+            'status' => Payment::STATUS_TO_PAY
+        ]);
         if ($type == Payment::TYPE_TARIFF) {
             $tariff = Tariffs::findOne(['id' => $data]);
             if ($tariff->price == 0) {
@@ -42,7 +45,8 @@ class PaymentHelper
                 $payment->discount = getenv('DISCOUNT_12_MONTH');
             }
         }
-        $payment->total = $payment->price * ( 100 - $payment->discount ) / 100;;
+        $payment->total = $payment->price * ( 100 - $payment->discount ) / 100;
+        $payment->status = Payment::STATUS_TO_PAY;
         return $payment->save();
     }
 }

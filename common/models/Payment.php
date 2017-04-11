@@ -17,6 +17,7 @@ use Yii;
  * @property integer $discount
  * @property double $total
  * @property integer $payment_at
+ * @property integer $invoice_id
  * @property integer $status
  */
 class Payment extends \yii\db\ActiveRecord
@@ -28,11 +29,19 @@ class Payment extends \yii\db\ActiveRecord
         self::TYPE_TARIFF_EXTENSION => 'Продление тарифа',
     ];
 
-    const STATUS_NOT_PAID = 0;
-    const STATUS_PAID = 1;
+    const STATUS_TO_PAY = 0;
+    const STATUS_PENDING_PAYMENT = 1;
+    const STATUS_OVERDUE = 2;
+    const STATUS_PAID = 3;
+    const STATUS_PARTIALLY_PAID = 4;
+    const STATUS_CANCELED = 5;
     public static $statusList = [
-        self::STATUS_NOT_PAID => 'Оплачен',
-        self::STATUS_PAID => 'Не оплачен',
+        self::STATUS_TO_PAY => 'К оплате',
+        self::STATUS_PENDING_PAYMENT => 'Ожидает оплату',
+        self::STATUS_OVERDUE => 'Просрочен',
+        self::STATUS_PAID => 'Оплачен',
+        self::STATUS_PARTIALLY_PAID  => 'Оплачен частично',
+        self::STATUS_CANCELED  => 'Отменен',
     ];
 
     /**
@@ -50,7 +59,7 @@ class Payment extends \yii\db\ActiveRecord
     {
         return [
             [['type', 'user_id', 'name', 'price', 'total'], 'required'],
-            [['type', 'user_id', 'tariff_id', 'month_count', 'price', 'discount', 'payment_at', 'status'], 'integer'],
+            [['type', 'user_id', 'tariff_id', 'month_count', 'price', 'discount', 'payment_at', 'invoice_id', 'status'], 'integer'],
             [['total'], 'number'],
             [['name'], 'string', 'max' => 255],
         ];
@@ -72,6 +81,7 @@ class Payment extends \yii\db\ActiveRecord
             'discount' => 'Discount',
             'total' => 'Total',
             'payment_at' => 'Payment At',
+            'invoice_id' => 'Invoice ID',
             'status' => 'Status',
         ];
     }

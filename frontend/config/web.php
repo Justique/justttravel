@@ -123,6 +123,12 @@ $config = [
             'loginUrl'=>['/user/sign-in/login'],
             'enableAutoLogin' => true,
             'as afterLogin' => 'common\behaviors\LoginTimestampBehavior'
+        ],
+        'expressPay' => [
+            'class' => 'common\components\expressPay\Merchant',
+            'token' => getenv('EXPRESS_PAY_TOKEN'),
+            'accountNo' => getenv('EXPRESS_PAY_ACCOUNT_NO'),
+            'isTestMode' => true,
         ]
     ]
 ];
