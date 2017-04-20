@@ -244,7 +244,7 @@ class DefaultController extends Controller
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize'=>10]);
         $models = $query->offset($pages->offset)
             ->limit($pages->limit)
-            ->where(['tourfirm_id'=>$model->id])
+            ->where(['tourfirm_id' => $model->id])
             ->all();
 
         $big = Article::find()->where(['is_big'=>1, 'tourfirm_id'=>$model->id])->one();
