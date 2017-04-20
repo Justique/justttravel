@@ -1,28 +1,29 @@
 <?php
-use common\models\Countries;
 use yii\bootstrap\ActiveForm;
-use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
+/* @var $cities common\models\Cities[] */
 ?>
 
 <section class="tours-page">
     <div class="content-wrapper with-counter">
         <h1>Туристические фирмы<span class="country-count"><?php echo $dataProvider->getTotalCount() ?></span></h1>
         <p>Все туристические фирмы Беларуси</p>
-        <?php
-        $form = ActiveForm::begin([
-            'id'=>'tour-country-filter',
+        <?php $form = ActiveForm::begin([
+            'id' => 'tour-country-filter',
             'options'=>[
                 'class'=>'regular-form'
             ]
-        ]);
-        $modelCountries = new Countries();
-        $countries = Countries::find()->all();
-        $items = ArrayHelper::map($countries, 'country_id', 'name');
-        echo $form->field($modelCountries, 'searchCountries')->dropDownList($items, ['prompt'=>'Выберете страну',   'options' => [ yii::$app->request->get('TourSearch')['country_id'] => ['selected ' => true]]])->label(false);
-        ActiveForm::end();
-        ?>
+        ]) ?>
+            <?= Html::dropDownList('TourfirmsSearch[city_id]', null, $cities, [
+                'id' => 'tourfirms-city',
+                'prompt' => 'Выберите город',
+                'options' => [
+                    Yii::$app->request->get('TourfirmsSearch')['city_id'] => ['selected ' => true]
+                ]
+            ]) ?>
+        <?php ActiveForm::end() ?>
         <p class="sort">Сортировать по:<?php echo $sort->link('name')?><?php echo $sort->link('rating')?></p>
         <div class="tourfirms">
             <?php foreach($dataProvider->getModels() as $item){ ?>

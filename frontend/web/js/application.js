@@ -3,6 +3,10 @@ $(window).load(function(){
        var $val = $(this).children(":selected").attr('value');
        document.location.href="/tours?ToursSearch[country_to_id]="+$val;
     });
+    $("select#tourfirms-city").change(function(){
+        var $val = $(this).children(":selected").attr('value');
+        document.location.href="/tourfirms?TourfirmsSearch[city_id]="+$val;
+    });
 });
 
 $('.table-striped input[type="checkbox"]').attr('name', 'status[]').click(function(){

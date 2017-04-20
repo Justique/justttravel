@@ -184,6 +184,14 @@ class Tourfirms extends \yii\db\ActiveRecord
         return $this->hasOne(TourfirmWorkTime::className(), ['tourfirm_id' =>'id']);
     }
 
+    public function getTouroperator(){
+        return $this->hasOne(User::className(), ['id' => 'touroperator_id']);
+    }
+
+    public function getTouroperatorProfile(){
+        return $this->hasOne(UserProfile::className(), ['user_id' => 'touroperator_id']);
+    }
+
     public function getTourfirmReviews(){
         return $this->hasMany(TourfirmsReviews::className(), ['tourfirm_id'=>'id'])->andWhere(['status'=>1]);
     }

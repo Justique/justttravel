@@ -26,7 +26,7 @@ class DefaultController extends Controller
                     'label' => 'Цене'
                 ],
                 'count_nights'=>[
-                    'label' => 'Количества дней'
+                    'label' => 'Количеству дней'
                 ],
             ],
             'defaultOrder' => ['created_at' => SORT_ASC]
@@ -38,7 +38,6 @@ class DefaultController extends Controller
         return $this->render('tours',[
             'dataProvider'=>$dataProvider,
             'sort'=>$sort,
-
         ]);
     }
 

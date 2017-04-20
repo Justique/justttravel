@@ -12,13 +12,15 @@ use common\models\Tourfirms;
  */
 class TourfirmsSearch extends Tourfirms
 {
+    public $city_id;
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'rating'], 'integer'],
+            [['id', 'rating', 'city_id'], 'integer'],
             [['description', 'address', 'name', 'phone', 'slug'], 'safe'],
         ];
     }
@@ -58,9 +60,12 @@ class TourfirmsSearch extends Tourfirms
             return $dataProvider;
         }
 
+        $query->joinWith('touroperatorProfile');
+
         $query->andFilterWhere([
             'id' => $this->id,
             'rating' => $this->rating,
+            'city' => $this->city_id
         ]);
 
         $query->andFilterWhere(['like', 'description', $this->description])

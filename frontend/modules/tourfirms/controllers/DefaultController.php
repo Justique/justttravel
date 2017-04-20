@@ -2,6 +2,7 @@
 
 namespace frontend\modules\tourfirms\controllers;
 use common\models\Article;
+use common\models\Cities;
 use common\models\CustomerFeedback;
 use common\models\ReviewsComment;
 use common\models\ReviewsVotes;
@@ -14,6 +15,7 @@ use common\models\TouroperatorsManagers;
 use Yii;
 use yii\data\Pagination;
 use yii\data\Sort;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -39,7 +41,8 @@ class DefaultController extends Controller
 
         return $this->render('tourfirms', [
             'dataProvider' => $dataProvider,
-            'sort' => $sort
+            'sort' => $sort,
+            'cities' => ArrayHelper::map(Cities::findAll(['country_id' => 3]), 'id', 'city')
         ]);
     }
 
