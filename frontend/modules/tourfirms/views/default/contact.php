@@ -56,7 +56,7 @@ use yii\widgets\ActiveForm;
                 <?php if ($model->longitude && $model->latitude) { ?>
                     <?php
                     echo \pigolab\locationpicker\LocationPickerWidget::widget([
-                        'key' => 'AIzaSyD1NOeYiZ_YIDsq-lFGo7j9OnMVzMpa4bU', // optional , Your can also put your google map api key
+                        'key' => 'AIzaSyAPB4WlsQGENW4ppqlmHezDJsIUOg31Asg', // optional , Your can also put your google map api key
                         'options' => [
                             'style' => 'width: 100%; height: 400px', // map canvas width and height
                         ] ,
