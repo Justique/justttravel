@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Html;
+?>
 <section class="company-page with-rating">
     <div class="content-wrapper">
         <?php echo \frontend\modules\tourfirms\widgets\TourfirmHeaderWidget::widget(['model'=>$model]) ?>
@@ -52,13 +55,19 @@
             <?php if ($model->tourfirmAttachments ): ?>
                 <div class="company-images">
                     <?php foreach ($model->tourfirmAttachments as $img): ?>
-                        <?= \yii\helpers\Html::img(
+                        <?= Html::a(
+                            Html::img(Yii::$app->glide->createSignedUrl([
+                                    'glide/index',
+                                    'path' => $img->path,
+                                    'w' => 200
+                                ], true)
+                            ),
                             Yii::$app->glide->createSignedUrl([
                                 'glide/index',
-                                'path' => $img->path,
-                                'w' => 200
-                            ], true)
-                        ) ?>
+                                'path' => $img->path
+                            ], true),
+                            ['data-lightbox' => 'img-' . $img->id])
+                        ?>
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>

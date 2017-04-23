@@ -22,6 +22,7 @@ class FrontendAsset extends AssetBundle
         'v1/css/style.css',
         'v1/css/preloader.css',
         'v1/css/font-awesome.min.css',
+        'v1/plugins/lightbox2/css/lightbox.min.css',
         'css/sweetalert2.css',
         'css/dopstyle.css',
         //'css/customSelectBox.css',
@@ -34,6 +35,7 @@ class FrontendAsset extends AssetBundle
     public $js = [
         'v1/js/jquery.easyModal.js',
         'v1/js/main.js',
+        'v1/plugins/lightbox2/js/lightbox.min.js',
         'js/masonry.pkgd.min.js',
         'js/application.js',
         'js/sweetalert2.min.js',
