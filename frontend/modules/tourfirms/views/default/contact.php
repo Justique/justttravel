@@ -53,26 +53,26 @@ use yii\widgets\ActiveForm;
                     <i class="fa fa-map-marker"></i>
                     <a href="#address-contact"><?php echo $model->address ?></a>
                 </p>
-                <?php if ($model->longitude && $model->latitude) { ?>
-                    <?php
-                    echo \pigolab\locationpicker\LocationPickerWidget::widget([
-                        'key' => 'AIzaSyAPB4WlsQGENW4ppqlmHezDJsIUOg31Asg', // optional , Your can also put your google map api key
-                        'options' => [
-                            'style' => 'width: 100%; height: 400px', // map canvas width and height
-                        ] ,
-                        'clientOptions' => [
-                            'location' => [
-                                'latitude'  => $model->latitude,
-                                'longitude' => $model->longitude,
-                            ],
-                            'radius'    => $model->radius,
-                        ]
-                    ]);
-                    ?>
-                <?php } else { ?>
-                    <h3 class="is-empty-map">Администратор турфирмы еще не ввел данные карты.</h3>
-                <?php } ?>
             </div>
         </div>
     </div>
+    <?php if ($model->longitude && $model->latitude) { ?>
+        <?php
+        echo \pigolab\locationpicker\LocationPickerWidget::widget([
+            'key' => 'AIzaSyAPB4WlsQGENW4ppqlmHezDJsIUOg31Asg', // optional , Your can also put your google map api key
+            'options' => [
+                'style' => 'width: 100%; height: 400px', // map canvas width and height
+            ] ,
+            'clientOptions' => [
+                'location' => [
+                    'latitude'  => $model->latitude,
+                    'longitude' => $model->longitude,
+                ],
+                'radius'    => $model->radius,
+            ]
+        ]);
+        ?>
+    <?php } else { ?>
+        <h3 class="is-empty-map">Администратор турфирмы еще не ввел данные карты.</h3>
+    <?php } ?>
 </section>

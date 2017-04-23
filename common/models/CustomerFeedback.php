@@ -54,7 +54,7 @@ class CustomerFeedback extends \yii\db\ActiveRecord
             'id' => 'ID',
             'tourfirm_id' => 'Tourfirm ID',
             'user_id' => 'User ID',
-            'name' => 'Name',
+            'name' => 'Имя',
             'email' => 'Email',
             'phone' => 'Phone',
             'question' => 'Question',
