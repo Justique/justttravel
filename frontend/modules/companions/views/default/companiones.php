@@ -1,18 +1,78 @@
 <?php
 use common\models\Countries;
+use yii\helpers\Html;
 use yii\widgets\LinkPager;
+use yii\widgets\ActiveForm;
+use yii\jui\DatePicker;
 
+/* @var $this \yii\web\View */
+/* @var $companions common\models\Companiones[] */
+/* @var $countries common\models\Countries[] */
+
+$this->title = 'Попутчики';
 ?>
 <div class="content-wrapper companions">
-    <h1>Попутчики<span class="companions-count head-count"><?php echo count($model) ?></span></h1>
+    <h1>Попутчики<span class="companions-count head-count"><?php echo count($companions) ?></span></h1>
     <p>Найди свою компанию!</p>
+
+    <?php $form = ActiveForm::begin(['method'=>'GET']); ?>
+        <div class="companions-select">
+            <div class="companions-select-col">
+                <div class="form-group">
+                    <?= Html::dropDownList('Filter[country_id]', null, $countries, [
+                        'prompt' => 'Любая страна',
+                        'options' => [
+                            Yii::$app->request->get('Filter')['country_id'] => ['selected ' => true]
+                        ]
+                    ]) ?>
+                </div>
+            </div>
+            <div class="companions-select-col">
+                <div class="form-group">
+                    <?= Html::dropDownList('Filter[resort_id]', null, [], [
+                        'prompt' => 'Любой курорт',
+                    ]) ?>
+                </div>
+            </div>
+            <div class="companions-select-col">
+                <div class="form-group">
+                    <?= DatePicker::widget([
+                        'name' => 'Filter[date]',
+                        'language' => 'ru',
+                        'dateFormat' => 'yyyy-MM-dd',
+                        'options' => ['placeholder' => 'Дата'],
+                    ]) ?>
+                </div>
+            </div>
+        </div><!-- .companions-select -->
+
+        <button type="submit" class="button yellow m-b-lg">ПОЕХАЛИ!</button>
+    <?php ActiveForm::end(); ?>
+
     <div class="tags-container">
-        <?php foreach(\common\models\Interests::getUniqInterests() as $interest){ ?>
-            <a href="/companions?interest_name=<?php echo $interest ?>"><span><i class="fa fa-check"></i><?php echo $interest ?><i class="fa fa-times"></i></span></a>
-        <?php } ?>
+        <?php foreach(\common\models\Interests::getUniqInterests() as $interest): ?>
+            <?php if ($interest == Yii::$app->request->get('interest_name')): ?>
+                <a href="/companions">
+                    <span class="checked">
+                        <i class="fa fa-check"></i>
+                        <?php echo $interest ?>
+                        <i class="fa fa-times"></i>
+                    </span>
+                </a>
+            <?php else: ?>
+                <a href="/companions?interest_name=<?php echo $interest ?>">
+                    <span>
+                        <i class="fa fa-check"></i>
+                        <?php echo $interest ?>
+                        <i class="fa fa-times"></i>
+                    </span>
+                </a>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
+
     <div class="companions-container">
-        <?php foreach($model as $item){ ?>
+        <?php foreach($companions as $item){ ?>
         <article>
             <div class="main-info">
                 <div class="creds">

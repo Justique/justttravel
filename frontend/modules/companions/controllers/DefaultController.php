@@ -2,11 +2,13 @@
 
 namespace frontend\modules\companions\controllers;
 
-use common\models\Companiones;
-use common\models\Interests;
 use yii;
 use yii\data\Pagination;
 use yii\web\Controller;
+use yii\helpers\ArrayHelper;
+use common\models\Companiones;
+use common\models\Interests;
+use common\models\Countries;
 
 class DefaultController extends Controller
 {
@@ -37,10 +39,10 @@ class DefaultController extends Controller
             ->where($where)
             ->all();
 
-        return $this->render('companiones',
-        [
-            'model'=>$model,
-            'pages'=>$pages
+        return $this->render('companiones', [
+            'companions' => $model,
+            'pages' => $pages,
+            'countries' => ArrayHelper::map(Countries::find()->all(), 'country_id', 'name')
         ]);
     }
 }

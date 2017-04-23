@@ -442,6 +442,9 @@ a.blue {color: #0096ff;}
     width: 200px;
     margin: 15px 12px;
 }
+.companions-select-col .form-group {
+    margin: 0 !important;
+}
 .m-b-lg {
     margin-bottom: 50px;
 }
