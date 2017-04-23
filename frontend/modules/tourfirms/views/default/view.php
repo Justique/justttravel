@@ -5,9 +5,15 @@
             <div class="desc-head">
                 <div class="company-logo-group">
                     <div>
-                        <div>
-                            <!-- <img src="img/company-logo.jpg" alt="Company"> -->
-                        </div>
+                        <?php if ($model->tourfirmAttachments ): ?>
+                            <?= \yii\helpers\Html::img(
+                                Yii::$app->glide->createSignedUrl([
+                                    'glide/index',
+                                    'path' => $model->tourfirmAttachments[0]->path,
+                                    'w' => 250
+                                ], true)
+                            ) ?>
+                        <?php endif; ?>
                         <div class="timing">
                             <h3><i class="fa fa-clock-o"></i>Время работы</h3>
                             <ul>
@@ -41,21 +47,21 @@
             </div>
             <div class="company-desc-text">
                 <h5><?php echo $model->name ?></h5>
-                <p><?php echo $model->description ?></p>
+                <p class="m-l-none"><?php echo $model->description ?></p>
             </div>
-<!--            <div class="company-desc-grid js-masonry" data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": 252, "gutter": 30 }'>-->
-                <?php if ($model->tourfirmAttachments ) {
-                    foreach ($model->tourfirmAttachments as $img) {
-                            echo \yii\helpers\Html::img(
-                                Yii::$app->glide->createSignedUrl([
-                                    'glide/index',
-                                    'path' => $img->path,
-                                    'w' => 200
-                                ], true)
-                            );
-                        }
-                } ?>
-<!--            </div>-->
+            <?php if ($model->tourfirmAttachments ): ?>
+                <div class="company-images">
+                    <?php foreach ($model->tourfirmAttachments as $img): ?>
+                        <?= \yii\helpers\Html::img(
+                            Yii::$app->glide->createSignedUrl([
+                                'glide/index',
+                                'path' => $img->path,
+                                'w' => 200
+                            ], true)
+                        ) ?>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
