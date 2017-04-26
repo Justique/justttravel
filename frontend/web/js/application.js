@@ -34,12 +34,17 @@ $('.table-striped input[type="checkbox"]').attr('name', 'status[]').click(functi
 
 function parseResponse(response)
 {
-    if(response.errorVotes){
-    swal({
-      type: 'warning',
-      title: 'Вы голосовали!',
-    })
-    }
+    if (response.errorVoteExist){
+		swal({
+		  type: 'warning',
+		  title: 'Вы голосовали!'
+		});
+    } else if (response.errorVoteOnlyTourist) {
+        swal({
+            type: 'warning',
+            title: 'Голосовать могут только туристы!'
+        });
+	}
 
 	if (response.error) {
 		showError(response.error);
@@ -179,7 +184,9 @@ $(function(){
 		if($(that).data('confirm') && !confirm($(that).data('confirm'))) {
 			return false;
 		}
-		jQuery.ajax({'cache': false, 'type': 'POST', 'dataType': 'json', 'data':$(that).data('params'), 'success': function (response) {
+		jQuery.ajax({'cache': false, 'type': 'POST', 'dataType': 'json', 'data':$(that).data('params'),
+			'success': function (response) {
+			console.log(response);
 			parseResponse(response);
 		}, 'error': function (response) {
 			alert(response.responseText);

@@ -84,17 +84,28 @@ class DefaultController extends Controller
     }
 
     public function actionIsvotestourfirm(){
-        $tourfirmsReviews = TourfirmsReviews::find()->where(['tourfirm_id'=>yii::$app->request->get('tourfirm_id'), 'user_id'=>user()->id])->one();
-        $tourfirmsVotes = TourfirmVotes::find()->where(['tourfirm_id'=>yii::$app->request->get('tourfirm_id'), 'user_id'=>user()->id])->one();
-        if(!empty($tourfirmsReviews) && !empty($tourfirmsVotes)){
+        $tourfirm_id = Yii::$app->request->get('tourfirm_id');
+        $user_id = user()->id;
+
+        $tourfirmsVotes = TourfirmVotes::find()->where(['tourfirm_id' => $tourfirm_id, 'user_id' => $user_id])->one();
+        $tourfirmsReviews = TourfirmsReviews::find()->where(['tourfirm_id' => $tourfirm_id, 'user_id' => $user_id])->one();
+
+        if (!userModel()->isUserTurist()) {
+            echo Json::encode(
+                [
+                    'closeModal' => '#leave-report-form',
+                    'errorVoteExist' => false,
+                    'errorVoteOnlyTourist' => true
+                ]
+            );
+        } elseif (!empty($tourfirmsReviews) && !empty($tourfirmsVotes)) {
             echo Json::encode(
                 [
                     'closeModal' => '#leave-report-form',
                     'errorVotes' => true
                 ]
             );
-        }
-        else{
+        } else {
             echo Json::encode(
                 [
                     'redirect' => '/tourfirms/rating?tourfirm_id=' .yii::$app->request->get('tourfirm_id')
