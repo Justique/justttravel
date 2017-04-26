@@ -59,7 +59,7 @@ use yii\helpers\Html;
                             Html::img(Yii::$app->glide->createSignedUrl([
                                     'glide/index',
                                     'path' => $img->path,
-                                    'w' => 200
+                                    'w' => 255
                                 ], true)
                             ),
                             Yii::$app->glide->createSignedUrl([
