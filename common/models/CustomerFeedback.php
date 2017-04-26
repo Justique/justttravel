@@ -38,7 +38,7 @@ class CustomerFeedback extends \yii\db\ActiveRecord
     {
         return [
             [['tourfirm_id', 'user_id', 'date_create'], 'integer'],
-            [['date_create','user_id', 'name'], 'required'],
+            [['date_create', 'name'], 'required'],
             [['name', 'phone'], 'string', 'max' => 50],
             [['email'], 'string', 'max' => 100],
             [['question'], 'string', 'max' => 255]
