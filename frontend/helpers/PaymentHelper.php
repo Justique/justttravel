@@ -4,13 +4,19 @@ namespace frontend\helpers;
 
 use common\models\Payment;
 use common\models\Tariffs;
+use common\models\User;
 
 class PaymentHelper
 {
-    public static function add($type, $data)
+    public static function add($type, $data, $user_id = null)
     {
         $tariff = null;
-        $user_id = userModel()->id;
+        if ($user_id) {
+            $user_model = User::findOne(['id' => $user_id]);
+        } else {
+            $user_id = userModel()->id;
+            $user_model = userModel();
+        }
         Payment::deleteAll([
             'user_id' => $user_id,
             'status' => Payment::STATUS_TO_PAY
@@ -19,14 +25,14 @@ class PaymentHelper
             $tariff = Tariffs::findOne(['id' => $data]);
             if ($tariff->price == 0) {
                 /** @var \common\models\UserTariff $user_tariff */
-                $user_tariff = userModel()->tariff;
+                $user_tariff = $user_model->tariff;
                 $user_tariff->tariff_id = $tariff->id;
                 $user_tariff->activated_at = time();
                 $user_tariff->valid_at = time();
                 return $user_tariff->save();
             }
         } elseif ($type == Payment::TYPE_TARIFF_EXTENSION) {
-            $tariff = userModel()->tariff->tariff;
+            $tariff = $user_model->tariff->tariff;
         }
         $payment = new Payment();
         $payment->type = $type;

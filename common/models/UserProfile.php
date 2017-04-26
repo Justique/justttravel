@@ -118,7 +118,7 @@ class UserProfile extends \yii\db\ActiveRecord
                 // добавляем тариф к оплате
                 $trf = Tariffs::findOne(['id' => $this->tariff]);
                 if ($trf) {
-                    PaymentHelper::add(Payment::TYPE_TARIFF, $this->tariff);
+                    PaymentHelper::add(Payment::TYPE_TARIFF, $this->tariff, $this->user_id);
                 }
             }
             return true;
