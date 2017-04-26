@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
                 <?php echo $form->field($model, 'email') ?>
                 <div class="form-group">
-                    <?php echo Html::submitButton('Send', ['class' => 'button yellow','style'=>'margin:10px 0;']) ?>
+                    <?php echo Html::submitButton('Отправить', ['class' => 'button yellow','style'=>'margin:10px 0;']) ?>
                 </div>
             <?php ActiveForm::end(); ?>
         </div>
