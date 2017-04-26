@@ -2284,3 +2284,158 @@ a p {
 .grid-item:hover h3 {
     color: #00A2FF !important;
 }
+
+.tabs-wrapper {
+    background-color: #FFF;
+    border: 1px solid #B3B3B3;
+    margin: 70px auto 100px;
+    max-width: 980px;
+}
+.tabs-menu {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: -20px 0 0;
+    padding: 0;
+}
+.tabs-menu li {
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+    min-width: 255px;
+    padding: 7px 10px;
+    text-align: center;
+    background-color: #FFF;
+    border: 1px solid #00BAFF;
+    color: #00A1FF;
+    font-family: "Raleway";
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin: 0 80px;
+}
+.tabs-menu li:hover span {
+    border-bottom-color: transparent;
+}
+.tabs-menu li span {
+    border-bottom: 1px dashed #009DFF;
+    transition: all 0.2s ease;
+}
+.tabs-menu li.active {
+    color: #fff;
+    background-color: #00BAFF;
+}
+.tabs-menu li.active span {
+    border-bottom-color: transparent;
+}
+.tabs-item {
+    display: none;
+    padding: 50px 50px 70px;
+}
+.tabs-item.active {
+    display: block;
+}
+.about-box {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.about-item {
+    width: 33.3%;
+    margin: 25px 0 25px;
+}
+.about-image {
+    margin-bottom: 5px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    min-height: 100px;
+}
+.about-title {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.color-blue {color: #0CACF8;}
+.color-yellow {color: #F4C115;}
+.color-orange {color: #F1641A;}
+.color-red {color: #F21842;}
+.color-purple {color: #DA1CCF;}
+.color-green {color: #87CA01;}
+.about-descr {
+    color: #5A5A5A;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 225px;
+    margin: 0 auto;
+}
+.about-descr a {
+    color: #00A1FF;
+    text-decoration: underline;
+}
+.about-descr a:hover, .about-descr a:active {
+    color: #00A1FF;
+    text-decoration: none;
+}
+.button-register {
+    margin: 20px auto;
+    width: 220px;
+    height: 55px;
+    color: #FFF;
+    padding: 8px 15px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    background-color: #00B6C5;
+    background-image: -moz-linear-gradient(bottom, #0084F3 0%, #1BDCFF 100%);
+    background-image: -o-linear-gradient(bottom, #0084F3 0%, #1BDCFF 100%);
+    background-image: -webkit-linear-gradient(bottom, #0084F3 0%, #1BDCFF 100%);
+    background-image: linear-gradient(to top, #0084F3 0%, #1BDCFF 100%);
+}
+.button-register:hover {
+    opacity: .8;
+}
+
+@media only screen and (max-width : 991px) {
+    .tabs-item {
+        padding: 20px;
+    }
+    .about-item {
+        width: 50%;
+    }
+    .tabs-menu {
+        justify-content: center;
+    }
+    .tabs-menu li {
+        margin: 0 20px;
+        min-width: 0;
+        max-width: 300px;
+        width: 100%;
+    }
+}
+@media only screen and (max-width : 639px) {
+    .about-item {
+        width: 100%;
+    }
+    .tabs-menu li {
+        margin: 0 5px;
+    }
+}

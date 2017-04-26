@@ -198,10 +198,13 @@ function update_content_size() {
   }
 }
 
-
-
 $(function() {
-
     $("select").dropdown();
+});
 
+// tabs
+$('ul.tabs-menu').delegate('li:not(.active)', 'click', function() {
+    $(this).addClass('active').siblings().removeClass('active')
+        .parents('.tabs-wrapper').find('.tabs-item').hide().eq($(this).index()).fadeIn(150);
+    return false;
 });
