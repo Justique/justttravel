@@ -1,36 +1,51 @@
 <?php
-
-use common\models\Countries;
-use common\models\Tourfirms;
 use frontend\modules\tourfirms\Module as Module4;
 use frontend\modules\tours\Module as Module3;
 use frontend\modules\user\Module;
-use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\LinkPager;
 
+/* @var $this \yii\web\View */
+/* @var $cities common\models\Cities[] */
+/* @var $countries common\models\Countries[] */
+
+$this->title = 'Туры';
 ?>
 <div class="content-wrapper with-counter">
 <h1>Все туры<span class="country-count"><?php echo  $dataProvider->getTotalCount() ?></span></h1>
 <p>Туры всех турфирм из нашего каталога</p>
 <div class="content-tours">
-<?php
-$form = ActiveForm::begin([
-    'id'=>'tour-country-filter',
+
+<?php $form = ActiveForm::begin([
+    'id' => 'tour-country-filter',
+    'method' => 'get',
     'options'=>[
         'class'=>'regular-form'
     ]
-]);
-$modelCountries = new Countries();
-$countries = Countries::find()->all();
-$items = ArrayHelper::map($countries, 'country_id', 'name');
-$option = '';
-if(isset( yii::$app->request->get('ToursSearch')['country_to_id'])){
-    $option = [yii::$app->request->get('ToursSearch')['country_to_id'] => ['selected ' => true ]];
-}
-echo $form->field($modelCountries, 'searchCountries')->dropDownList($items, ['prompt'=>'Выберете страну',   'options' =>$option])->label(false);
-ActiveForm::end();
-?>
+]) ?>
+
+    <div style="width: 250px; display: inline-block;">
+        <?= Html::dropDownList('ToursSearch[city_id]', null, $cities, [
+            'id' => 'tours-city',
+            'prompt' => 'Выберите ваш город',
+            'options' => [
+                Yii::$app->request->get('ToursSearch')['city_id'] => ['selected ' => true]
+            ]
+        ]) ?>
+    </div>
+    <div style="width: 250px; display: inline-block;">
+        <?= Html::dropDownList('ToursSearch[country_to_id]', null, $countries, [
+            'id' => 'tours-country',
+            'prompt' => 'Выберете страну',
+            'options' => [
+                Yii::$app->request->get('ToursSearch')['country_to_id'] => ['selected ' => true]
+            ]
+        ]) ?>
+    </div>
+
+<?php ActiveForm::end() ?>
+
 <p class="sort">Сортировать по:<?php echo $sort->link('created_at')?><?php echo $sort->link('count_nights')?><?php echo $sort->link('price')?></p>
 
 <ul class="tours-list">

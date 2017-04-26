@@ -3,6 +3,9 @@ $(window).load(function(){
        var $val = $(this).children(":selected").attr('value');
        document.location.href="/tours?ToursSearch[country_to_id]="+$val;
     });
+    $("select#tours-city, select#tours-country").change(function(){
+        $('#tour-country-filter').submit();
+    });
     $("select#tourfirms-city").change(function(){
         var $val = $(this).children(":selected").attr('value');
         document.location.href="/tourfirms?TourfirmsSearch[city_id]="+$val;

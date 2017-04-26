@@ -7,10 +7,13 @@ use common\models\Tours;
 use common\models\ToursComparison;
 use common\models\ToursFavorits;
 use common\models\ToursOrder;
+use common\models\Countries;
+use common\models\Cities;
 use yii;
 use yii\data\Sort;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\helpers\ArrayHelper;
 
 class DefaultController extends Controller
 {
@@ -38,6 +41,8 @@ class DefaultController extends Controller
         return $this->render('tours',[
             'dataProvider'=>$dataProvider,
             'sort'=>$sort,
+            'countries'=> ArrayHelper::map(Countries::find()->all(), 'country_id', 'name'),
+            'cities' => ArrayHelper::map(Cities::findAll(['country_id' => 3]), 'id', 'city')
         ]);
     }
 

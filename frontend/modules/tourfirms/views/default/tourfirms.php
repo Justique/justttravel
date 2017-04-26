@@ -3,7 +3,10 @@ use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 
+/* @var $this \yii\web\View */
 /* @var $cities common\models\Cities[] */
+
+$this->title = 'Турфирмы';
 ?>
 
 <section class="tours-page">

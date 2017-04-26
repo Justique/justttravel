@@ -208,6 +208,4 @@ class Tours extends \yii\db\ActiveRecord
     public function getTourfirm(){
         return $this->hasOne(Tourfirms::className(), ['id'=>'tourfirm_id']);
     }
-
-
 }

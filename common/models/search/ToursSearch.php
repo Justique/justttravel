@@ -12,13 +12,15 @@ use yii\data\ActiveDataProvider;
  */
 class ToursSearch extends Tours
 {
+    public $city_id;
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'country_to_id', 'city_to_id', 'city_from_id', 'count_old', 'count_kids', 'hotel_id', 'user_id', 'created_at', 'published_at'], 'integer'],
+            [['id', 'country_to_id', 'city_to_id', 'city_from_id', 'count_old', 'count_kids', 'hotel_id', 'user_id', 'created_at', 'published_at', 'city_id'], 'integer'],
             [['title', 'slug', 'status', 'price', 'date_from', 'body', 'thumbnail_base_url', 'thumbnail_path'], 'safe'],
         ];
     }
@@ -78,12 +80,17 @@ class ToursSearch extends Tours
             'sort'=> ['defaultOrder' => ['published_at' => SORT_DESC]]
         ]);
         $this->load($params);
-//        dump($this);
+
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
         }
+
+        $query->joinWith(['tourfirm' => function($q) {
+            $q->joinWith('touroperatorProfile');
+        }]);
+
         $query->andFilterWhere([
             'id' => $this->id,
             'country_to_id' => $this->country_to_id,
@@ -95,6 +102,7 @@ class ToursSearch extends Tours
             'user_id' => $this->user_id,
             'created_at' => $this->created_at,
             'published_at' => $this->published_at,
+            '{{%user_profile}}.city' => $this->city_id
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
