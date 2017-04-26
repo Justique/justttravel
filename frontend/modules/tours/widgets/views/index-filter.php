@@ -87,7 +87,7 @@ $items = ArrayHelper::map($transports,'id','type');
             </div>
             <div class="row">
                 <label class="selects">
-                    <?php echo $form->field($m, 'Price[price_with]')->dropDownList(array_combine(range(3000, 60000, 2000),range(3000, 60000, 2000)), ['prompt' => 'Цена от']) ?>
+                    <?php echo $form->field($m, 'Price[price_with]')->dropDownList(array_combine(range(500, 5000, 500),range(500, 5000, 500)), ['prompt' => 'Цена от']) ?>
                 </label>
             </div>
             <div class="row">
