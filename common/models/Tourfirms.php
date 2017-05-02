@@ -12,7 +12,7 @@ use yii\behaviors\SluggableBehavior;
  * This is the model class for table "tbl_tourfirms".
  *
  * @property integer $id
- * @property integer $rating
+ * @property float $rating
  * @property string $description
  * @property string $address
  * @property string $name
@@ -136,8 +136,9 @@ class Tourfirms extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['rating','touroperator_id', 'radius'], 'integer'],
+            [['touroperator_id', 'radius'], 'integer'],
             [['description','legal_info','slug'], 'string'],
+            [['rating'], 'number'],
             [['name'], 'required'],
             [['name'], 'unique'],
             [['address', 'name'], 'string', 'max' => 200],
