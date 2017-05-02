@@ -20,7 +20,8 @@ use yii\widgets\LinkPager;
                             Yii::$app->glide->createSignedUrl([
                                 'glide/index',
                                 'path' => $model->thumbnail_path,
-                                'w' => 100
+                                'w' => 100,
+                                'q' => getenv('IMAGE_QUALITY')
                             ], true)
 
                         );

@@ -13,7 +13,8 @@ use yii\helpers\Html;
                                 Yii::$app->glide->createSignedUrl([
                                     'glide/index',
                                     'path' => $model->tourfirmAttachments[0]->path,
-                                    'w' => 250
+                                    'w' => 250,
+                                    'q' => getenv('IMAGE_QUALITY')
                                 ], true)
                             ) ?>
                         <?php endif; ?>
@@ -59,7 +60,8 @@ use yii\helpers\Html;
                             Html::img(Yii::$app->glide->createSignedUrl([
                                     'glide/index',
                                     'path' => $img->path,
-                                    'w' => 255
+                                    'w' => 255,
+                                    'q' => getenv('IMAGE_QUALITY')
                                 ], true)
                             ),
                             Yii::$app->glide->createSignedUrl([

@@ -28,7 +28,8 @@ use yii\widgets\LinkPager;
                             Yii::$app->glide->createSignedUrl([
                                 'glide/index',
                                 'path' => $big->thumbnail_path,
-                                'w' => 530
+                                'w' => 530,
+                                'q' => getenv('IMAGE_QUALITY')
                             ], true)
                         );
                     }
@@ -50,7 +51,8 @@ use yii\widgets\LinkPager;
                                 Yii::$app->glide->createSignedUrl([
                                     'glide/index',
                                     'path' => $model->thumbnail_path,
-                                    'w' => 255
+                                    'w' => 255,
+                                    'q' => getenv('IMAGE_QUALITY')
                                 ], true)
                             );
                         }

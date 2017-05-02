@@ -14,7 +14,8 @@
                             Yii::$app->glide->createSignedUrl([
                                 'glide/index',
                                 'path' => $manager->profileManager->avatar_path,
-                                'w' => 200
+                                'w' => 200,
+                                'q' => getenv('IMAGE_QUALITY')
                             ], true)
                         );
                         ?>

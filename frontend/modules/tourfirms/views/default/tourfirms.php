@@ -74,7 +74,8 @@ $this->title = 'Турфирмы';
                                         'path' => $img->path,
                                         'w' => 200,
                                         'h' => 130,
-                                        'fit' => 'crop'
+                                        'fit' => 'crop',
+                                        'q' => getenv('IMAGE_QUALITY')
                                     ], true),['width'=>'200px', 'height'=>'130px']
                                 );
                             }
