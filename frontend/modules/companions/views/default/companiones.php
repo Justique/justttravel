@@ -15,7 +15,7 @@ $this->title = 'Попутчики';
     <h1>Попутчики<span class="companions-count head-count"><?php echo count($companions) ?></span></h1>
     <p>Найди свою компанию!</p>
 
-    <?php $form = ActiveForm::begin(['method'=>'GET']); ?>
+    <?php /*$form = ActiveForm::begin(['method'=>'GET']); ?>
         <div class="companions-select">
             <div class="companions-select-col">
                 <div class="form-group">
@@ -47,7 +47,7 @@ $this->title = 'Попутчики';
         </div><!-- .companions-select -->
 
         <button type="submit" class="button yellow m-b-lg">ПОЕХАЛИ!</button>
-    <?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); */?>
 
     <div class="tags-container">
         <?php foreach(\common\models\Interests::getUniqInterests() as $interest): ?>
@@ -82,7 +82,8 @@ $this->title = 'Попутчики';
                             Yii::$app->glide->createSignedUrl([
                                 'glide/index',
                                 'path' => getAvatar($item->user_id),
-                                'w' => 200
+                                'w' => 200,
+                                'q' => getenv('IMAGE_QUALITY')
                             ], true)
                         );
                         ?>

@@ -76,7 +76,8 @@ $config = [
                         Yii::$app->glide->createSignedUrl([
                             'glide/index',
                             'path' => $userFinder->userProfile->avatar_path,
-                            'w' => 100
+                            'w' => 100,
+                            'q' => getenv('IMAGE_QUALITY')
                         ], true);
                 }else{
                     return 'http://sjustyii.dev/cache/1/kPmwGDFtQTdZPo9WzHm7Ji9HNSIBeBp1.jpg?w=100&s=77a51469d927211f1915efbe9cb6373c';

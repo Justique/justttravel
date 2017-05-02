@@ -79,7 +79,8 @@ use yii\bootstrap\Html;
                                 'glide/index',
                                 'path' => $img->path,
                                 'w' => 200,
-                                'h'=>140
+                                'h' => 140,
+                                'q' => getenv('IMAGE_QUALITY')
                             ], true)
                         );
                 }
@@ -119,7 +120,8 @@ use yii\bootstrap\Html;
                     'glide/index',
                     'path' => $model->profile->avatar_path,
                     'w' => 200,
-                    'h'=>200
+                    'h' => 200,
+                    'q' => getenv('IMAGE_QUALITY')
                 ], true)
             ); ?>
             <p><?php echo $model->user->username ?></p>

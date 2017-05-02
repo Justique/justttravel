@@ -18,7 +18,8 @@ $this->beginContent('@frontend/views/layouts/base.php')
                     Yii::$app->glide->createSignedUrl([
                         'glide/index',
                         'path' => userModel()->userProfile->avatar_path,
-                        'w' => 100
+                        'w' => 100,
+                        'q' => getenv('IMAGE_QUALITY')
                     ], true),
                     ['alt' => '']
                 ) ?>

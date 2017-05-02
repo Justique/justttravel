@@ -12,7 +12,8 @@
         $path = Yii::$app->glide->createSignedUrl([
                 'glide/index',
                 'path' => $model->thumbnail_path,
-                'w' => 200
+                'w' => 200,
+                'q' => getenv('IMAGE_QUALITY')
             ], true);
 
         if(checkRemoteFile($path) == false) {
@@ -23,7 +24,8 @@
                     Yii::$app->glide->createSignedUrl([
                         'glide/index',
                         'path' => $img->path,
-                        'w' => 200
+                        'w' => 200,
+                        'q' => getenv('IMAGE_QUALITY')
                     ], true)
                 );
             }
