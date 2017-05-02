@@ -3,6 +3,7 @@
 use trntv\filekit\widget\Upload;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Tourfirms */
@@ -85,7 +86,8 @@ use yii\widgets\ActiveForm;
                     'url' => ['/file-storage/upload'],
                     'sortable' => true,
                     'maxFileSize' => 10000000, // 10 MiB
-                    'maxNumberOfFiles' => 10
+                    'maxNumberOfFiles' => 10,
+                    'acceptFileTypes' => new JsExpression('/(\.|\/)(jpe?g)$/i')
                 ]);
             ?>
         </div>

@@ -4,6 +4,7 @@ use trntv\filekit\widget\Upload;
 use trntv\yii\datetime\DateTimeWidget;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Article */
@@ -47,6 +48,7 @@ use yii\bootstrap\ActiveForm;
         [
             'url' => ['/file-storage/upload'],
             'maxFileSize' => 5000000, // 5 MiB
+            'acceptFileTypes' => new JsExpression('/(\.|\/)(jpe?g)$/i')
         ]);
     ?>
 
@@ -56,7 +58,8 @@ use yii\bootstrap\ActiveForm;
             'url' => ['/file-storage/upload'],
             'sortable' => true,
             'maxFileSize' => 10000000, // 10 MiB
-            'maxNumberOfFiles' => 10
+            'maxNumberOfFiles' => 10,
+            'acceptFileTypes' => new JsExpression('/(\.|\/)(jpe?g)$/i')
         ]);
     ?>
 
