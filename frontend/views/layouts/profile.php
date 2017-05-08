@@ -45,7 +45,7 @@ $this->beginContent('@frontend/views/layouts/base.php')
                     'items' => [
                         ['label' => '<span class="pic"><i class="fa fa-diamond"></i></span><span class="hideable">Турфирма<i class="fa fa-angle-right"></i></span>', 'url' => ['/profile/tourfirms'], 'visible' => userModel()->isUserTourOperator()],
                         ['label' => '<span class="pic"><i class="fa fa-cog"></i></span><span class="hideable">Панель управления<i class="fa fa-angle-right"></i></span>', 'url' => ['/profile/index']],
-                        ['label' => '<span class="pic"><i class="fa fa-commenting"></i></span><span class="hideable">Мои заявки<span class="counter"><sub>+</sub>5</span><i class="fa fa-angle-right"></i></span>', 'url' => ['/profile/userapplication'] , 'visible' => userModel()->isUserTurist()],
+                        ['label' => '<span class="pic"><i class="fa fa-commenting"></i></span><span class="hideable">Мои заявки<i class="fa fa-angle-right"></i></span>', 'url' => ['/profile/userapplication'] , 'visible' => userModel()->isUserTurist()],
                         ['label' => '<span class="pic"><i class="fa fa-heart"></i></span><span class="hideable">Избранные туры<i class="fa fa-angle-right"></i></span>', 'url' => ['/profile/toursfavorites'], 'visible' => userModel()->isUserTurist()],
                         ['label' => '<span class="pic"><i class="fa fa-heart"></i></span><span class="hideable">Избранные визы<i class="fa fa-angle-right"></i></span>', 'url' => ['/profile/visafavorites'], 'visible' => userModel()->isUserTurist()],
                         ['label' => '<span class="pic"><i class="fa fa-star"></i></span><span class="hideable">Мои отзывы<i class="fa fa-angle-right"></i></span>', 'url' => ['/profile/touristreviews'] , 'visible' => userModel()->isUserTurist()],
@@ -123,8 +123,8 @@ $this->beginContent('@frontend/views/layouts/base.php')
                         ],
                         [
                             'label' => userModel()->hasNewMessages()
-                                ? '<span class="pic"><i class="fa fa-comments-o"></i></span><span class="hideable">Сообщения <i class="fa fa-circle new-message-indicator"></i>'
-                                : '<span class="pic"><i class="fa fa-comments-o"></i></span><span class="hideable">Сообщения',
+                                ? '<span class="pic"><i class="fa fa-comments-o"></i></span><span class="hideable">Сообщения <i class="fa fa-circle new-message-indicator"></i></span>'
+                                : '<span class="pic"><i class="fa fa-comments-o"></i></span><span class="hideable">Сообщения</span>',
                             'url' => ['/user/messages/index']
                         ],
 //                        ['label' => '<span class="pic"><i class="fa fa-cog"></i></span><span class="hideable">Настройки<i class="fa fa-angle-right"></i></span>', 'url' => ['/user/default/index']],

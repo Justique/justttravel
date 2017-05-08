@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </li>
 
             <li class="form container">
-                <?php //echo \frontend\modules\user\widgets\userapplication\Userapplication::widget(['id_application'=>$item->id]) ?>
+                <?php //\\echo \frontend\modules\user\widgets\userapplication\Userapplication::widget(['id_application'=>$item->id]) ?>
             </li>
         <?php } ?>
     </ul>
