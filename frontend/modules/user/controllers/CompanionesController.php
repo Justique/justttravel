@@ -33,15 +33,7 @@ class CompanionesController extends Controller
      */
     public function actionIndex()
     {
-        $myCompaniones = Companiones::find()->joinWith('myCompaniones')->where(['tbl_companiones.user_id'=>user()->id])->all();
-        $dataProvider = new ActiveDataProvider([
-            'query' => Companiones::find()->where(['user_id'=>user()->id]),
-        ]);
         return $this->actionCreate();
-//        return $this->render('create', [
-//            'dataProvider' => $dataProvider,
-//            'myCompaniones' => $myCompaniones
-//        ]);
     }
 
     /**
@@ -81,7 +73,7 @@ class CompanionesController extends Controller
     {
         $model = new Companiones();
         $myCompaniones = Companiones::find()->joinWith('myCompaniones')->where(['tbl_companiones.user_id'=>user()->id])->all();
-//        dump($_POST);
+        //dump($_POST);
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['create', 'id' => $model->id, 'myCompaniones' => $myCompaniones]);
         } else {
@@ -104,7 +96,7 @@ class CompanionesController extends Controller
         $myCompaniones = Companiones::find()->joinWith('myCompaniones')->where(['tbl_companiones.user_id'=>user()->id])->all();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Companiones::updateCompanionesCompany($model->id, Yii::$app->request->post('CompanionesCompany'));
-            return $this->redirect(['index', 'id' => $model->id,'myCompaniones' => $myCompaniones,]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,

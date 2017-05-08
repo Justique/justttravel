@@ -60,6 +60,7 @@ return [
         ['pattern'=>'profile/index','route'=>'/user/default/index'],
         ['pattern'=>'profile/tourfirms','route'=>'/user/tourfirms/index'],
         ['pattern'=>'profile/companiones','route'=>'/user/companiones/index'],
+        ['pattern'=>'profile/companiones/update','route'=>'/user/companiones/update'],
         ['pattern'=>'profile/settings','route'=>'/user/default/settings'],
         ['pattern'=>'profile/news','route'=>'/user/news/index'],
         ['pattern'=>'profile/visa','route'=>'/user/visa/index'],

@@ -132,7 +132,7 @@ $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(
                         'placeholder'=> 'Названия отелей...',
                     ]
                 ])->label(false) ?>
-                <br>
+                <a class="interest_button">ДОБАВИТЬ</a>
             </div>
         </div>
 

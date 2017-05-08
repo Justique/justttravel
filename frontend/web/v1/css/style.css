@@ -997,8 +997,8 @@ font-size: 14px; top: 9px; right: 9px; -webkit-transition: color 0.3s ease; -o-t
     background-color: #10acf5; overflow: hidden;
 }
 .textareas.container {display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex; flex-wrap: wrap; justify-content: flex-start;}
-.textareas.container > * {border: 1px solid #d0d0d0; color: #7c7c7c; font-size: 14px; line-height: 20px; padding: 5px; width: 100%; margin-bottom: 20px; max-width: 48%; resize: none; background: #fff;}
-.textareas.container > textarea {min-height: 38px;}
+.textareas.container > * {color: #7c7c7c; font-size: 14px; line-height: 20px; padding: 5px; width: 100%; margin-bottom: 20px; max-width: 48%; resize: none; background: #fff;}
+.textareas.container textarea {min-height: 38px; background-color: white !important;}
 .textareas.container > *:nth-child(odd) {margin-right: 3.99%;}
 .create-req-form .nutrition-prefs {text-align: center;}
 .create-req-form .hotel-prefs input {height: 30px; border: 1px solid #d0d0d0; padding: 0 10px; width: 505px; margin-left: 30px; margin-bottom: 18px;}

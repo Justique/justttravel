@@ -36,14 +36,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     <a href="" class="blue"><?php echo $item->country->name ?></a>
                     <a href=""><?php echo $item->city->city ?></a>
                 </div>
-                <div class="tour-hotel">
-                    <a href="" class="blue">Любой отель</a>
-                    <div class="tour-hotel-rate">
-                        <div class="rating-grade lime">4.05</div>
-                        <a href="">рейтинг Tophotels</a>
-                    </div>
-                    <p>BB (только завтрак)</p>
-                </div>
                 <div class="tour-duration">
                     <i class="fa fa-clock-o"></i>
                     <p><?php echo $item->nights ?> ночей</p>
@@ -61,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </li>
 
             <li class="form container">
-<!--                --><?php //echo \frontend\modules\user\widgets\userapplication\Userapplication::widget(['id_application'=>$item->id]) ?>
+                <?php //echo \frontend\modules\user\widgets\userapplication\Userapplication::widget(['id_application'=>$item->id]) ?>
             </li>
         <?php } ?>
     </ul>
