@@ -120,11 +120,11 @@ var visiPrivateMessages = (function() {
 
         //создать разметку нового сообщения
         this.createHtmlMessage = function(n) {
-            console.log(n);
+            //console.log('LOG: ', n);
             var html = '';
             html += '<div data-id="' + n['id']  +'" class="message ' + (n['i_am_sender'] ? 'msg-in' : ' msg-out') + '">';
-            html += '<div class="avatar">'+n['test'];
-            html += '<span class="indicator online"></span>';
+            html += '<div class="avatar">';
+            html += '<img src="http://lorempixel.com/100/100/people/1" alt="">';
             html += '</div>';
             html += '<div>';
             html += '<a href="#">' + n.from_name + '</a>';
@@ -277,7 +277,7 @@ var visiPrivateMessages = (function() {
 
         //resize tinyscrollbar
         this.Scroll = function() {
-            this.scrollbar1.data("plugin_tinyscrollbar").update('bottom');
+            //this.scrollbar1.data("plugin_tinyscrollbar").update('bottom');
         };
 
 

@@ -121,7 +121,12 @@ $this->beginContent('@frontend/views/layouts/base.php')
                             'linkOptions' => [],
                             'visible' => userModel()->isUserTourOperator() || userModel()->isUserTourManager()
                         ],
-                        ['label' => '<span class="pic"><i class="fa fa-comments-o"></i></span><span class="hideable">Сообщения<span class="counter"><sub>+</sub>99</span><i class="fa fa-angle-right"></i></span>', 'url' => ['/user/messages/index']],
+                        [
+                            'label' => userModel()->hasNewMessages()
+                                ? '<span class="pic"><i class="fa fa-comments-o"></i></span><span class="hideable">Сообщения <i class="fa fa-circle new-message-indicator"></i>'
+                                : '<span class="pic"><i class="fa fa-comments-o"></i></span><span class="hideable">Сообщения',
+                            'url' => ['/user/messages/index']
+                        ],
 //                        ['label' => '<span class="pic"><i class="fa fa-cog"></i></span><span class="hideable">Настройки<i class="fa fa-angle-right"></i></span>', 'url' => ['/user/default/index']],
 //                        ['label' => '<span class="pic"><i class="fa fa-cog"></i></span><span class="hideable">Настройки акаунта<i class="fa fa-angle-right"></i></span>', 'url' => ['/user/default/settings']],
                         ['label' => '<span class="pic"><i class="fa fa-power-off"></i></span><span class="hideable">Выйти<i class="fa fa-angle-right"></i></span>', 'url' => ['/']],

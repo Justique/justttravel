@@ -23,6 +23,7 @@ use yii\db\Expression;
  * @property integer $date_create
  * @property string $comment
  * @property integer $is_active
+ * @property string $hotels
  */
 class UserApplication extends \yii\db\ActiveRecord
 {
@@ -67,7 +68,7 @@ class UserApplication extends \yii\db\ActiveRecord
         return [
             [['country_id', 'city_id', 'resort_city', 'date', 'price', 'adults', 'country_from_id', 'shopping_city', 'user_id','transport_type', 'days','nights'], 'required'],
             [['country_id', 'city_id', 'resort_city', 'price', 'adults', 'childrens', 'country_from_id', 'shopping_city', 'user_id', 'date_create','date_update', 'is_active'], 'integer'],
-            [['comment'], 'string'],
+            [['comment', 'hotels'], 'string'],
             [['date'], 'string', 'max' => 255]
         ];
     }
@@ -91,6 +92,7 @@ class UserApplication extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'date_create' => 'Date Create',
             'comment' => 'Ваши пожелания',
+            'hotels' => 'Отели',
             'is_active' => 'Is Active',
         ];
     }

@@ -900,6 +900,7 @@ aside.menu {max-width: 314px; background-color: #32323a; color: #fff; position: 
 .menu .menu-items .requests .counter {background-color: #b9db18;}
 .menu .menu-items .messages .counter {background-color: #ffd800;}
 .menu .menu-items .hideable>i {float: right; width: 44px; text-align: center; font-size: 24px; line-height: 50px; position: absolute; right: 0;}
+.menu .menu-items .hideable>i.new-message-indicator {margin-top: 3px; font-size: 12px; color: #ffd800;}
 aside.menu:not(.expanded) {max-width: 60px; min-width: 60px;}
 aside.menu:not(.expanded) .hideable {display: none;}
 aside.menu:not(.expanded) .about {padding: 0;}
@@ -2438,4 +2439,101 @@ a p {
     .tabs-menu li {
         margin: 0 5px;
     }
+
+    .account_settings .contact_blocks .block {
+        width: 100%;
+    }
+}
+
+.contact_blocks input {
+    height: 30px !important;
+}
+.office-container .message.msg-out {
+    background-color: rgba(212, 212, 212, 0.36);
+}
+
+.tag-editor {
+    padding: 0 50px 0 0 !important;
+    height: 30px !important;
+    display: inline-block;
+    margin-bottom: 15px;
+    margin-right: 20px !important;
+}
+.make-order-form .hotel-prefs a {
+    margin-left: 0 !important;
+}
+.tag-editor input {
+    height: 22px !important;
+    position: relative;
+    top: 1px;
+    border: 0 !important;
+}
+
+.fs-dropdown>select {
+    position: absolute !important;
+    left: -9999px;
+    top: -9999px;
+}
+
+.make-order-form#w0 .main-info .columns-4 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: -15px;
+}
+.make-order-form#w0 .main-info .columns-4 label.select {
+    width: calc(25% - 15px);
+    margin-left: 10px;
+    display: block;
+    flex-grow: 1;
+}
+
+@media only screen and (max-width : 991px) {
+    .make-order-form#w0 .main-info .columns-4 label.select {
+        width: calc(50% - 15px);
+    }
+}
+
+@media only screen and (max-width : 639px) {
+    .make-order-form#w0 .main-info .columns-4 label.select {
+        width: calc(100% - 15px);
+    }
+}
+
+.make-order-form#w0 .main-info label.select {
+    margin-left: 0;
+    margin-right: 0;
+}
+.make-order-form .main-info select {
+    min-width: 0;
+}
+.make-order-form .main-info .fs-dropdown.fs-light .fs-dropdown-selected {
+    min-width: 0;
+}
+
+.tag-editor {
+    padding: 0 100px 0 0;
+    float:left;
+}
+
+.interest_button{
+    text-decoration: none;
+}
+.interest_button:hover{
+    cursor: pointer;
+}
+
+.control-label + .hotel-prefs {
+    margin-top: 20px;
+}
+.make-order-form .submit {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.make-order-form .submit:hover {
+    background: #ffd800;
+}
+
+.make-order-form .main-info .select .form-group input {
+    height: 30px !important;
 }

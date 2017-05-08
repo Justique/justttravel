@@ -2,6 +2,7 @@
 namespace common\models;
 
 use cheatsheet\Time;
+use Codeception\Lib\Console\Message;
 use common\commands\command\AddToTimelineCommand;
 use Yii;
 use yii\behaviors\AttributeBehavior;
@@ -385,6 +386,13 @@ class User extends ActiveRecord implements IdentityInterface
         }else{
             return FALSE;
         }
+    }
+
+    public function hasNewMessages(){
+        return Messages::find()->where([
+            'whom_id' => $this->getId(),
+            'status' => 1
+        ])->count() > 0 ? true : false;
     }
 
     /**

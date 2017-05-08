@@ -2,12 +2,11 @@
 
 use common\models\Transports;
 use kartik\depdrop\DepDrop;
-use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
-
+use sjaakp\taggable\TagEditor;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\UserApplication */
@@ -21,109 +20,122 @@ $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(
     <?php echo \frontend\modules\user\widgets\status\Status::widget(['model'=>$model, 'name'=>'UserApplication[is_active]', 'field'=>'is_active']) ?>
 
     <div class="main-info">
-        <label class="select">
-            <?php
-                echo $form->field($model, 'country_id')->dropDownList($countries, [
-                    'prompt' => 'Любая страна','class' => 'select user-form firm-form', 'id'=>'cat-id-id'
+        <div class="columns-4">
+            <label class="select">
+                <?php
+                    echo $form->field($model, 'country_id')->dropDownList($countries, [
+                        'prompt' => 'Любая страна','class' => 'select user-form firm-form', 'id'=>'cat-id-id'
+                    ])->label(false);
+                ?>
+            </label>
+
+            <label class="select">
+                <?php echo $form->field($model, 'city_id')->widget(DepDrop::classname(), [
+                    'type' => 1,
+                    'options' => ['id'=>'subcat-id'],
+                    'pluginOptions'=>[
+                        'depends'=>['cat-id-id'],
+                        'placeholder' => 'Из любого города',
+                        'url' => Url::to(['/site/cities'])
+                    ],
+                    'pluginEvents' => [
+                        "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
+                    ]
                 ])->label(false);
-            ?>
-            
-        </label>
+                ?>
+            </label>
 
-        <label class="select">
-            <?php echo $form->field($model, 'city_id')->widget(DepDrop::classname(), [
-                'type' => 1,
-                'options' => ['id'=>'subcat-id'],
-                'pluginOptions'=>[
-                    'depends'=>['cat-id-id'],
-                    'placeholder' => 'Из любого города',
-                    'url' => Url::to(['/site/cities'])
-                ],
-                'pluginEvents' => [
-                    "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
-                ]
-            ])->label(false);
-            ?>
-        </label>
+            <label class="select">
+                <?php echo $form->field($model, 'resort_city')->widget(DepDrop::classname(), [
+                    'type' => 1,
+                    'options' => ['id'=>'subcat-id-id'],
+                    'pluginOptions'=>[
+                        'depends'=>['cat-id-id'],
+                        'placeholder' => 'Любой курорт',
+                        'url' => Url::to(['/site/cities'])
+                    ],
+                    'pluginEvents' => [
+                        "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
+                    ]
+                ])->label(false);
+                ?>
+             </label>
 
-        <label class="select">
-            <?php echo $form->field($model, 'resort_city')->widget(DepDrop::classname(), [
-                'type' => 1,
-                'options' => ['id'=>'subcat-id-id'],
-                'pluginOptions'=>[
-                    'depends'=>['cat-id-id'],
-                    'placeholder' => 'Любой курорт',
-                    'url' => Url::to(['/site/cities'])
-                ],
-                'pluginEvents' => [
-                    "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
-                ]
-            ])->label(false);
-            ?>
-         </label>
+            <label class="select">
+                <?php echo $form->field($model, 'date')->widget(\yii\jui\DatePicker::classname(), [
+                    'language' => 'ru',
+                    'dateFormat' => 'yyyy-MM-dd',
+                    'options' => ['placeholder' => 'Дата'],
+                ])->label(false) ?>
+            </label>
 
-        <label class="select">
-            <?php echo $form->field($model, 'date')->widget(\yii\jui\DatePicker::classname(), [
-                'language' => 'ru',
-                'dateFormat' => 'yyyy-MM-dd',
-                'options' => ['placeholder' => 'Дата'],
-            ])->label(false) ?>
-        </label>
+            <label class="select">
+                <?= $form->field($model, 'price')->textInput(['placeholder'=>'Цена'])->label(false) ?>
+            </label>
 
-        <label class="select">
-            <?= $form->field($model, 'price')->textInput(['placeholder'=>'Цена'])->label(false) ?>
-        </label>
+            <label class="select">
+                <?php echo $form->field($model, 'adults')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Взрослых'])->label(false) ?>
+            </label>
 
-        <label class="select">
-            <?php echo $form->field($model, 'adults')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Взрослых'])->label(false) ?>
-        </label>
-
-        <label class="select">
-            <?php echo $form->field($model, 'childrens')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Детей'])->label(false) ?>
-        </label>
+            <label class="select">
+                <?php echo $form->field($model, 'childrens')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Детей'])->label(false) ?>
+            </label>
 
 
-        <label class="select">
+            <label class="select">
+                <?php
+                echo $form->field($model, 'country_from_id')->dropDownList($countries, [
+                    'prompt' => 'Страна','class' => 'select user-form firm-form', 'id'=>'cat-id-id-id'
+                ])->label(false);
+                ?>
+            </label>
+
+            <label class="select">
+                <?php echo $form->field($model, 'shopping_city')->widget(DepDrop::classname(), [
+                    'type' => 1,
+                    'options' => ['id'=>'subcat-id-id-id'],
+                    'pluginOptions'=>[
+                        'depends'=>['cat-id-id-id'],
+                        'placeholder' => 'Город покупки тура',
+                        'url' => Url::to(['/site/cities'])
+                    ],
+                    'pluginEvents' => [
+                        "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
+                    ]
+                ])->label(false);
+                ?>
+            </label>
+
+            <label class="select">
+                <?php echo $form->field($model, 'days')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Дней'])->label(false) ?>
+            </label>
+
+            <label class="select">
+                <?php echo $form->field($model, 'nights')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Ночей'])->label(false) ?>
+            </label>
+
             <?php
-            echo $form->field($model, 'country_from_id')->dropDownList($countries, [
-                'prompt' => 'Страна','class' => 'select user-form firm-form', 'id'=>'cat-id-id-id'
-            ])->label(false);
+                $transports = Transports::find()->all();
+                $items = ArrayHelper::map($transports,'id','type');
             ?>
-        </label>
 
-        <label class="select">
-            <?php echo $form->field($model, 'shopping_city')->widget(DepDrop::classname(), [
-                'type' => 1,
-                'options' => ['id'=>'subcat-id-id-id'],
-                'pluginOptions'=>[
-                    'depends'=>['cat-id-id-id'],
-                    'placeholder' => 'Город покупки тура',
-                    'url' => Url::to(['/site/cities'])
-                ],
-                'pluginEvents' => [
-                    "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
-                ]
-            ])->label(false);
-            ?>
-        </label>
+            <label class="select">
+                <?php echo $form->field($model, 'transport_type')->dropDownList($items, ['prompt' => 'Вид транспорта'])->label(false) ?>
+            </label>
+        </div>
 
-        <label class="select">
-            <?php echo $form->field($model, 'days')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Дней'])->label(false) ?>
-        </label>
+        <div class="section">
+            <label class="control-label" for="userapplication-comment">ОТЕЛЬ:</label>
+            <div class="hotel-prefs">
+                <?= $form->field($model, 'hotels')->widget(TagEditor::className(), [
+                    'tagEditorOptions' => [
+                        'placeholder'=> 'Названия отелей...',
+                    ]
+                ])->label(false) ?>
+                <br>
+            </div>
+        </div>
 
-        <label class="select">
-            <?php echo $form->field($model, 'nights')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Ночей'])->label(false) ?>
-        </label>
-
-
-        <?php
-            $transports = Transports::find()->all();
-            $items = ArrayHelper::map($transports,'id','type');
-        ?>
-
-        <label class="select">
-        <?php echo $form->field($model, 'transport_type')->dropDownList($items, ['prompt' => 'Вид транспорта'])->label(false) ?>
-        </label>
         <div style="display: none">
             <?= $form->field($model, 'user_id')->hiddenInput(['value'=>user()->id])->label(false) ?>
         </div>
