@@ -2468,6 +2468,9 @@ a p {
     top: 1px;
     border: 0 !important;
 }
+.tag-editor .tag-editor-tag.active {
+    margin-left: -45px;
+}
 
 .fs-dropdown>select {
     position: absolute !important;
