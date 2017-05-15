@@ -45,7 +45,7 @@ $config = [
     'components' => [
         'mymessages' => [
             //Обязательно
-            'class'    => 'vision\messages\components\MyMessages',
+            'class'    => \frontend\components\MyMessages::className(),
             //не обязательно
             //класс модели пользователей
             //по-умолчанию \Yii::$app->user->identityClass

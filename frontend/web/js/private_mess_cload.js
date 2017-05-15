@@ -124,7 +124,7 @@ var visiPrivateMessages = (function() {
             var html = '';
             html += '<div data-id="' + n['id']  +'" class="message ' + (n['i_am_sender'] ? 'msg-in' : ' msg-out') + '">';
             html += '<div class="avatar">';
-            html += '<img src="http://lorempixel.com/100/100/people/1" alt="">';
+            html += '<img src="' + n.from_avatar  +'" alt="">';
             html += '</div>';
             html += '<div>';
             html += '<a href="#">' + n.from_name + '</a>';

@@ -25,7 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                 Yii::$app->glide->createSignedUrl([
                                     'glide/index',
                                     'path' => $message->userProfile->avatar_path,
-                                    'w' => 100
+                                    'w' => 100,
+                                    'q' => getenv('IMAGE_QUALITY')
                                 ], true)
                             );
                             ?>
