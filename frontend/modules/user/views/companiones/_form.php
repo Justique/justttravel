@@ -59,9 +59,15 @@ cursor: pointer;
         <article>
         <div class="main-info" style="border-bottom: none;">
             <div class="creds">
-                <a href="#">
-                    <img src="img/user-1.jpg" alt="">
-                    <i class="fa fa-comment"></i>
+                <a>
+                    <?= \yii\helpers\Html::img(
+                        Yii::$app->glide->createSignedUrl([
+                            'glide/index',
+                            'path' => getAvatar($item->user_id),
+                            'w' => 100,
+                            'q' => getenv('IMAGE_QUALITY')
+                        ], true)
+                    ) ?>
                 </a>
                 <div>
                     <p class="name"><span><?php echo $item->myCompaniones->firstname?>  <?php echo $item->myCompaniones->lastname?></span><span class="age violet"><?php echo $item->myCompaniones->byear?>лет</span><span class="location"><?php echo Countries::getCountry($item->myCompaniones->country)?>, <?php echo Cities::getCity($item->myCompaniones->country)?></span></p>
