@@ -25,14 +25,8 @@ class Cities extends \yii\db\ActiveRecord
     }
 
     public static function getCity($id){
-        if(!empty($id)){
-            $data = Cities::find()->where(['id'=>$id])->one();
-            return $data->city;
-        }
-        else{
-            return "Не задано";
-        }
-
+        $data = Cities::find()->where(['id' => $id])->one();
+        return $data ? $data->city : 'Не задано';
     }
 
     /**
