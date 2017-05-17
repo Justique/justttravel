@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 <?php $form = ActiveForm::begin(['options'=>['class'=>'make-order-form grey-form create-req-form']]); ?>
 
     <p class="form-heading">Заполните поля</p>
-<?php echo \frontend\modules\user\widgets\status\Status::widget(['model'=>$model, 'name'=>'Article[status]', 'field'=>'status', 'title'=>'новость']) ?>
+    <?php echo \frontend\modules\user\widgets\status\Status::widget(['model'=>$model, 'name'=>'Article[status]', 'field'=>'status', 'title'=>'новость']) ?>
 
     <div class="input-padded">
         <label>

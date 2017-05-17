@@ -21,7 +21,7 @@ if($model->$field) {
     $valueBox = '';
 }
 ?>
-<input type="hidden" id="activity_checkbox" value="<?php echo $model->$field ?>"  name="<?php echo $name ?>">
+<input type="hidden" id="activity_checkbox" value="<?= $model->$field ? $model->$field : 0 ?>"  name="<?php echo $name ?>">
 
 <div class="container">
     <input type="checkbox" id="order_activity" <?php echo $valueBox; ?>  name="">
