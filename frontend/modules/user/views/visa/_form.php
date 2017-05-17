@@ -117,5 +117,17 @@ $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(
 <?= $form->field($model, 'date_create')->hiddenInput(['value'=>time()])->label(false)  ?>
 <?= $form->field($model, 'date_update')->hiddenInput(['value'=>time()])->label(false)  ?>
 
-<?= Html::submitButton('Добавить', ['class' => 'submit']) ?>
+<?php if ($model->isNewRecord): ?>
+    <?= Html::submitButton('Добавить', ['class' => 'submit']) ?>
+<?php else: ?>
+    <?= Html::submitButton('Сохранить', ['class' => 'submit']) ?>
+    <br>
+    <?= Html::a("<i class='fa fa-trash'></i>". 'Удалить', ["/user/visa/delete?id=$model->id"], [
+        'class' => 'ajax-link button yellow trash',
+        'title'=>'удалить',
+        'aria-label'=>'Удалить',
+        'data-confirm'=>'Вы уверены, что хотите удалить визу?',
+        'data-method'=>'post',
+    ]) ?>
+<?php endif; ?>
 <?php ActiveForm::end(); ?>

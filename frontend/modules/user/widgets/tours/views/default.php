@@ -178,6 +178,12 @@ $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(
     ]);
     */?>
             <?= Html::submitButton('Изменить', ['class' => 'submit']) ?>
-            <?= Html::a("<i class='fa fa-trash'></i>", ["/user/tours/delete?id=$model->id"],['class' => 'ajax-link delete_trigger','title'=>'удалить', "aria-label"=>'Удалить', 'data-confirm'=>'Вы уверены, что хотите удалить тур '.$model->title." ?",'data-method'=>'post', 'data-pjax'=>0]) ?>
+            <?= Html::a('<i class="fa fa-trash"></i>', ["/user/tours/delete?id=$model->id"], [
+                'class' => 'delete_trigger',
+                'title' => 'удалить',
+                'aria-label' => 'Удалить',
+                'data-confirm' => 'Вы уверены, что хотите удалить тур '.$model->title." ?",
+                'data-method' => 'post'
+            ]) ?>
     </div>
     <?php ActiveForm::end(); ?>
