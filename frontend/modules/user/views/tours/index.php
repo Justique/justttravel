@@ -4,6 +4,7 @@ use common\models\Cities;
 use common\models\Countries;
 use yii\grid\GridView;
 use yii\helpers\Html;
+use frontend\modules\user\Module;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\modules\user\models\ToursSearch */
@@ -47,6 +48,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                     <p>добавлен <?php echo convertDate($item->published_at)?></p>
                 </div>
+                <div class="general">
+                    <div class="tour-type"><i class="fa fa-<?php echo $item->transport->class ?>"></i><span><?php echo $item->transport->type ?></span></div>
+                    <?php echo Module::getCountPeoples($item->count_old, $item->count_kids) ?>
+                    <?php if($item->hot){ ?>
+                        <div class="tour-hot visible">горящий тур</div>
+                    <?php } ?>
+                </div>
                 <div class="tour-destination">
                     <a href="" class="blue"><?php echo Countries::getCountry($item->country_to_id) ?></a>
                     <a href=""><?php echo Cities::getCity($item->city_to_id) ?></a>
@@ -56,24 +64,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     <p><?php echo $item->count_days ?>  дней</p>
                 </div>
                 <div class="tour-transport">
-                    <i class="fa fa-<?php echo $item->transport->class ?>"></i>
+                    <i class="fa fa-calendar-check-o"></i>
                     <p><?php echo Cities::getCity($item->city_from_id) ?></p>
                     <p><?php echo $item->date_from ?></p>
                 </div>
-                <div class="tour-capacity">
-                    <?php if(!$item->count_kids){ ?>
-                        <p><i class="fa fa-male"></i><i class="fa fa-male"></i><i class=""></i></p>
-                        <p>взрослыe - <?php echo $item->count_old ?> </p>
-                    <?php }else{ ?>
-                        <p><i class="fa fa-male"></i><i class="fa fa-male"></i><i class="fa fa-child"></i></p>
-                        <p>взрослыe - <?php echo $item->count_old ?><span> дети - <?php echo $item->count_kids ?></span></p>
-                    <?php }?>
-                </div>
                 <div class="tour-price">
-                    <?php if($item->hot){ ?>
-                        <div class="tour-hot visible">горящий тур</div>
-                    <?php } ?>
-                    <p><?php echo $item->price ?><span>rub.</span></p>
+                    <p><?php echo $item->price ?><span>руб.</span></p>
                 </div>
                 <div class="bottom_buttons">
                     <?php if ($canUp): ?>
