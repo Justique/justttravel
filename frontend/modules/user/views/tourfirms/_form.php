@@ -108,33 +108,35 @@ use yii\web\JsExpression;
                             <?= $form->field($model, 'radius')->textInput(['class'=>'form-control', 'id'=>'us3-radius'])?>
                         </div>
                     </div>
-                    <div id="us3" style="width: 550px; height: 400px;"></div>
+                    <div id="us3" style="width: 550px; height: 400px; margin-top: 10px;">
+                        <?php
+                        echo \pigolab\locationpicker\LocationPickerWidget::widget([
+                            'key' => 'AIzaSyAPB4WlsQGENW4ppqlmHezDJsIUOg31Asg', // optional , Your can also put your google map api key
+                            'options' => [
+                                'style' => 'width: 100%; height: 400px', // map canvas width and height
+                            ] ,
+                            'clientOptions' => [
+                                'location' => [
+                                    'latitude'  => $model->latitude ? $model->latitude : 53.9045,
+                                    'longitude' => $model->longitude ? $model->longitude : 27.5615,
+                                ],
+                                'radius'    => $model->radius ? $model->radius : 50,
+                                'inputBinding' => [
+                                    'latitudeInput'     => new JsExpression("$('#us3-lat')"),
+                                    'longitudeInput'    => new JsExpression("$('#us3-lon')"),
+                                    'radiusInput'       => new JsExpression("$('#us3-radius')"),
+                                    'locationNameInput' => new JsExpression("$('#us3-address')")
+                                ]
+                            ]
+                        ]);
+                        ?>
+                    </div>
                     <div class="clearfix">&nbsp;</div>
                     <div class="m-t-small">
                         <?= $form->field($model, 'latitude')->hiddenInput(['class'=>'form-control', 'id'=>'us3-lat'])->label(false) ?>
                         <?= $form->field($model, 'longitude')->hiddenInput(['class'=>'form-control', 'id'=>'us3-lon'])->label(false) ?>
                     </div>
                     <div class="clearfix"></div>
-                    <script>$('#us3').locationpicker({
-                    <?php if($model->latitude && $model->longitude){ ?>
-                            location: {latitude: <?php echo $model->latitude ?>, longitude: <?php echo $model->longitude ?>},
-                    <?php  }else{ ?>
-                            location: {latitude: 53.9045, longitude: 27.5615},
-                    <?php } ?>
-                                radius: <?php echo (!empty($model->radius) ? $model->radius : 50); ?>,
-                                inputBinding: {
-                                    latitudeInput: $('#us3-lat'),
-                                    longitudeInput: $('#us3-lon'),
-                                    radiusInput: $('#us3-radius'),
-                                    locationNameInput: $('#us3-address')
-                                },
-                                enableAutocomplete: true,
-                                onchanged: function (currentLocation, radius, isMarkerDropped) {
-                                    // Uncomment line below to show alert on each Location Changed event
-                                    //alert("Location changed. New location (" + currentLocation.latitude + ", " + currentLocation.longitude + ")");
-                                }
-                                });
-                    </script>
                 </div>
             </div>
         </div>
