@@ -57,7 +57,7 @@ $this->title = 'Турфирмы';
                         <?php if(isset($item->tourfirmsPhon->default)){ ?><span><?php echo $item->tourfirmsPhon->default ?></span><?php }?>
                         <?php if(isset($item->tourfirmsPhon->mts)){ ?><span class="mts"><?php echo $item->tourfirmsPhon->mts ?></span><?php }?>
                         <?php if(isset($item->tourfirmsPhon->life)){ ?> <span class="life"><?php echo $item->tourfirmsPhon->life ?></span><?php }?>
-                        <?php if(isset($item->tourfirmsPhon->viber)){ ?><span class="viber"><?php echo $item->tourfirmsPhon->viber ?></span><?php }?>
+                        <?php if(isset($item->tourfirmsPhon->velcom)){ ?><span class="viber"><?php echo $item->tourfirmsPhon->velcom ?></span><?php }?>
                     </div>
                 </div>
                 <div class="pics">

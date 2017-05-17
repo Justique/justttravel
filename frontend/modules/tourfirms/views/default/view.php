@@ -43,7 +43,7 @@ use yii\helpers\Html;
                         <?php if(isset($model->tourfirmsPhon->default)){?><li class="contact-phone"><?php echo $model->tourfirmsPhon->default ?></li><?php } ?>
                         <?php if(isset($model->tourfirmsPhon->life)){?><li class="contact-life"><?php echo $model->tourfirmsPhon->life ?></li><?php } ?>
                         <?php if(isset($model->tourfirmsPhon->mts)){?><li class="contact-mts"><?php echo $model->tourfirmsPhon->mts ?></li><?php } ?>
-                        <?php if(isset($model->tourfirmsPhon->viber)){?><li class="contact-viber"><?php echo $model->tourfirmsPhon->viber ?></li><?php } ?>
+                        <?php if(isset($model->tourfirmsPhon->velcom)){?><li class="contact-viber"><?php echo $model->tourfirmsPhon->velcom ?></li><?php } ?>
                         <?php if(isset($model->tourfirmsPhon->skype)){?><li class="contact-skype"><?php echo $model->tourfirmsPhon->skype ?></li><?php } ?>
                         <?php if(isset($model->tourfirmsPhon->icq)){?><li class="contact-icq"><?php echo $model->tourfirmsPhon->icq ?></li><?php } ?>
                     </ul>

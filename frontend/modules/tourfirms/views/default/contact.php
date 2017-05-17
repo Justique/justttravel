@@ -15,8 +15,8 @@ use yii\widgets\ActiveForm;
                     <li class="contact-life"><?php echo $model->tourfirmsPhon->life ?></li><?php } ?>
                 <?php if ($model->tourfirmsPhon->mts) { ?>
                     <li class="contact-mts"><?php echo $model->tourfirmsPhon->mts ?></li><?php } ?>
-                <?php if ($model->tourfirmsPhon->viber) { ?>
-                    <li class="contact-viber"><?php echo $model->tourfirmsPhon->viber ?></li><?php } ?>
+                <?php if ($model->tourfirmsPhon->velcom) { ?>
+                    <li class="contact-viber"><?php echo $model->tourfirmsPhon->velcom ?></li><?php } ?>
                 <?php if ($model->tourfirmsPhon->skype) { ?>
                     <li class="contact-skype"><?php echo $model->tourfirmsPhon->skype ?></li><?php } ?>
                 <?php if ($model->tourfirmsPhon->icq) { ?>

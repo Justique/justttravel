@@ -30,7 +30,7 @@ use yii\web\JsExpression;
         </div>
 
         <div class="block">
-            <?= $form->field($modelPhons, 'viber')->textInput() ?>
+            <?= $form->field($modelPhons, 'velcom')->textInput() ?>
         </div>
 
         <div class="block">
