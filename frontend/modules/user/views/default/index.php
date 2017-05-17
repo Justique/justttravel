@@ -43,9 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="block">
             <?php echo $form->field($model, 'company')->textInput(['maxlength' => 255, 'class' => 'user-form', 'placeholder' => 'Имя компании'])->label(false) ?>
         </div>
-        <div class="block">
-                    <?php echo $form->field($model, 'tariff')->dropDownList(['1'=>'Доллар','2'=>'Рубль','3'=>'Евро'],['class' => 'select user-form', 'prompt' => 'Тариф'])->label(false) ?>
-        </div>
 
                 <?php } ?>
                 <?php if(!userModel()->isUserTourOperator()){ ?>
@@ -88,6 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'pluginOptions'=>[
                         'depends'=>['cat-id'],
                         'placeholder' => 'Город',
+                        'initialize' => true,
                         'url' => Url::to(['/site/cities'])
                     ],
                     'pluginEvents' => [
