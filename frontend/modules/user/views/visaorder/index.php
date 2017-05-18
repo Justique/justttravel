@@ -50,10 +50,15 @@ $this->params['breadcrumbs'][] = $this->title;
             <li class="form container contacts">
                 <h2>Контакты</h2>
                 <div class="fields">
-                    <input type="text" name="" id="" value="<?php echo $item->user->lastname." ".$item->user->firstname." ".$item->user->middlename ?>">
-                    <input type="text" name="" id="" value="<?php echo $item->email?>">
+                    <input type="text" value="<?= $item->name ? $item->name : 'Имя: не задано' ?>" disabled>
+                    <input type="text" value="<?= $item->phone ?>" disabled>
+                    <input type="text" value="<?= $item->email ?>" disabled>
+                    <input type="text" value="<?= $item->skype ?>" placeholder="Skype/Viber/WhatsApp и т.д." disabled>
+                    <input type="text" value="<?= 'Кол-во взрослых - ' . $item->count_old ?>" disabled>
+                    <input type="text" value="<?= 'Кол-во детей - ' . $item->count_kids ?>" disabled>
+                    <input type="text" value="<?= 'Примерная дата выезда - ' . Yii::$app->formatter->asDate($item->date) ?>" disabled>
                 </div>
-                <!--            <textarea name="" id="" cols="30" rows="10">Трали вали</textarea>-->
+                <textarea cols="30" rows="5" readonly><?= $item->comment ? $item->comment : '(отсутствует)' ?></textarea>
             </li>
         <?php } ?>
     </ul>

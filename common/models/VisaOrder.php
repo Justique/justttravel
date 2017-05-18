@@ -14,6 +14,12 @@ use yii\db\Expression;
  * @property integer $visa_id
  * @property string $name
  * @property string $email
+ * @property string $phone
+ * @property string $skype
+ * @property integer $count_kids
+ * @property integer $count_old
+ * @property integer $date
+ * @property string $comment
  * @property string $created
  *
  * @property Visa $visa
@@ -57,10 +63,12 @@ class VisaOrder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'visa_id', 'name', 'email','tourfirm_id'], 'required'],
-            [['visa_id'], 'integer'],
+            [['user_id', 'visa_id', 'name', 'email', 'phone', 'date', 'tourfirm_id'], 'required'],
+            [['visa_id', 'count_kids', 'count_old', 'tourfirm_id'], 'integer'],
+            [['comment'], 'string'],
             [['user_id', 'name', 'email'], 'string', 'max' => 100],
-            [['created'], 'string', 'max' => 50]
+            [['phone', 'skype'], 'string', 'max' => 255],
+            [['visa_id'], 'exist', 'skipOnError' => true, 'targetClass' => Visa::className(), 'targetAttribute' => ['visa_id' => 'id']],
         ];
     }
 
@@ -73,10 +81,33 @@ class VisaOrder extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_id' => 'User ID',
             'visa_id' => 'Visa ID',
-            'name' => 'Name',
+            'name' => 'Имя',
             'email' => 'Email',
+            'phone' => 'Телефон',
+            'skype' => 'Skype/Viber/WhatsApp и т.д.',
+            'count_kids' => 'Кол-во детей',
+            'count_old' => 'Кол-во взрослых',
+            'date' => 'Дата',
+            'comment' => 'Комментарий',
             'created' => 'Created',
+            'tourfirm_id' => 'Tourfirm ID',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if($this->isNewRecord) {
+                $this->date = strtotime($this->date);
+                $this->count_kids = $this->count_kids ? $this->count_kids : 0;
+                $this->count_old = $this->count_old ? $this->count_old : 0;
+            }
+            return true;
+        }
+        return false;
     }
 
     /**

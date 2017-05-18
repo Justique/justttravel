@@ -1,7 +1,7 @@
 <<?php
 use yii\bootstrap\Html;
 use yii\widgets\ActiveForm;
-
+use yii\widgets\MaskedInput;
 ?>
 <section class="visa-full-page">
     <div class="content-wrapper">
@@ -114,6 +114,27 @@ use yii\widgets\ActiveForm;
                 $email = \common\models\User::getEmail(user()->id);
             }else $email ='' ?>
             <?= $form->field($modelVisa, 'email')->textInput(['type'=>'text','placeholder'=>'Ваш email', 'value'=>$email])->label(false) ?>
+            <?= $form->field($modelVisa, 'phone')->widget(MaskedInput::className(),[
+                'mask' => '+375(99)999-99-99',
+                'options' => [
+                    'placeholder' => '+375(__)___-__-__'
+                ]
+            ])->label(false) ?>
+            <?= $form->field($modelVisa, 'skype')->textInput(['placeholder' => 'Skype/Viber/WhatsApp и т.д.'])->label(false) ?>
+            <div>
+                <?= $form->field($modelVisa, 'count_kids')->dropDownList(range(0,12), ['prompt' => 'Кол-во детей'])->label(false) ?>
+            </div>
+            <div>
+                <?= $form->field($modelVisa, 'count_old')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Кол-во взрослых'])->label(false) ?>
+            </div>
+            <?= $form->field($modelVisa, 'date')->widget(\yii\jui\DatePicker::classname(), [
+                'language' => 'ru',
+                'dateFormat' => 'yyyy-MM-dd',
+                'options'=>[
+                    'placeholder' => 'Дата',
+                ],
+            ])->label(false) ?>
+            <?= $form->field($modelVisa, 'comment')->textarea(['placeholder' => 'Комментарий', 'rows' => 4])->label(false) ?>
             <?= $form->field($modelVisa, 'tourfirm_id')->hiddenInput(['value'=>$model->tourfirm_id])->label(false) ?>
             <?= $form->field($modelVisa, 'visa_id')->hiddenInput(['value'=>$model->id])->label(false) ?>
             <?= $form->field($modelVisa, 'user_id')->hiddenInput(['value'=>user()->id])->label(false) ?>
