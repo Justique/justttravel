@@ -33,14 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{accept} {reject}',
                 'buttons' => [
-                    'accept' => function ($model) {
+                    'accept' => function ($url, $model) {
                         return Html::a('Принять', ['set-status', 'id' => $model->id, 'status' => 1], [
                             'title' => 'Принять',
                             'class'=>'btn btn-primary btn-xs',
                             'data-method' => 'post',
                         ]);
                     },
-                    'reject' => function ($model) {
+                    'reject' => function ($url, $model) {
                         return Html::a('Отклонить', ['set-status', 'id' => $model->id, 'status' => 2], [
                             'title' => 'Отклонить',
                             'data-method' => 'post',
