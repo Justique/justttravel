@@ -75,21 +75,6 @@ class TourfirmreviewsController extends Controller
     }
 
     /**
-     * Updates an existing TourfirmsReviews model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionStatusupdate($id, $status){
-        if(TourfirmsReviews::updateStatus($id, $status)){
-            return $this->actionIndex();
-        }
-        else {
-            return false;
-        }
-    }
-
-    /**
      * Lists all TourfirmsReviews models.
      * @return mixed
      */

@@ -92,10 +92,11 @@ class TourfirmsReviews extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'comment' => 'Comment',
-            'user_id' => 'User ID',
-            'tourfirm_id' => 'Tourfirm ID',
-            'date_create' => 'Date Create',
+            'comment' => 'Комментарий',
+            'user_id' => 'Пользователь',
+            'tourfirm_id' => 'Турфирма',
+            'status' => 'Статус',
+            'date_create' => 'Дата',
             'thumbnail' => 'Картинка',
         ];
     }
