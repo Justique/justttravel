@@ -53,7 +53,7 @@ class SiteController extends Controller
         $newReviews = TourfirmsReviews::find()->where(['status'=>1])->orderBy('date_create desc')->limit(4)->all();
         $countries = Countries::find()->with('tours')->orderBy('name asc')->all();
         $big = Article::find()->where(['is_big'=>1])->one();
-        $article = Article::find()->where(['is_big'=>0])->orderBy('published_at desc')->limit(8)->all();
+        $article = Article::find()->where(['is_big' => 0])->andWhere(['status' => 1])->orderBy('created_at DESC')->limit(8)->all();
         /*if (!$big) {
             throw new NotFoundHttpException('Нет большой картинки, поставьте чекбокс is_big хотя бы на одной новости');
         }*/
