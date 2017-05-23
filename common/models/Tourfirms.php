@@ -37,7 +37,7 @@ class Tourfirms extends \yii\db\ActiveRecord
                 'mts'=>$post['TourfirmsPhons']['mts'],
                 'life'=>$post['TourfirmsPhons']['life'],
                 'icq'=>$post['TourfirmsPhons']['icq'],
-                'viber'=>$post['TourfirmsPhons']['viber'],
+                'velcom'=>$post['TourfirmsPhons']['velcom'],
             ],
             [
                 'tourfirm_id'=>$id
