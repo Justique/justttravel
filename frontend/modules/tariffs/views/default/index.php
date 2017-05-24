@@ -46,7 +46,7 @@ $this->title = 'Тарифы';
     </div>
 
     <div class="c-discount">
-        <div class="discount-header"><span><img src="v1/img/percent.jpg" alt=""></span>Скидки на размещние</div>
+        <div class="discount-header"><span><img src="v1/img/percent.jpg" alt=""></span>Скидки на размещение</div>
         <div class="discount-row">
             <div class="discount-item">
                 <div class="discount-value"><?= getenv('DISCOUNT_6_MONTH') ?><sup>%</sup></div>
