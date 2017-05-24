@@ -2,7 +2,7 @@
 use common\models\Cities;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Html;
-
+use yii\widgets\MaskedInput;
 ?>
 <section class="tour-full-page">
     <div class="content-wrapper">
@@ -147,22 +147,47 @@ use yii\bootstrap\Html;
             ]]);
         ?>
             <?php $modelOrder = new \common\models\ToursOrder() ?>
-                <?= $form->field($modelOrder, 'name')->textInput(['type'=>'text','placeholder'=>'Ваше имя'])->label(false) ?>
+
+            <?= $form->field($modelOrder, 'name')->textInput(['type'=>'text','placeholder'=>'Ваше имя'])->label(false) ?>
+
             <?php if(user()->id){
                 $email = \common\models\User::getEmail(user()->id);
-            }else $email ='' ?>
+            } else $email ='' ?>
+
             <?= $form->field($modelOrder, 'email')->textInput(['type'=>'text','placeholder'=>'Ваш email', 'value'=>$email])->label(false) ?>
 
-        <?php echo $form->field($modelOrder, 'date')->widget(\yii\jui\DatePicker::classname(),
-            [
+            <?= $form->field($modelOrder, 'phone')->widget(MaskedInput::className(),[
+                'mask' => '+375(99)999-99-99',
+                'options' => [
+                    'placeholder' => '+375(__)___-__-__'
+                ]
+            ])->label(false) ?>
+
+            <?= $form->field($modelOrder, 'skype')->textInput(['placeholder' => 'Skype/Viber/WhatsApp и т.д.'])->label(false) ?>
+
+            <div>
+                <?= $form->field($modelOrder, 'count_kids')->dropDownList(range(0,12), ['prompt' => 'Кол-во детей'])->label(false) ?>
+            </div>
+
+            <div>
+                <?= $form->field($modelOrder, 'count_old')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Кол-во взрослых'])->label(false) ?>
+            </div>
+
+            <?php echo $form->field($modelOrder, 'date')->widget(\yii\jui\DatePicker::classname(), [
                 'language' => 'ru',
                 'dateFormat' => 'yyyy-MM-dd',
                 'options' => ['placeholder'=>'Примерная дата']
             ])->label(false) ?>
-                <?= $form->field($modelOrder, 'tour_id')->hiddenInput(['value'=>$model->id])->label(false) ?>
-                <?= $form->field($modelOrder, 'tourfirm_id')->hiddenInput(['value'=>$model->tourfirm_id])->label(false) ?>
-                <?= $form->field($modelOrder, 'user_id')->hiddenInput(['value'=>user()->id])->label(false) ?>
-                <?= Html::submitButton('Отправить', ['class'=>'button yellow']) ?>
+
+            <?= $form->field($modelOrder, 'comment')->textarea(['placeholder' => 'Комментарий', 'rows' => 4])->label(false) ?>
+
+            <?= $form->field($modelOrder, 'tour_id')->hiddenInput(['value'=>$model->id])->label(false) ?>
+
+            <?= $form->field($modelOrder, 'tourfirm_id')->hiddenInput(['value'=>$model->tourfirm_id])->label(false) ?>
+
+            <?= $form->field($modelOrder, 'user_id')->hiddenInput(['value'=>user()->id])->label(false) ?>
+
+            <?= Html::submitButton('Отправить', ['class'=>'button yellow']) ?>
         <?php ActiveForm::end(); ?>
     </div>
 </section>

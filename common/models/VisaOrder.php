@@ -18,7 +18,7 @@ use yii\db\Expression;
  * @property string $skype
  * @property integer $count_kids
  * @property integer $count_old
- * @property integer $date
+ * @property string $date
  * @property string $comment
  * @property string $created
  *
@@ -65,9 +65,11 @@ class VisaOrder extends \yii\db\ActiveRecord
         return [
             [['user_id', 'visa_id', 'name', 'email', 'phone', 'date', 'tourfirm_id'], 'required'],
             [['visa_id', 'count_kids', 'count_old', 'tourfirm_id'], 'integer'],
+            [['email'], 'email'],
             [['comment'], 'string'],
+            [['count_kids', 'count_old'], 'default', 'value' => 0],
             [['user_id', 'name', 'email'], 'string', 'max' => 100],
-            [['phone', 'skype'], 'string', 'max' => 255],
+            [['phone', 'skype', 'date'], 'string', 'max' => 255],
             [['visa_id'], 'exist', 'skipOnError' => true, 'targetClass' => Visa::className(), 'targetAttribute' => ['visa_id' => 'id']],
         ];
     }
@@ -92,22 +94,6 @@ class VisaOrder extends \yii\db\ActiveRecord
             'created' => 'Created',
             'tourfirm_id' => 'Tourfirm ID',
         ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert)) {
-            if($this->isNewRecord) {
-                $this->date = strtotime($this->date);
-                $this->count_kids = $this->count_kids ? $this->count_kids : 0;
-                $this->count_old = $this->count_old ? $this->count_old : 0;
-            }
-            return true;
-        }
-        return false;
     }
 
     /**

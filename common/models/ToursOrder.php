@@ -15,6 +15,11 @@ use yii\db\Expression;
  * @property string $name
  * @property string $date
  * @property string $email
+ * @property string $phone
+ * @property string $skype
+ * @property integer $count_kids
+ * @property integer $count_old
+ * @property string $comment
  * @property integer $created
  *
  * @property Tours $tour
@@ -58,10 +63,12 @@ class ToursOrder extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'tour_id', 'name','email','date','tourfirm_id'], 'required'],
+            [['user_id', 'tour_id', 'name', 'email', 'phone', 'date', 'tourfirm_id'], 'required'],
             [['email'], 'email'],
-            [['user_id', 'tour_id', 'created'], 'integer'],
-            [['name', 'email'], 'string', 'max' => 100],
+            [['comment'], 'string'],
+            [['count_kids', 'count_old'], 'default', 'value' => 0],
+            [['user_id', 'tour_id', 'count_kids', 'count_old', 'created'], 'integer'],
+            [['name', 'email', 'phone', 'skype'], 'string', 'max' => 100],
             [['date'], 'string', 'max' => 50]
         ];
     }
@@ -75,9 +82,14 @@ class ToursOrder extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_id' => 'User ID',
             'tour_id' => 'Tour ID',
-            'name' => 'Name',
-            'date' => 'Date',
+            'name' => 'Имя',
+            'date' => 'Примерная дата',
             'email' => 'Email',
+            'phone' => 'Телефон',
+            'skype' => 'Skype/Viber/WhatsApp и т.д.',
+            'count_kids' => 'Кол-во детей',
+            'count_old' => 'Кол-во взрослых',
+            'comment' => 'Комментарий',
             'created' => 'Created',
         ];
     }
