@@ -29,18 +29,22 @@ $this->title = 'Туры';
         <?= Html::dropDownList('ToursSearch[city_id]', null, $cities, [
             'id' => 'tours-city',
             'prompt' => 'Выберите ваш город',
-            'options' => [
-                Yii::$app->request->get('ToursSearch')['city_id'] => ['selected ' => true]
-            ]
+            'options' => isset(Yii::$app->request->get('ToursSearch')['city_id'])
+                ? [
+                    Yii::$app->request->get('ToursSearch')['city_id'] => ['selected ' => true]
+                ]
+                : []
         ]) ?>
     </div>
     <div style="width: 250px; display: inline-block;">
         <?= Html::dropDownList('ToursSearch[country_to_id]', null, $countries, [
             'id' => 'tours-country',
             'prompt' => 'Выберете страну',
-            'options' => [
-                Yii::$app->request->get('ToursSearch')['country_to_id'] => ['selected ' => true]
-            ]
+            'options' => isset(Yii::$app->request->get('ToursSearch')['country_to_id'])
+                ? [
+                    Yii::$app->request->get('ToursSearch')['country_to_id'] => ['selected ' => true]
+                ]
+                : []
         ]) ?>
     </div>
 
