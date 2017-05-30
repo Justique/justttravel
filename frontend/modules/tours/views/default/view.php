@@ -67,24 +67,19 @@ use yii\widgets\MaskedInput;
         </div>
 <!--        <div class="company-desc-grid js-masonry" data-masonry-options='{ "itemSelector": ".grid-item", "columnWidth": 252, "gutter": 30 }'>-->
         <div class="img-tour-desc">
-            <?php if ($model->tourAttachments == false) { ?>
-                <img src="/v1/img/grid-quad-item.jpg" width='200' height="140" alt="">
-                <img src="/v1/img/grid-quad-item.jpg" width='200' height="140" alt="">
-                <img src="/v1/img/grid-quad-item.jpg" width='200' height="140" alt="">
-                <img src="/v1/img/grid-quad-item.jpg" width='200' height="140" alt="">
-            <?php } else {
-                foreach ($model->tourAttachments as $img) {
-                        echo \yii\helpers\Html::img(
-                            Yii::$app->glide->createSignedUrl([
-                                'glide/index',
-                                'path' => $img->path,
-                                'w' => 200,
-                                'h' => 140,
-                                'q' => getenv('IMAGE_QUALITY')
-                            ], true)
-                        );
-                }
-            } ?>
+            <?php if ($model->tourAttachments): ?>
+                <?php foreach ($model->tourAttachments as $img): ?>
+                    <?= \yii\helpers\Html::img(
+                        Yii::$app->glide->createSignedUrl([
+                            'glide/index',
+                            'path' => $img->path,
+                            'w' => 200,
+                            'h' => 140,
+                            'q' => getenv('IMAGE_QUALITY')
+                        ], true)
+                    ) ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
 <!--        </div>-->
         <h1 class="mid-head">Информация о туре</h1>
