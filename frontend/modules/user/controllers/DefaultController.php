@@ -72,8 +72,8 @@ class DefaultController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('alert', [
-                'options' => ['class'=>'alert-success'],
-                'body' => Yii::t('frontend', 'Your account has been successfully saved')
+                'type' => 'success',
+                'title' => Yii::t('frontend', 'Your account has been successfully saved')
             ]);
             return $this->refresh();
         }
@@ -101,8 +101,8 @@ class DefaultController extends Controller
 
         if ($accountModel->load(Yii::$app->request->post()) && $accountModel->save()) {
             Yii::$app->session->setFlash('alert', [
-                'options' => ['class'=>'alert-success'],
-                'body' => Yii::t('frontend', 'Your account has been successfully saved')
+                'type' => 'success',
+                'title' => Yii::t('frontend', 'Your account has been successfully saved')
             ]);
             return $this->refresh();
         }

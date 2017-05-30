@@ -142,10 +142,12 @@ $this->beginContent('@frontend/views/layouts/base.php')
         <div class="wrapper">
 
         <?php if (Yii::$app->session->hasFlash('alert')): ?>
-            <?php echo \yii\bootstrap\Alert::widget([
-                'body' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'body'),
-                'options' => ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'options'),
-            ]) ?>
+            <?php $this->registerJs('
+                swal({
+                    type: "'. ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'type') .'",
+                    title: "'. ArrayHelper::getValue(Yii::$app->session->getFlash('alert'), 'title') .'"
+                });
+            ') ?>
         <?php endif; ?>
 
         <?php echo $content ?>
