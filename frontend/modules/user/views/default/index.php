@@ -78,22 +78,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 ])->label(false);
                 ?>
         </div>
-                <div class="block">
-                <?php echo $form->field($model, 'city')->widget(DepDrop::classname(), [
-                    'type' => 1,
-                    'options' => ['id'=>'subcat-id'],
-                    'pluginOptions'=>[
-                        'depends'=>['cat-id'],
-                        'placeholder' => 'Город',
-                        'initialize' => true,
-                        'url' => Url::to(['/site/cities'])
-                    ],
-                    'pluginEvents' => [
-                        "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
-                    ]
-                ])->label(false);
-                ?>
-            </div>
+        <div class="block">
+            <?= Html::hiddenInput('city-id', $model->city, ['id'=> 'city-id']); ?>
+            <?php echo $form->field($model, 'city')->widget(DepDrop::classname(), [
+                'type' => 1,
+                'options' => ['id'=>'subcat-id'],
+                'pluginOptions'=>[
+                    'depends' => ['cat-id'],
+                    'placeholder' => 'Город',
+                    'initialize' => true,
+                    'url' => Url::to(['/site/cities']),
+                    'params' => ['city-id']
+                ],
+                'pluginEvents' => [
+                    "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
+                ]
+            ])->label(false);
+            ?>
+        </div>
 </div>
             <?php echo Html::submitButton('Сохранить измениния', ['class' => 'button yellow']) ?>
 <?php ActiveForm::end(); ?>

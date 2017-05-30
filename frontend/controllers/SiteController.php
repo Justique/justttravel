@@ -114,13 +114,11 @@ class SiteController extends Controller
             if ($parents != null) {
                 $cat_id = $parents[0];
                 $out = self::getCityList($cat_id);
-                // the getSubCatList function will query the database based on the
-                // cat_id and return an array like below:
-                // [
-                //    ['id'=>'<sub-cat-id-1>', 'name'=>'<sub-cat-name1>'],
-                //    ['id'=>'<sub-cat_id_2>', 'name'=>'<sub-cat-name2>']
-                // ]
-                echo Json::encode(['output'=>$out, 'selected'=>'']);
+                $selection = '';
+                if (!empty($_POST['depdrop_params'])) {
+                    $selection = $_POST['depdrop_params'][0];
+                }
+                echo Json::encode(['output' => $out, 'selected' => $selection]);
                 return;
             }
         }
