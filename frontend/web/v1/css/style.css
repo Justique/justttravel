@@ -376,6 +376,9 @@ a.blue {color: #0096ff;}
 .pagination a {text-decoration: none; color: #515151; display: inline-block; width: 28px; height: 28px; border: 1px solid #ffd800; line-height: 24px; font-size: 1.2em;}
 .pagination a:hover, .pagination a.active {background-color: #ffd800;}
 .pagination a.active {pointer-events: none;}
+.pagination > li {
+    display: inline;
+}
 
 /*Tours-page styles*/
 .tours-page form {float: right;}
