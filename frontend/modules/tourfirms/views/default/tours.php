@@ -8,8 +8,8 @@ use frontend\modules\user\Module;
 <section class="company-page with-rating">
     <div class="content-wrapper">
         <?php echo \frontend\modules\tourfirms\widgets\TourfirmHeaderWidget::widget(['model'=>$model]) ?>
-
-        <div class="content-tours">
+        <?php if($dataProvider->getModels()): ?>
+            <div class="content-tours">
             <p class="sort">Сортировать по:<?php echo $sort->link('created_at')?><?php echo $sort->link('count_nights')?><?php echo $sort->link('price')?></p>
 
             <ul class="tours-list">
@@ -90,5 +90,8 @@ use frontend\modules\user\Module;
             ]);
             ?>
         </div>
+        <?php else: ?>
+            <h3>Туров нету</h3>
+        <?php endif; ?>
     </div>
 </section>
