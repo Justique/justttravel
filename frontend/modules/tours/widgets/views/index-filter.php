@@ -4,6 +4,7 @@ use common\models\Tours;
 use common\models\Transports;
 use frontend\controllers\SiteController;
 use kartik\depdrop\DepDrop;
+use kartik\daterange\DateRangePicker;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -37,11 +38,17 @@ echo $form->field($m, 'TourSearchFilter[country_to_id]')->dropDownList($countrie
     ]
 ])->label(false);
 ?>
-    <?php echo $form->field($m, 'TourSearchFilter[date_from]')->widget(DatePicker::classname(), [
-        'language' => 'ru',
-        'dateFormat' => 'yyyy-MM-dd',
-        'options' => ['placeholder' => 'Дата'],
-    ])->label(false) ?>
+
+<div class="form-group">
+    <?= DateRangePicker::widget([
+        'name' => 'ToursSearch[date]',
+        'value' => date('d.m.Y') . ' - ' . date('d.m.Y', strtotime('+7 day')),
+        'convertFormat' => true,
+        'pluginOptions' => [
+            'locale' => ['format' => 'd.m.Y'],
+        ]
+    ]) ?>
+</div>
 
 <?php
 echo $form->field($m, 'TourSearchFilter[country_from_id]')->dropDownList($countries, [

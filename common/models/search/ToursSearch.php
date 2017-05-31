@@ -12,7 +12,7 @@ use yii\data\ActiveDataProvider;
  */
 class ToursSearch extends Tours
 {
-    public $city_id;
+    public $city_id, $date;
 
     /**
      * @inheritdoc
@@ -21,7 +21,7 @@ class ToursSearch extends Tours
     {
         return [
             [['id', 'country_to_id', 'city_to_id', 'city_from_id', 'count_old', 'count_kids', 'hotel_id', 'user_id', 'created_at', 'published_at', 'city_id'], 'integer'],
-            [['title', 'slug', 'status', 'price', 'date_from', 'body', 'thumbnail_base_url', 'thumbnail_path'], 'safe'],
+            [['title', 'slug', 'status', 'price', 'date_from', 'body', 'thumbnail_base_url', 'thumbnail_path', 'date'], 'safe'],
         ];
     }
 
@@ -105,12 +105,19 @@ class ToursSearch extends Tours
             '{{%user_profile}}.city' => $this->city_id
         ]);
 
+        if ($this->date) {
+            $date = explode(' - ', $this->date);
+            $date_start = \DateTime::createFromFormat('d.m.Y', $date[0]);
+            $date_end = \DateTime::createFromFormat('d.m.Y', $date[1]);
+            $query->andFilterWhere(['>=', 'date_from', $date_start->format('Y-m-d')]);
+            $query->andFilterWhere(['<=', 'date_from', $date_end->format('Y-m-d')]);
+        }
+
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'country_to_id', $this->country_to_id])
             ->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'price', $this->price])
-            ->andFilterWhere(['like', 'date_from', $this->date_from])
             ->andFilterWhere(['like', 'body', $this->body])
             ->andFilterWhere(['like', 'thumbnail_base_url', $this->thumbnail_base_url])
             ->andFilterWhere(['like', 'thumbnail_path', $this->thumbnail_path]);

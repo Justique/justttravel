@@ -2543,3 +2543,15 @@ a p {
 .make-order-form .main-info .select .form-group input {
     height: 30px !important;
 }
+
+.daterangepicker {
+    display: none;
+}
+
+.daterangepicker .ranges {
+    float: none;
+}
+
+.daterangepicker .ranges button {
+   width: 235px;
+}
