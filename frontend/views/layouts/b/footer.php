@@ -1,12 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mopkau
- * Date: 27.12.2015
- * Time: 11:34
- */
-use yii\helpers\Url;
-
+use frontend\helpers\MetrikaHelper;
 ?>
 <footer>
     <div class="wrapper">
@@ -22,8 +15,8 @@ use yii\helpers\Url;
             <div></div>
             <span>все туры Беларуси</span>
 			</a>
-            <p><span>0</span> посещения вчера</p>
-            <p><span>0</span> просмотров вчера</p>
+            <p><span><?= MetrikaHelper::getUsersCount() ?></span> посещения вчера</p>
+            <p><span><?= MetrikaHelper::getPageViews() ?></span> просмотров вчера</p>
         </div>
         <nav>
             <ul>
