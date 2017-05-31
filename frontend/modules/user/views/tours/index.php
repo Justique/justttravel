@@ -24,18 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::a('Добавить тур', ['create'], ['class' => 'button yellow button_main']) ?>
         </p>
     <?php endif; ?>
-<div style="display: none">
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            'title',
-            'price',
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-</div>
     <ul class="tours-list tour_orders_list company_tours">
         <?php if(!empty($model)){ ?>
         <?php foreach($dataProvider->getModels() as $item){ ?>

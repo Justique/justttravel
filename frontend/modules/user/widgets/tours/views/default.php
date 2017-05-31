@@ -20,92 +20,97 @@ $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(
         <div class="trigger_container">
             <input type="checkbox" id="autoup_trigger" name="autoup_trigger" checked><label for="autoup_trigger">автоап тура <span class="checked">включен (каждые сутки в 15:00)</span><span class="unchecked">выключен</span></label>
         </div>
-        <?php if(userModel()->isUserTourOperator()) { ?>
-        <label class="select">
-            <?php echo $form->field($model, 'user_id')->dropDownList(User::getManagersOfCompany(), ['prompt' => 'Менеджер'])->label(false) ?>
-        </label>
-        <?php }else{ ?>
-        <?= $form->field($model, 'user_id')->hiddenInput(['value'=>user()->id])->label(false) ?>
+        <div class="columns-4">
+            <?php if(userModel()->isUserTourOperator()) { ?>
+                <label class="select">
+                    <?php echo $form->field($model, 'user_id')->dropDownList(User::getManagersOfCompany(), ['prompt' => 'Менеджер'])->label(false) ?>
+                </label>
+            <?php }else{ ?>
+                <?= $form->field($model, 'user_id')->hiddenInput(['value'=>user()->id])->label(false) ?>
+            <?php }?>
 
-        <?php }?>
-        <label class="select">
-        <?= $form->field($model, 'title')->textInput(['placeholder'=>'Название тура','maxlength' => true])->label(false) ?>
-        </label>
-        <label class="select">
-        <?= $form->field($model, 'price')->textInput(['placeholder'=>'Стоимость','maxlength' => true])->label(false) ?>
-        </label>
-        <label class="select">
-        <?php
-            echo $form->field($model, 'country_to_id')->dropDownList($countries, [
-                'prompt' => 'Страна назначения','class' => 'select user-form firm-form', 'id'=>'cat-id'.$model->id
-            ])->label(false);
-        ?>
-       
-        </label>
-        <label class="select">
-        <?php echo $form->field($model, 'city_to_id')->widget(DepDrop::classname(), [
-            'type' => 1,
-            'options' => ['id'=>'subcat-id'.$model->id],
-            'pluginOptions'=>[
-                'depends'=>['cat-id'.$model->id],
-                'placeholder' => 'Выберите город назначения',
-                'url' => Url::to(['/site/cities'])
-            ],
-            'pluginEvents' => [
-                "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
-            ]
-        ])->label(false);
-        ?>
-        </label>
-        <label class="select">
-            <?php
-            echo $form->field($model, 'country_from_id')->dropDownList($countries, [
-                'prompt' => 'Любая страна','class' => 'select user-form firm-form', 'id'=>'cat-id-id'.$model->id
-            ])->label(false);
-            ?>
-       
-        </label>
-        <label class="select">
-        <?php echo $form->field($model, 'city_from_id')->widget(DepDrop::classname(), [
-            'type' => 1,
-            'options' => ['id'=>'subcat-id-id'.$model->id],
-            'pluginOptions'=>[
-                'depends'=>['cat-id-id'.$model->id],
-                'placeholder' => 'Выберите город вылета',
-                'url' => Url::to(['/site/cities'])
-            ],
-            'pluginEvents' => [
-                "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
-            ]
-        ])->label(false);
-        ?>
-        </label>
-        <label class="select">
-        <?php echo $form->field($model, 'date_from')->widget(\yii\jui\DatePicker::classname(), [
-            'language' => 'ru',
-            'dateFormat' => 'yyyy-MM-dd',
-            'options'=>[
-                'placeholder' => 'Дата',
-                'id'=> 'applicationfortours-date'.$model->id
-            ],
-        ])->label(false) ?>
-        </label>
-        <label class="select">
-        <?php echo $form->field($model, 'count_old')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Взрослых'])->label(false) ?>
-        </label>
+            <label class="select">
+                <?= $form->field($model, 'title')->textInput(['placeholder'=>'Название тура','maxlength' => true])->label(false) ?>
+            </label>
 
-        <label class="select">
-        <?php echo $form->field($model, 'count_kids')->dropDownList(range(0,12), ['prompt' => 'Детей'])->label(false) ?>
-        </label>
+            <label class="select">
+                <?= $form->field($model, 'price')->textInput(['placeholder'=>'Стоимость','maxlength' => true])->label(false) ?>
+            </label>
 
-        <label class="select">
-        <?php echo $form->field($model, 'count_days')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Дней'])->label(false) ?>
-        </label>
+            <label class="select">
+                <?php
+                    echo $form->field($model, 'country_to_id')->dropDownList($countries, [
+                        'prompt' => 'Страна назначения','class' => 'select user-form firm-form', 'id'=>'cat-id'.$model->id
+                    ])->label(false);
+                ?>
+            </label>
 
-        <label class="select">
-        <?php echo $form->field($model, 'count_nights')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Ночей'])->label(false) ?>
-        </label>
+            <label class="select">
+                <?php echo $form->field($model, 'city_to_id')->widget(DepDrop::classname(), [
+                    'type' => 1,
+                    'options' => ['id'=>'subcat-id'.$model->id],
+                    'pluginOptions'=>[
+                        'depends'=>['cat-id'.$model->id],
+                        'placeholder' => 'Выберите город назначения',
+                        'url' => Url::to(['/site/cities'])
+                    ],
+                    'pluginEvents' => [
+                        "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
+                    ]
+                ])->label(false); ?>
+            </label>
 
+            <label class="select">
+                <?php
+                echo $form->field($model, 'country_from_id')->dropDownList($countries, [
+                    'prompt' => 'Любая страна','class' => 'select user-form firm-form', 'id'=>'cat-id-id'.$model->id
+                ])->label(false);
+                ?>
+            </label>
+
+            <label class="select">
+                <?php echo $form->field($model, 'city_from_id')->widget(DepDrop::classname(), [
+                    'type' => 1,
+                    'options' => ['id'=>'subcat-id-id'.$model->id],
+                    'pluginOptions'=>[
+                        'depends'=>['cat-id-id'.$model->id],
+                        'placeholder' => 'Выберите город вылета',
+                        'url' => Url::to(['/site/cities'])
+                    ],
+                    'pluginEvents' => [
+                        "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
+                    ]
+                ])->label(false);
+                ?>
+            </label>
+
+            <label class="select">
+                <?php echo $form->field($model, 'date_from')->widget(\yii\jui\DatePicker::classname(), [
+                    'language' => 'ru',
+                    'dateFormat' => 'yyyy-MM-dd',
+                    'options'=>[
+                        'placeholder' => 'Дата',
+                        'id'=> 'applicationfortours-date'.$model->id
+                    ],
+                ])->label(false) ?>
+            </label>
+
+            <label class="select">
+                <?php echo $form->field($model, 'count_old')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Взрослых'])->label(false) ?>
+            </label>
+
+            <label class="select">
+                <?php echo $form->field($model, 'count_kids')->dropDownList(range(0,12), ['prompt' => 'Детей'])->label(false) ?>
+            </label>
+
+            <label class="select">
+                <?php echo $form->field($model, 'count_days')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Дней'])->label(false) ?>
+            </label>
+
+            <label class="select">
+                <?php echo $form->field($model, 'count_nights')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Ночей'])->label(false) ?>
+            </label>
+        </div>
 
         <?php
         $transports = Transports::find()->all();
