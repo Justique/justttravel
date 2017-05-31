@@ -20,9 +20,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'class' => 'user-form',
         ]]); ?>
         <div class="button-line" id="reg-block">
-            <input type="radio" <?= !$model->getModel('profile')->tariff ? 'checked' : '' ?> name="SignupForm[type]" value="1" id="tourist"/>
+            <input type="radio" <?= !$model->getModel('profile')->tariff && ($model->getModel('signup')->type == 1 || $model->getModel('signup')->type == null)  ? 'checked' : '' ?> name="SignupForm[type]" value="1" id="tourist"/>
             <label for="tourist">Турист</label>
-            <input type="radio" <?= $model->getModel('profile')->tariff ? 'checked' : '' ?> name="SignupForm[type]" value="2" id="tourfirm"/>
+            <input type="radio" <?= $model->getModel('profile')->tariff || $model->getModel('signup')->type == 2 ? 'checked' : '' ?> name="SignupForm[type]" value="2" id="tourfirm"/>
             <label for="tourfirm">Турфирма</label>
         </div>
         <div class="container">
