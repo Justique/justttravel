@@ -90,14 +90,14 @@ class SiteController extends Controller
     {
         $request = Yii::$app->request;
         $post = $request->post();
-     
+
         $model = new ContactForm;
         $model->load($post);
         if ($request->isAjax && !$request->isPjax && $request->isPost) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
         } elseif (Yii::$app->request->isPjax && $model->validate()) {
-            $model->contact(Yii::$app->keyStorage->get('frontend.admin_email'));
+            $model->contact(Yii::$app->params['adminEmail']);
             Yii::$app->session->setFlash('alert', Yii::t('token.frontend', 'Спасибо за сообщение об ошибке!'));
             return $this->redirect(['index']);
         }
