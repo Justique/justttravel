@@ -258,15 +258,10 @@ class DefaultController extends Controller
             ->where(['tourfirm_id' => $model->id])
             ->all();
 
-        $big = Article::find()->where(['is_big'=>1, 'tourfirm_id'=>$model->id])->one();
-        if (!$big) {
-            throw new NotFoundHttpException('Нет большой картинки, поставьте чекбокс is_big хотя бы на одной новости');
-        }
         return $this->render('news', [
             'model'=>$model,
             'models' => $models,
             'pages' => $pages,
-            'big'=>$big
         ]);
     }
 
