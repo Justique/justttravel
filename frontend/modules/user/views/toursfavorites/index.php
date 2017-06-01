@@ -13,8 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <section class="visa-page">
     <div class="content-wrapper with-counter">
-        <h1>Все туры<span class="country-count"><?php echo $dataProvider->getTotalCount(); ?></span></h1>
-        <p>Туры всех турфирм из нашего каталога</p>
+        <h1>Избранные туры<span class="country-count"><?php echo $dataProvider->getTotalCount(); ?></span></h1>
         <ul class="tours-list">
             <?= ListView::widget([
                 'dataProvider' => $dataProvider,
