@@ -49,6 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="tour-price">
                     <p>до <?php echo $item->price ?><span> руб.</span></p>
                 </div>
+                <a href="#" onclick="window.location = '/user/userapplication/update?id=<?php echo $item->id ?>'" class="orders_form_trigger location" style="margin-right: 180px;">Редактировать</a>
                 <a href="#" class="orders_form_trigger location">Отклики</a>
             </li>
 
