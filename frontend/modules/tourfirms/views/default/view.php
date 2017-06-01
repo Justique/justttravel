@@ -61,6 +61,8 @@ use yii\helpers\Html;
                                     'glide/index',
                                     'path' => $img->path,
                                     'w' => 255,
+                                    'h' => 255,
+                                    'fit' => 'crop',
                                     'q' => getenv('IMAGE_QUALITY')
                                 ], true)
                             ),
