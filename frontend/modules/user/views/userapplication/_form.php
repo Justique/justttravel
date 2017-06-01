@@ -166,55 +166,6 @@ $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(
         <?php } ?>
     </div>
     <?php ActiveForm::end(); ?>
-    <?php if(!$model->isNewRecord) {  ?>
-        <?php if($responsesProvider->getModels()){ ?>
-            <?php \yii\widgets\Pjax::begin() ?>
-            <p class="sort">Сортировать по: <a href="#">дате добавления</a><a href="#">дате отъезда</a><a href="#">цене</a> <a href="#">рейтингу турфирмы</a> <a href="#">рейтингу отеля</a></p>
-            <ul class="tours-list">
-                <?php foreach($responsesProvider->getModels() as $item) { ?>
-                    <li>
-                        <div class="general">
-                            <?php if(($item->transport_type)) { ?>
-                                <div class="tour-type"><i class="fa fa-<?php echo $item->transport->class ?>"></i><span><?php echo $item->transport->about ?></span></div>
-                            <?php } ?>
-                            <?php echo \frontend\modules\user\Module::getCountPeoples($item->childrens, $item->adults) ?>
-                        </div>
-                        <div class="tour-name">
-                            <a href="/profile/messages?messager_id=<?php echo $item->manager_id ?>" class="blue"><?php echo $item->user->username ?></a>
-                            <div class="tour-rate">
-                                <div class="green rating-grade">5.00</div>
-                                <a href="">рейтинг фирмы</a>
-                            </div>
-                            <p>добавлен <?php echo convertDate($item->date_update)?></p>
-                        </div>
-                        <div class="tour-destination">
-                            <a href="" class="blue"><?php echo $item->country->name ?></a>
-                            <a href=""><?php echo $item->city->city ?></a>
-                        </div>
-                        <div class="tour-duration">
-                            <p><?php echo $item->nights ?> ночей</p>
-                            <p><?php echo $item->days ?> дней</p>
-                        </div>
-                        <div class="tour-hotel">
-                            <a href="" class="blue">Golden Tulip Khatt Sprin...</a>
-                            <div class="tour-hotel-rate">
-                                <div class="rating-grade lime">4.05</div>
-                                <a href="">рейтинг Tophotels</a>
-                            </div>
-                            <p>BB (только завтрак)</p>
-                        </div>
-                        <div class="tour-price">
-                            <p><?php echo $item->price ?> <span>руб</span></p>
-                        </div>
-                    </li>
-                <?php } ?>
-            </ul>
-            <?php echo \yii\widgets\LinkPager::widget([
-                'pagination' => $responsesProvider->pagination,
-            ]); ?>
-            <?php \yii\widgets\Pjax::end() ?>
-        <?php }  ?>
-    <?php } ?>
 </div>
 
 
