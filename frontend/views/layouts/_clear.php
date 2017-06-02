@@ -49,6 +49,19 @@ use yii\helpers\Html;
             " посетителей за 24 часа' "+
             "border='0' width='88' height='31'><\/a>")
     </script><!--/LiveInternet-->
+
+    <!--Akavita counter start-->
+    <script type="text/javascript">var AC_ID=65761;var AC_TR=false;
+        (function(){var l='//adlik.akavita.com/acode.js'; var t='text/javascript';
+            try {var h=document.getElementsByTagName('head')[0];
+                var s=document.createElement('script'); s.src=l;s.type=t;h.appendChild(s);}catch(e){
+                document.write(unescape('%3Cscript src="'+l+'" type="'+t+'"%3E%3C/script%3E'));}})();
+    </script><span id="AC_Image"></span>
+    <noscript><a target='_blank' href='http://www.akavita.by/'>
+            <img src='//adlik.akavita.com/bin/lik?id=65761&it=1'
+                 border='0' height='1' width='1' alt='Akavita'/>
+        </a></noscript>
+    <!--Akavita counter end-->
 <?php endif; ?>
 </html>
 <?php $this->endPage() ?>
