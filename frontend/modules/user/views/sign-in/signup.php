@@ -98,7 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
         </div>
         <input type="checkbox" id="terms">
-        <label for="terms">Я принимаю <a href="/disclaimer">условия пользовательского соглашения</a> и ознакомлен с <a href="/privacypolicy">политикой конфиденциальности</a>.</label>
+        <label for="terms">Я принимаю <a href="/page/disclaimer">условия пользовательского соглашения</a> и ознакомлен с <a href="/page/privacypolicy">политикой конфиденциальности</a>.</label>
         <?php echo Html::submitButton(Yii::t('frontend', 'Signup'), ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
         <?php ActiveForm::end(); ?>
     </div>
