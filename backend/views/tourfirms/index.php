@@ -29,6 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->touroperator->username;
                 },
             ],
+            [
+                'format' => 'raw',
+                'value' => function ($model) {
+                    return $model->touroperator->tariff->tariff->name;
+                },
+                'label' => 'Тариф'
+            ],
         ],
     ]); ?>
 

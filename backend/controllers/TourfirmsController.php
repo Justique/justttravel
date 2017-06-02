@@ -26,6 +26,7 @@ class TourfirmsController extends Controller
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => false
         ]);
 
         return $this->render('index', [
