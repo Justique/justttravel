@@ -34,7 +34,7 @@ use frontend\helpers\MetrikaHelper;
                 <li><a href="/visa">Визы</a></li>
             </ul>
         </nav>
-        <div class="sponsors">
+        <div id="counters" class="sponsors">
             <a href="#" class="akavita"></a>
         </div>
     </div>

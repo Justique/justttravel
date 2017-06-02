@@ -30,7 +30,7 @@ use yii\helpers\Html;
 
 
 </body>
-<?php if(!YII_DEBUG): ?>
+<?php if(YII_DEBUG): ?>
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?146"></script>
     <!-- VK Widget -->
     <div id="vk_community_messages"></div>
@@ -39,7 +39,7 @@ use yii\helpers\Html;
     </script>
 
     <!--LiveInternet counter--><script type="text/javascript">
-        document.getElementsByClassName('sponsors').appendChild("<a href='//www.liveinternet.ru/click' "+
+        var counter = "<a href='//www.liveinternet.ru/click' "+
             "target=_blank><img src='//counter.yadro.ru/hit?t52.1;r"+
             escape(document.referrer)+((typeof(screen)=="undefined")?"":
                 ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
@@ -47,7 +47,11 @@ use yii\helpers\Html;
             ";"+Math.random()+
             "' alt='' title='LiveInternet: показано число просмотров и"+
             " посетителей за 24 часа' "+
-            "border='0' width='88' height='31'><\/a>")
+            "border='0' width='88' height='31'><\/a>";
+
+        var element = document.createElement('div');
+        element.innerHTML = counter;
+        document.getElementById('counters').appendChild(element);
     </script><!--/LiveInternet-->
 <?php endif; ?>
 </html>
