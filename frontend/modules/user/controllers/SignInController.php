@@ -113,9 +113,9 @@ class SignInController extends \yii\web\Controller
             $user = $model->getModel('signup')->signup( $model->getModel('profile'));
             if ($user && Yii::$app->getUser()->login($user)) {
                 Yii::$app->commandBus->handle(new SendEmailCommand([
-                    'from' => [Yii::$app->params['adminEmail'] => Yii::$app->name],
+                    'from' => [Yii::$app->params['adminEmail'] => 'Justtravel.by'],
                     'to' => $user->email,
-                    'subject' => Yii::t('frontend', 'Confirmation email to {name} at justtravel.ru', ['name'=>Yii::$app->name]),
+                    'subject' => Yii::t('frontend', 'Confirmation email to justtravel.by', ['name'=>Yii::$app->name]),
                     'view' => 'emailConfirm',
                     'params' => ['user' => $user]
                 ]));
