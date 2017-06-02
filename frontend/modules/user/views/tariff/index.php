@@ -66,9 +66,9 @@ if (Yii::$app->session->hasFlash('canNotChangeTariff')) {
             <?php if ($user_tariff->tariff->price == 0): ?>
                 <div class="cnp-remain-note" style="font-size: 70px;">∞</div>
             <?php else: ?>
-                <div class="cnp-remain-date">до <?= date('d.m.Y', $user_tariff->valid_at)?></div>
+                <div class="cnp-remain-date">до <?= Yii::$app->formatter->asDate($user_tariff->valid_at) ?></div>
                 <div class="cnp-remain-note">осталось</div>
-                <div class="cnp-remain-value"><?= date_diff(new \DateTime(), new \DateTime(date('Y-m-d', $user_tariff->valid_at)))->format('%a') ?> дней</div>
+                <div class="cnp-remain-value"><?= date_diff(new \DateTime(), new \DateTime($user_tariff->valid_at))->format('%a') ?> дней</div>
             <?php endif; ?>
         </div><!-- .cnp-board -->
     </div><!-- .cnp-col -->
