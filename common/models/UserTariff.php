@@ -10,11 +10,10 @@ use Yii;
  * @property integer $id
  * @property integer $user_id
  * @property integer $tariff_id
- * @property integer $activated_at
- * @property integer $valid_at
+ * @property string $valid_at
  *
- * @property User $user
  * @property Tariffs $tariff
+ * @property User $user
  */
 class UserTariff extends \yii\db\ActiveRecord
 {
@@ -33,7 +32,11 @@ class UserTariff extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'tariff_id'], 'required'],
-            [['user_id', 'tariff_id', 'activated_at', 'valid_at'], 'integer'],
+            [['user_id', 'tariff_id'], 'integer'],
+            [['valid_at'], 'safe'],
+            [['user_id'], 'unique'],
+            [['tariff_id'], 'exist', 'skipOnError' => true, 'targetClass' => Tariffs::className(), 'targetAttribute' => ['tariff_id' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -46,7 +49,6 @@ class UserTariff extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_id' => 'User ID',
             'tariff_id' => 'Tariff ID',
-            'activated_at' => 'Activated At',
             'valid_at' => 'Valid At',
         ];
     }
@@ -59,16 +61,6 @@ class UserTariff extends \yii\db\ActiveRecord
     public function getTariff()
     {
         return $this->hasOne(Tariffs::className(), ['id' => 'tariff_id']);
-    }
-
-    public function getIsActive()
-    {
-        if ($this->tariff->price == 0)
-            return true;
-        else if ($this->activated_at == $this->valid_at)
-            return false;
-        else
-            return time() <= $this->valid_at;
     }
 
     public function getUpToursCount()

@@ -27,8 +27,6 @@ class PaymentHelper
                 /** @var \common\models\UserTariff $user_tariff */
                 $user_tariff = $user_model->tariff;
                 $user_tariff->tariff_id = $tariff->id;
-                $user_tariff->activated_at = time();
-                $user_tariff->valid_at = time();
                 return $user_tariff->save();
             }
         } elseif ($type == Payment::TYPE_TARIFF_EXTENSION) {

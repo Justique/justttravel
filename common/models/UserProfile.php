@@ -111,8 +111,6 @@ class UserProfile extends \yii\db\ActiveRecord
                 $tariff = new UserTariff();
                 $tariff->user_id = $this->user_id;
                 $tariff->tariff_id = 1;
-                $tariff->activated_at = time();
-                $tariff->valid_at = time();
                 $tariff->save();
 
                 // добавляем тариф к оплате
