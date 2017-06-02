@@ -2,14 +2,11 @@
 
 namespace backend\controllers;
 
-use common\models\TourfirmsReviews;
-use Yii;
 use yii\data\ActiveDataProvider;
-use backend\models\search\UserSearch;
-use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\TourfirmsReviews;
 
 /**
  * UserController implements the CRUD actions for User model.

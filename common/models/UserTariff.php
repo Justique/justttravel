@@ -48,8 +48,8 @@ class UserTariff extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'tariff_id' => 'Tariff ID',
-            'valid_at' => 'Valid At',
+            'tariff_id' => 'Тариф',
+            'valid_at' => 'Действует до',
         ];
     }
 

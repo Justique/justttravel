@@ -149,6 +149,7 @@ return [
     'User Registrations' => 'Регистраций',
     'Username' => 'Имя пользователя',
     'Users' => 'Пользователи',
+    'Tourfirms' => 'Турфирмы',
     'Reviews' => 'Отзывы',
     'View all' => 'Смотреть всё',
     'View user' => 'Просмотр пользователя',

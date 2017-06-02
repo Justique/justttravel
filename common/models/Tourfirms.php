@@ -158,6 +158,7 @@ class Tourfirms extends \yii\db\ActiveRecord
             'address' => 'Адрес',
             'name' => 'Название',
             'phone' => 'Телефон',
+            'touroperator_id' => 'Туроператор',
             'legal_info' => 'Юридическая информация',
             'country_to_id' => 'Страна',
             'attachments' => 'Картинки',

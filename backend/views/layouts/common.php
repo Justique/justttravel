@@ -154,6 +154,12 @@ $bundle = BackendAsset::register($this);
                             ]
                         ],
                         [
+                            'label'=> Yii::t('backend', 'Tourfirms'),
+                            'icon'=>' <i class="fa fa-diamond"></i>',
+                            'url'=> ['/tourfirms/index'],
+                            'visible' => Yii::$app->user->can('administrator')
+                        ],
+                        [
                             'label'=>Yii::t('backend', 'Reviews'),
                             'icon'=>'<i class="fa fa-star"></i>',
                             'url'=>['/reviews/index'],
