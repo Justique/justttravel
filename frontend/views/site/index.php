@@ -264,7 +264,7 @@ use yii\helpers\Html;
                 <?php } ?>
             </div>
         <?php }else{ ?>
-            <h1>Новых отзывов нету</h1>
+            <h1 style="margin-bottom: 30px;">Новых отзывов нету</h1>
         <?php } ?>
     </div>
 </section>
