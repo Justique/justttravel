@@ -39,7 +39,7 @@ $this->title = 'Туры';
     <div style="width: 250px; display: inline-block;">
         <?= Html::dropDownList('ToursSearch[country_to_id]', null, $countries, [
             'id' => 'tours-country',
-            'prompt' => 'Выберете страну',
+            'prompt' => 'Выберите страну',
             'options' => isset(Yii::$app->request->get('ToursSearch')['country_to_id'])
                 ? [
                     Yii::$app->request->get('ToursSearch')['country_to_id'] => ['selected ' => true]
