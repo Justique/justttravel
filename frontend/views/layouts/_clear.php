@@ -30,6 +30,14 @@ use yii\helpers\Html;
 
 
 </body>
-
+<?php if(!YII_DEBUG): ?>
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?137"></script>
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?137"></script>
+    <!-- VK Widget -->
+    <div id="vk_community_messages"></div>
+    <script type="text/javascript">
+        VK.Widgets.CommunityMessages("vk_community_messages", 107433186, {expandTimeout: "5000",widgetPosition: "left",tooltipButtonText: "Есть вопрос?"});
+    </script>
+<?php endif; ?>
 </html>
 <?php $this->endPage() ?>
