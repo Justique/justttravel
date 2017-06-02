@@ -97,7 +97,8 @@ class SiteController extends Controller
             Yii::$app->response->format = Response::FORMAT_JSON;
             return ActiveForm::validate($model);
         } elseif (Yii::$app->request->isPjax && $model->validate()) {
-            $model->contact(Yii::$app->params['adminEmail']);
+            //$model->contact(Yii::$app->params['adminEmail']);
+            $model->contact(Yii::$app->keyStorage->get('frontend.admin_email'));
             Yii::$app->session->setFlash('alert', Yii::t('token.frontend', 'Спасибо за сообщение об ошибке!'));
             return $this->redirect(['index']);
         }
