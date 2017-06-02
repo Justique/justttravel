@@ -35,8 +35,7 @@ use frontend\helpers\MetrikaHelper;
             </ul>
         </nav>
         <div class="sponsors">
-            <a href="#"></a>
-            <a href="#"></a>
+            <a href="#" class="akavita"></a>
         </div>
     </div>
 </footer>

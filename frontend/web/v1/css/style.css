@@ -175,7 +175,8 @@ footer nav ul {display: inline-block; vertical-align: middle; margin: 0 40px;}
 footer nav a {color: #7a7a7a; font-size: 1.2em; line-height: 1.7em;}
 footer nav a:hover {text-decoration: none;}
 .sponsors { display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; -ms-flex-line-pack: center; -webkit-align-content: center; align-content: center; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; margin-left: 7%; padding: 10px 12px 0 0;}
-.sponsors a {display: inline-block; width: 88px; height: 31px; background: url(../img/logo_sponsor_1.jpg); margin: 2px;}
+.sponsors a {display: inline-block; width: 88px; height: 31px; margin: 2px;}
+.sponsors a.akavita {background: url(../img/logo_sponsor_1.jpg);}
 
 /*News styles*/
 .news-block {margin: 70px 0;}
