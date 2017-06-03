@@ -31,5 +31,5 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 
-    <?php echo Html::submitButton('Сохранить измениния', ['class' => 'button yellow']) ?>
+    <?php echo Html::submitButton('Сохранить изменения', ['class' => 'button yellow']) ?>
 <?php ActiveForm::end(); ?>
