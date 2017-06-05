@@ -2,30 +2,43 @@
 
 namespace frontend\helpers;
 
+use Yii;
 use yii\helpers\ArrayHelper;
 
 class MetrikaHelper
 {
     public static function getUsersCount()
     {
-        $obj = new self();
-        $response = $obj->query('ym:s:users');
-        if ($response) {
-            $response = json_decode($obj->query('ym:s:users'));
-            return (int)ArrayHelper::getValue($response, 'totals.0');
+        $cache = Yii::$app->cache;
+        $count = $cache->get('metrika_users');
+        if (!$count) {
+            $obj = new self();
+            $response = $obj->query('ym:s:users');
+            $total = 0;
+            if ($response) {
+                $response = json_decode($response);
+                $total = (int)ArrayHelper::getValue($response, 'totals.0');
+            }
+            $cache->add('metrika_users', $total, 60*60);
         }
-        return 0;
+        return $count;
     }
 
     public static function getPageViews()
     {
-        $obj = new self();
-        $response = $obj->query('ym:s:pageviews');
-        if ($response) {
-            $response = json_decode($obj->query('ym:s:users'));
-            return (int)ArrayHelper::getValue($response, 'totals.0');
+        $cache = Yii::$app->cache;
+        $count = $cache->get('metrika_pageviews');
+        if (!$count) {
+            $obj = new self();
+            $response = $obj->query('ym:s:pageviews');
+            $total = 0;
+            if ($response) {
+                $response = json_decode($response);
+                $total = (int)ArrayHelper::getValue($response, 'totals.0');
+            }
+            $cache->add('metrika_pageviews', $total, 60*60);
         }
-        return 0;
+        return $count;
     }
 
     private function query($metrics)
