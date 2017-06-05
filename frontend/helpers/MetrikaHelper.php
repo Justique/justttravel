@@ -14,12 +14,12 @@ class MetrikaHelper
         if (!$count) {
             $obj = new self();
             $response = $obj->query('ym:s:users');
-            $total = 0;
+            $count = 0;
             if ($response) {
                 $response = json_decode($response);
-                $total = (int)ArrayHelper::getValue($response, 'totals.0');
+                $count = (int)ArrayHelper::getValue($response, 'totals.0');
             }
-            $cache->add('metrika_users', $total, 60*60);
+            $cache->add('metrika_users', $count, 60*60);
         }
         return $count;
     }
@@ -31,12 +31,12 @@ class MetrikaHelper
         if (!$count) {
             $obj = new self();
             $response = $obj->query('ym:s:pageviews');
-            $total = 0;
+            $count = 0;
             if ($response) {
                 $response = json_decode($response);
-                $total = (int)ArrayHelper::getValue($response, 'totals.0');
+                $count = (int)ArrayHelper::getValue($response, 'totals.0');
             }
-            $cache->add('metrika_pageviews', $total, 60*60);
+            $cache->add('metrika_pageviews', $count, 60*60);
         }
         return $count;
     }
