@@ -7,21 +7,23 @@ use yii\widgets\ActiveForm;
     <div class="content-wrapper">
         <?php echo \frontend\modules\tourfirms\widgets\TourfirmHeaderWidget::widget(['model' => $model]) ?>
         <div class="contacts-container">
-            <h1>Телефоны</h1>
-            <ul class="manager-contact">
-                <?php if ($model->tourfirmsPhon->default) { ?>
-                    <li class="contact-phone"><?php echo $model->tourfirmsPhon->default ?></li><?php } ?>
-                <?php if ($model->tourfirmsPhon->life) { ?>
-                    <li class="contact-life"><?php echo $model->tourfirmsPhon->life ?></li><?php } ?>
-                <?php if ($model->tourfirmsPhon->mts) { ?>
-                    <li class="contact-mts"><?php echo $model->tourfirmsPhon->mts ?></li><?php } ?>
-                <?php if ($model->tourfirmsPhon->velcom) { ?>
-                    <li class="contact-viber"><?php echo $model->tourfirmsPhon->velcom ?></li><?php } ?>
-                <?php if ($model->tourfirmsPhon->skype) { ?>
-                    <li class="contact-skype"><?php echo $model->tourfirmsPhon->skype ?></li><?php } ?>
-                <?php if ($model->tourfirmsPhon->icq) { ?>
-                    <li class="contact-icq"><?php echo $model->tourfirmsPhon->icq ?></li><?php } ?>
-            </ul>
+            <?php if ($model->tourfirmsPhon): ?>
+                <h1>Телефоны</h1>
+                <ul class="manager-contact">
+                    <?php if ($model->tourfirmsPhon->default) { ?>
+                        <li class="contact-phone"><?php echo $model->tourfirmsPhon->default ?></li><?php } ?>
+                    <?php if ($model->tourfirmsPhon->life) { ?>
+                        <li class="contact-life"><?php echo $model->tourfirmsPhon->life ?></li><?php } ?>
+                    <?php if ($model->tourfirmsPhon->mts) { ?>
+                        <li class="contact-mts"><?php echo $model->tourfirmsPhon->mts ?></li><?php } ?>
+                    <?php if ($model->tourfirmsPhon->velcom) { ?>
+                        <li class="contact-viber"><?php echo $model->tourfirmsPhon->velcom ?></li><?php } ?>
+                    <?php if ($model->tourfirmsPhon->skype) { ?>
+                        <li class="contact-skype"><?php echo $model->tourfirmsPhon->skype ?></li><?php } ?>
+                    <?php if ($model->tourfirmsPhon->icq) { ?>
+                        <li class="contact-icq"><?php echo $model->tourfirmsPhon->icq ?></li><?php } ?>
+                </ul>
+            <?php endif; ?>
             <h1>Обратная связь</h1>
             <?php $form = ActiveForm::begin(
                 [
