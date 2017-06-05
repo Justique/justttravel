@@ -118,7 +118,7 @@ use yii\helpers\Html;
                     <div class="container">
                         <?php
                         $path = Yii::$app->glide->createSignedUrl(['glide/index', 'path' => $big->thumbnail_path, 'w' => 530], true);
-                        if (checkRemoteFile($path) == false) {
+                        if (!$big->thumbnail_path) {
                             echo Html::img('/v1/img/grid-item.jpg');
                         } else {
                             echo Html::img(
@@ -143,7 +143,7 @@ use yii\helpers\Html;
                     <div class="container">
                         <?php
                         $path = Yii::$app->glide->createSignedUrl(['glide/index', 'path' => $model->thumbnail_path, 'w' => 100], true);
-                        if (checkRemoteFile($path) == false) {
+                        if (!$model->thumbnail_path) {
                             echo Html::img('/v1/img/grid-item.jpg');
                         } else {
                             echo Html::img(
