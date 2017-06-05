@@ -116,7 +116,7 @@ class Article extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'body', 'category_id', 'tourfirm_id'], 'required'],
+            [['title', 'body', 'category_id'], 'required'],
             [['title'], 'unique'],
             [['slug'], 'unique'],
             [['body'], 'string'],
