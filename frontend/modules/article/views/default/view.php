@@ -16,7 +16,7 @@
                 'q' => getenv('IMAGE_QUALITY')
             ], true);
 
-        if( $model->articleAttachments) {
+        if($model->articleAttachments) {
             foreach($model->articleAttachments as $img) {
                 echo \yii\helpers\Html::img(
                     Yii::$app->glide->createSignedUrl([

@@ -21,8 +21,8 @@ use yii\widgets\LinkPager;
                     <span class="label-date"><?php echo $big->getDate(); ?></span>
                     <?php
                     $path = Yii::$app->glide->createSignedUrl(['glide/index', 'path' => $big->thumbnail_path, 'w' => 530], true);
-                    if (checkRemoteFile($path) == false) {
-                        //echo Html::img('/v1/img/grid-item.jpg');
+                    if (!$big->thumbnail_path) {
+                        echo Html::img('/v1/img/grid-item.jpg');
                     } else {
                         echo Html::img(
                             Yii::$app->glide->createSignedUrl([
@@ -44,7 +44,7 @@ use yii\widgets\LinkPager;
                     <div class="container">
                         <?php
                         $path = Yii::$app->glide->createSignedUrl(['glide/index', 'path' => $model->thumbnail_path, 'w' => 100], true);
-                        if (checkRemoteFile($path) == false) {
+                        if (!$model->thumbnail_path) {
                             echo Html::img('/v1/img/grid-item.jpg');
                         } else {
                             echo Html::img(
