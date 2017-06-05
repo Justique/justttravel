@@ -18,18 +18,20 @@ use yii\helpers\Html;
                                 ], true)
                             ) ?>
                         <?php endif; ?>
-                        <div class="timing">
-                            <h3><i class="fa fa-clock-o"></i>Время работы</h3>
-                            <ul>
-                                <li>понедельник: <?php echo $model->tourfirmWorkTime->monday ?></li>
-                                <li>вторник: <?php echo $model->tourfirmWorkTime->tuesday ?></li>
-                                <li>среда: <?php echo $model->tourfirmWorkTime->wednesday ?></li>
-                                <li>четверг: <?php echo $model->tourfirmWorkTime->thursday ?></li>
-                                <li>пятница: <?php echo $model->tourfirmWorkTime->friday ?></li>
-                                <li>суббота: <?php echo $model->tourfirmWorkTime->saturday ?></li>
-                                <li>воскресенье: <?php echo $model->tourfirmWorkTime->sunday ?></li>
-                            </ul>
-                        </div>
+                        <?php if ($model->tourfirmWorkTime): ?>
+                            <div class="timing">
+                                <h3><i class="fa fa-clock-o"></i>Время работы</h3>
+                                <ul>
+                                    <li>понедельник: <?php echo $model->tourfirmWorkTime->monday ?></li>
+                                    <li>вторник: <?php echo $model->tourfirmWorkTime->tuesday ?></li>
+                                    <li>среда: <?php echo $model->tourfirmWorkTime->wednesday ?></li>
+                                    <li>четверг: <?php echo $model->tourfirmWorkTime->thursday ?></li>
+                                    <li>пятница: <?php echo $model->tourfirmWorkTime->friday ?></li>
+                                    <li>суббота: <?php echo $model->tourfirmWorkTime->saturday ?></li>
+                                    <li>воскресенье: <?php echo $model->tourfirmWorkTime->sunday ?></li>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="info">
