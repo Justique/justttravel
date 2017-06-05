@@ -16,9 +16,7 @@
                 'q' => getenv('IMAGE_QUALITY')
             ], true);
 
-        if(checkRemoteFile($path) == false) {
-            echo \yii\helpers\Html::img('/v1/img/grid-quad-item.jpg');
-        }else{
+        if( $model->articleAttachments) {
             foreach($model->articleAttachments as $img) {
                 echo \yii\helpers\Html::img(
                     Yii::$app->glide->createSignedUrl([
