@@ -49,7 +49,7 @@ class TourfirmWorkTime extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'tourfirm_id' => 'Tourfirm ID',
-            'monday' => 'Понидельник',
+            'monday' => 'Понедельник',
             'tuesday' => 'Вторник',
             'wednesday' => 'Среда',
             'thursday' => 'Четверг',
