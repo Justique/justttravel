@@ -14,6 +14,7 @@ use yii\helpers\Html;
  * @var $articles \common\models\Article
  * @var $big \common\models\Article
  */
+$this->title = 'Justtravel.by - все туры Беларуси: подбор туров, виз, каталог турфирм';
 ?>
 <section>
     <div class="content-wrapper">
