@@ -145,11 +145,13 @@ use yii\web\JsExpression;
     <?= $form->field($model, 'touroperator_id')->hiddenInput(['value' => user()->id])->label(false) ?>
     <?php if(isset($model->id)){ ?>
         <div class="buttons">
-                <?= Html::submitButton('Сохранить Изменение', ['class' => 'button yellow']) ?>
-                <?= Html::a("<i class='fa fa-trash' aria-hidden='true'></i>". 'Удалить Турфирму', ["/user/tourfirms/delete?id=$model->id"],['class' => 'ajax-link button yellow','title'=>'удалить','style'=>'display:inline-block', "aria-label"=>'Удалить', 'data-confirm'=>'Вы уверены, что хотите удалить турфирму?','data-method'=>'post', 'data-pjax'=>0]) ?>
+            <?= Html::submitButton('Сохранить Изменение', ['class' => 'button yellow']) ?>
+            <?= Html::a("<i class='fa fa-trash' aria-hidden='true'></i>". 'Удалить Турфирму', ["/user/tourfirms/delete?id=$model->id"],['class' => 'ajax-link button yellow','title'=>'удалить','style'=>'display:inline-block', "aria-label"=>'Удалить', 'data-confirm'=>'Вы уверены, что хотите удалить турфирму?','data-method'=>'post', 'data-pjax'=>0]) ?>
         </div>
     <?php }else{ ?>
-        <?= Html::submitButton('Создать', ['class' => 'button yellow']) ?>
+        <div class="buttons">
+            <?= Html::submitButton('Создать', ['class' => 'button yellow']) ?>
+        </div>
     <?php } ?>
     <?php ActiveForm::end(); ?>
 

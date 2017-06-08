@@ -7,7 +7,7 @@
 ?>
 <section class="tour-full-page">
     <div class="content-wrapper">
-        <h1 class="mid-head"><?php echo $model->getCF('title'); ?>е</h1>
+        <h1 class="mid-head"><?php echo $model->getCF('title'); ?></h1>
         <?php
         $path = Yii::$app->glide->createSignedUrl([
                 'glide/index',

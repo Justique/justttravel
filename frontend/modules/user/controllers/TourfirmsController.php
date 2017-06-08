@@ -86,7 +86,13 @@ class TourfirmsController extends Controller
         $model = new Tourfirms();
         $modelPhons = new TourfirmsPhons();
         $modelWorkTime = new TourfirmWorkTime();
-        if ($model->load(Yii::$app->request->post()) && $model->save() ) {
+        if ($model->load(Yii::$app->request->post()) &&
+            $modelPhons->load(Yii::$app->request->post()) &&
+            $modelWorkTime->load(Yii::$app->request->post()) ) {
+            $model->save();
+            $modelPhons->save();
+            $modelWorkTime->save();
+
             return $this->actionIndex();
 //            return $this->redirect(['view', 'id' => $model->id]);
         } else {
