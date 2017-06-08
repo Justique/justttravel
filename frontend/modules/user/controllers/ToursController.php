@@ -46,7 +46,7 @@ class ToursController extends Controller
             'dataProvider' => $dataProvider,
             'model' => $this->getTourfirms(),
             'flagTourfirm' => $flagTourfirm,
-            'canCreate' => userModel()->tariff->canCreateTour(),
+            'canCreate' => userModel()->tariff && userModel()->tariff->canCreateTour(),
             'canUp' => userModel()->tariff->canUpTour(),
         ]);
     }
@@ -93,7 +93,7 @@ class ToursController extends Controller
      */
     public function actionCreate()
     {
-        if (userModel()->tariff->canCreateTour()) {
+        if (userModel()->tariff && userModel()->tariff->canCreateTour()) {
             $this->layout = '/profile';
             $model = new Tours();
 
