@@ -47,7 +47,7 @@ class ToursController extends Controller
             'model' => $this->getTourfirms(),
             'flagTourfirm' => $flagTourfirm,
             'canCreate' => userModel()->tariff && userModel()->tariff->canCreateTour(),
-            'canUp' => userModel()->tariff->canUpTour(),
+            'canUp' => userModel()->tariff && userModel()->tariff->canUpTour(),
         ]);
     }
 
@@ -143,7 +143,7 @@ class ToursController extends Controller
     }
 
     public function actionUp($id) {
-        if (userModel()->tariff->canUpTour()) {
+        if (userModel()->tariff && userModel()->tariff->canUpTour()) {
             $model = $this->findModel($id);
             $model->price = (string)$model->price;
             $model->published_at = time();
