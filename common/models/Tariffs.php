@@ -71,27 +71,27 @@ class Tariffs extends \yii\db\ActiveRecord
         switch ($attribute) {
             case 'count_tours':
                 $text = $this->count_tours == self::INFINITY_NUMBER ? '∞ туров в каталоге' :
-                    Yii::t('app',
+                    Yii::t('frontend',
                         '{0, plural, one{# тур} few{# тура} other{# туров}} в каталоге',
                         $this->count_tours
                     );
                 break;
             case 'count_up_tours':
-                $text = Yii::t('app',
+                $text = Yii::t('frontend',
                     '{0, plural, one{# ап} few{# апа} other{# апов}} туров в каталоге',
                     $this->count_up_tours
                 );
                 break;
             case 'count_visas':
                 $text = $this->count_visas == 0 ? 'визы' :
-                    Yii::t('app',
+                    Yii::t('frontend',
                         '{0, plural, one{# виза} few{# визы} other{# виз}}',
                         $this->count_visas
                     );
                 break;
             case 'count_up_visas':
                 $text = $this->count_up_visas == 0 ? 'апы виз' :
-                    Yii::t('app',
+                    Yii::t('frontend',
                         '{0, plural, one{# ап} few{# апа} other{# апов}} виз',
                         $this->count_up_visas
                     );
@@ -102,13 +102,13 @@ class Tariffs extends \yii\db\ActiveRecord
                 elseif ($this->count_responses == self::INFINITY_NUMBER)
                     $text = '∞ откликов на заявки';
                 else
-                    $text = Yii::t('app',
+                    $text = Yii::t('frontend',
                         '{0, plural, one{# отклик} few{# отклика} other{# откликов}} на заявки',
                         $this->count_responses
                     );
                 break;
             case 'count_managers':
-                $text = Yii::t('app',
+                $text = Yii::t('frontend',
                     '{0, plural, one{# аккаунт} other{# аккаунтов}} менеджера',
                     $this->count_managers
                 );

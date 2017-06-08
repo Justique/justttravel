@@ -57,7 +57,7 @@ $this->title = 'Туры';
     <li class="<?php if($countComp = Module3::getComparison($item->id)){echo "green";} ?> comparing">
         <a href="/tour/<?php echo $item->slug ?>" class="tour-link"></a>
         <div class="tour-name">
-            <a href="/tour/<?php echo $item->slug ?>" class="blue"><?php echo $item->title ?></a>
+            <a href="/tourfirm/<?php echo $item->tourfirm->slug ?>/info" class="blue"><?php echo $item->tourfirm->name ?></a>
             <div class="tour-rate">
                     <span class="rating-grade <?php echo Module4::getStyleForReviews((float)$item->tourfirm->rating ) ?>"><?php echo (float)$item->tourfirm->rating ?></span>
                     <?php if(user()->id){ ?>
