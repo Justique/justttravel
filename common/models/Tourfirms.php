@@ -208,7 +208,7 @@ class Tourfirms extends \yii\db\ActiveRecord
             $TourfirmsPhons->default = yii::$app->request->post('TourfirmsPhons')['default'];
             $TourfirmsPhons->mts = yii::$app->request->post('TourfirmsPhons')['mts'];
             $TourfirmsPhons->life = yii::$app->request->post('TourfirmsPhons')['life'];
-            $TourfirmsPhons->viber = yii::$app->request->post('TourfirmsPhons')['viber'];
+            $TourfirmsPhons->velcom = yii::$app->request->post('TourfirmsPhons')['velcom'];
             $TourfirmsPhons->skype = yii::$app->request->post('TourfirmsPhons')['skype'];
             $TourfirmsPhons->icq = yii::$app->request->post('TourfirmsPhons')['icq'];
             $TourfirmsWorkTime = new TourfirmWorkTime();

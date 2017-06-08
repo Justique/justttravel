@@ -16,7 +16,7 @@ use yii\helpers\Html;
     <?php $this->head() ?>
     <meta name="description" content="Justtravel.by - агрегатор белорусских турфирм. Поиск туров, сравнение цен, каталог турфирм с отзывами. Поиск попутчиков, онлайн заявки, горящие туры">
     <meta name="keywords" content="Турфирмы, Беларусь, туры, визы, цены, онлайн, заявки, путёвки">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="/js/locationpicker.jquery.js"></script>
