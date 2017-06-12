@@ -24,7 +24,7 @@ $this->beginContent('@frontend/views/layouts/base.php')
                     ['alt' => '']
                 ) ?>
             <?php }else{ ?>
-            <img src="/v1/img/avatar.jpg" alt="John Smith">
+                <img src="/v1/img/avatar.jpg" alt="John Smith">
             <?php } ?>
             <p class="name hideable"><?php echo userModel()->userProfile->firstname; ?> <?php echo userModel()->userProfile->lastname; ?></p>
             <p class="hideable"><em>

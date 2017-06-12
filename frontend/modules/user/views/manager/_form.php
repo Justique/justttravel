@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\UserProfile;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
@@ -10,6 +11,17 @@ use yii\widgets\ActiveForm;
 <?php $form = ActiveForm::begin(['options'=>['class'=>'make-order-form grey-form create-req-form']]); ?>
 
     <p class="form-heading">Заполните поля</p>
+
+    <div class="input-padded">
+        <label>
+            <p>Аватар</p>
+            <?php echo $form->field($model->userProfile ? $model->userProfile : new UserProfile(), 'picture')->widget(
+                \trntv\filekit\widget\Upload::classname(),
+                ['url' => ['avatar-upload']]
+            )->label(false) ?>
+        </label>
+    </div>
+
     <div class="input-padded">
         <label>
             <p>Имя и фамилия</p>
@@ -55,20 +67,10 @@ use yii\widgets\ActiveForm;
         </label>
     </div>
 
-<?= $form->field($model, 'status')->hiddenInput(['value'=>1])->label(false); ?>
-<?= $form->field($model, 'type')->hiddenInput(['value'=>3])->label(false); ?>
-<!--    <div class="centered img-capture">-->
-<!--        <div class="container">-->
-<!--            <div class="canvas-holder">-->
-<!--                <canvas></canvas>-->
-<!--            </div>-->
-<!--            <div>-->
-<!--                <a href="#" class="button">удалить аватар</a>-->
-<!--                <input type="file" accept="/image" hidden>-->
-<!--                <a href="#" class="button">загрузить аватар</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+    <?= $form->field($model, 'status')->hiddenInput(['value'=>1])->label(false); ?>
+
+    <?= $form->field($model, 'type')->hiddenInput(['value'=>3])->label(false); ?>
+
     <?= Html::submitButton($model->isNewRecord ? 'Создать' : 'Изменить', ['class' => $model->isNewRecord ? 'submit' : 'submit']) ?>
 <!--    <a href="#" class="button-delete"><i class="fa fa-trash" aria-hidden="true"></i></a>-->
 <?php ActiveForm::end(); ?>

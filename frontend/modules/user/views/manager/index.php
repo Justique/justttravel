@@ -43,15 +43,23 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <a href="/user/manager/update?id=<?php echo $manager->id ?>" class="edit"><i class="fa fa-pencil-square-o"></i></a>
                                         <a href="/user/manager/delete?id=<?php echo $manager->id ?>" class="delete"  title="удалить" aria-label='Удалить' data-confirm='Вы уверены, что хотите удалить этот элемент?' data-method='post' data-pjax=0><i class="fa fa-times"></i></a>
                                     </div>
-                                    <?php
-                                    echo Html::img(
-                                        Yii::$app->glide->createSignedUrl([
-                                            'glide/index',
-                                            'path' => $manager->userProfile->avatar_path,
-                                            'w' => 100
-                                        ], true)
-                                    );
-                                    ?>
+                                    <?php if ($manager->userProfile->avatar_path){ ?>
+                                        <?php echo Html::img(
+                                            Yii::$app->glide->createSignedUrl([
+                                                'glide/index',
+                                                'path' => $manager->userProfile->avatar_path,
+                                                'w' => 255,
+                                                'h' => 255,
+                                                'fit' => 'crop',
+                                                'q' => getenv('IMAGE_QUALITY')
+                                            ], true),
+                                            ['alt' => '']
+                                        ) ?>
+                                    <?php }else{ ?>
+                                        <div style="width: 125px; margin: auto;">
+                                            <img src="/v1/img/avatar.jpg" alt="John Smith">
+                                        </div>
+                                    <?php } ?>
                                 </div>
                                 <ul class="manager-contact">
                                     <?php if(isset($manager->phone->default)){?><li class="contact-phone"><?php echo $manager->phone->default ?></li><?php } ?>

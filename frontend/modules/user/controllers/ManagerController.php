@@ -1,11 +1,14 @@
 <?php
 
 namespace frontend\modules\user\controllers;
+
 use common\models\ManagersPhone;
 use common\models\TouroperatorsManagers;
 use common\models\User;
 use common\models\UserProfile;
-use common\models\UsersManagers;
+use Intervention\Image\ImageManagerStatic;
+use trntv\filekit\actions\DeleteAction;
+use trntv\filekit\actions\UploadAction;
 use frontend\modules\user\models\TourfirmUserSearch;
 use Yii;
 use yii\filters\VerbFilter;
@@ -25,6 +28,28 @@ class ManagerController extends Controller
                 'actions' => [
                     'delete' => ['post'],
                 ],
+            ],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function actions()
+    {
+        return [
+            'avatar-upload' => [
+                'class' => UploadAction::className(),
+                'deleteRoute' => 'avatar-delete',
+                'on afterSave' => function ($event) {
+                    /* @var $file \League\Flysystem\File */
+                    $file = $event->file;
+                    $img = ImageManagerStatic::make($file->read())->fit(215, 215);
+                    $file->put($img->encode());
+                }
+            ],
+            'avatar-delete' => [
+                'class' => DeleteAction::className()
             ],
         ];
     }
@@ -95,6 +120,8 @@ class ManagerController extends Controller
                     TouroperatorsManagers::saveUsersManagers(user()->id, $lastId);
                     ManagersPhone::savePhoneManager($this->getModelManagersPhone(), $post, $lastId);
                     UserProfile::saveManager($lastId);
+                    $model->userProfile->load(Yii::$app->request->post());
+                    $model->userProfile->save();
                     return $this->redirect(['index', 'id' => $model->id]);
                 }
             } else {
@@ -126,6 +153,8 @@ class ManagerController extends Controller
             $model->setPassword(Yii::$app->request->post('User')['password_hash']);
             if($model->save()){
                 ManagersPhone::updatePhoneManager($this->getModelManagersPhone(),$id, Yii::$app->request->post());
+                $model->userProfile->load(Yii::$app->request->post());
+                $model->userProfile->save();
             }
             return $this->redirect(['index', 'id' => $model->id]);
         } else {
