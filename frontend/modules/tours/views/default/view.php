@@ -69,15 +69,22 @@ use yii\widgets\MaskedInput;
         <div class="img-tour-desc">
             <?php if ($model->tourAttachments): ?>
                 <?php foreach ($model->tourAttachments as $img): ?>
-                    <?= \yii\helpers\Html::img(
-                        Yii::$app->glide->createSignedUrl([
+                    <?= Html::a(
+                        Html::img(Yii::$app->glide->createSignedUrl([
                             'glide/index',
                             'path' => $img->path,
-                            'w' => 200,
-                            'h' => 140,
+                            'w' => 255,
+                            'h' => 255,
+                            'fit' => 'crop',
                             'q' => getenv('IMAGE_QUALITY')
                         ], true)
-                    ) ?>
+                        ),
+                        Yii::$app->glide->createSignedUrl([
+                            'glide/index',
+                            'path' => $img->path
+                        ], true),
+                        ['data-lightbox' => 'img-' . $img->id])
+                    ?>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>

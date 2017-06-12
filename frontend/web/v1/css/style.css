@@ -55,12 +55,6 @@
          url('../fonts/RalewayMedium.svg') format('svg');
 }
 
-
-@font-face {
-  font-family: 'Glyphicons Halflings';
-  src: url('http://beta1.justtravel.by/v1/fonts/glyphicons-halflings-regular.eot');
-  src: url('http://beta1.justtravel.by/v1/fonts/glyphicons-halflings-regular.eot?') format('embedded-opentype'), url('http://beta1.justtravel.by/v1/fonts/glyphicons-halflings-regular.woff') format('woff'), url('http://beta1.justtravel.by/v1/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('http://beta1.justtravel.by/v1/fonts/glyphicons-halflings-regular.svg') format('svg');}
-
 * {margin:0; padding:0; box-sizing:border-box; border:none; outline:none; list-style:none; font-family: "RalewayRegular"}
 html {font-size: 75%}
 body {font: normal 1em/1.3 'RalewayRegular', sans-serif}
@@ -587,6 +581,7 @@ a.blue {color: #0096ff;}
 .tour-info .tour-price>p span {font-size: 18px;}
 .img-tour-desc img{margin: 0 10px 10px 0;}
 .tour-desc-text{padding-bottom: 20px;}
+.tour-desc-text p {line-height: 20px; font-size: 1.2em;}
 .mid-head {margin-bottom: 65px;}
 .tour-full-page .social {margin: 55px 0 38px;}
 .tour-full-page .company-desc-text div{padding: 20px 0;}
