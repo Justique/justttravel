@@ -117,15 +117,17 @@ use yii\widgets\MaskedInput;
         </div>
         <div class="tour-manager">
             <p>Менеджер тура</p>
-            <?php echo \yii\helpers\Html::img(
-                Yii::$app->glide->createSignedUrl([
-                    'glide/index',
-                    'path' => $model->profile->avatar_path,
-                    'w' => 200,
-                    'h' => 200,
-                    'q' => getenv('IMAGE_QUALITY')
-                ], true)
-            ); ?>
+            <?php if ($model->profile->avatar_path): ?>
+                <?php echo \yii\helpers\Html::img(
+                    Yii::$app->glide->createSignedUrl([
+                        'glide/index',
+                        'path' => $model->profile->avatar_path,
+                        'w' => 200,
+                        'h' => 200,
+                        'q' => getenv('IMAGE_QUALITY')
+                    ], true)
+                ); ?>
+            <?php endif; ?>
             <p><?php echo $model->user->username ?></p>
         </div>
         <ul class="manager-contact">
