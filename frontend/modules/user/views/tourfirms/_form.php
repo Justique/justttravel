@@ -98,7 +98,7 @@ use yii\web\JsExpression;
                         <label class="col-sm-2 control-label"></label>
 
                         <div class="col-sm-10">
-                            <?= $form->field($model, 'address')->textInput(['class'=>'form-control', 'id'=>'us3-address']) ?>
+                            <?= $form->field($model, 'address')->textInput(['class'=>'form-control', 'id'=>'us3-address', 'readonly' => true]) ?>
                         </div>
                     </div>
                     <div class="form-group">
