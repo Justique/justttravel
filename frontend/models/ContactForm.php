@@ -56,12 +56,11 @@ class ContactForm extends Model
             $message = nl2br($this->body);
             $text = "
                 <b>Имя:</b>$this->name<br>
-                <b>Email:</b>$this->name<br>
+                <b>Email:</b>$this->email<br>
                 <b>Текст:</b>$message<br>
                 ";
             return Yii::$app->mailer->compose()
                 ->setTo($email)
-                ->setFrom(Yii::$app->params['robotEmail'])
                 ->setReplyTo([$this->email => $this->name])
                 ->setSubject('Новое сообщение об ошибке')
                 ->setHtmlBody($text)
