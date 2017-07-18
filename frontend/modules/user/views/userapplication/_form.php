@@ -25,7 +25,7 @@ $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(
                 <?php
                     echo $form->field($model, 'country_id')->dropDownList($countries, [
                         'prompt' => 'Любая страна','class' => 'select user-form firm-form', 'id'=>'cat-id-id'
-                    ])->label(false);
+                    ])->label('Страна назначения');
                 ?>
             </label>
 
@@ -35,58 +35,21 @@ $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(
                     'options' => ['id'=>'subcat-id'],
                     'pluginOptions'=>[
                         'depends'=>['cat-id-id'],
-                        'placeholder' => 'Из любого города',
+                        'placeholder' => 'Любой город',
                         'url' => Url::to(['/site/cities'])
                     ],
                     'pluginEvents' => [
                         "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
                     ]
-                ])->label(false);
+                ])->label('Город-курорт');
                 ?>
             </label>
-
-            <label class="select">
-                <?php echo $form->field($model, 'resort_city')->widget(DepDrop::classname(), [
-                    'type' => 1,
-                    'options' => ['id'=>'subcat-id-id'],
-                    'pluginOptions'=>[
-                        'depends'=>['cat-id-id'],
-                        'placeholder' => 'Любой курорт',
-                        'url' => Url::to(['/site/cities'])
-                    ],
-                    'pluginEvents' => [
-                        "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
-                    ]
-                ])->label(false);
-                ?>
-             </label>
-
-            <label class="select">
-                <?php echo $form->field($model, 'date')->widget(\yii\jui\DatePicker::classname(), [
-                    'language' => 'ru',
-                    'dateFormat' => 'yyyy-MM-dd',
-                    'options' => ['placeholder' => 'Дата'],
-                ])->label(false) ?>
-            </label>
-
-            <label class="select">
-                <?= $form->field($model, 'price')->textInput(['placeholder'=>'Цена'])->label(false) ?>
-            </label>
-
-            <label class="select">
-                <?php echo $form->field($model, 'adults')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Взрослых'])->label(false) ?>
-            </label>
-
-            <label class="select">
-                <?php echo $form->field($model, 'childrens')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Детей'])->label(false) ?>
-            </label>
-
 
             <label class="select">
                 <?php
                 echo $form->field($model, 'country_from_id')->dropDownList($countries, [
                     'prompt' => 'Страна','class' => 'select user-form firm-form', 'id'=>'cat-id-id-id'
-                ])->label(false);
+                ])->label('Страна отправления');
                 ?>
             </label>
 
@@ -96,32 +59,53 @@ $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(
                     'options' => ['id'=>'subcat-id-id-id'],
                     'pluginOptions'=>[
                         'depends'=>['cat-id-id-id'],
-                        'placeholder' => 'Город покупки тура',
+                        'placeholder' => 'Город отправления',
                         'url' => Url::to(['/site/cities'])
                     ],
                     'pluginEvents' => [
                         "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
                     ]
-                ])->label(false);
+                ])->label('Город отправления');
                 ?>
             </label>
 
             <label class="select">
-                <?php echo $form->field($model, 'days')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Дней'])->label(false) ?>
+                <?php echo $form->field($model, 'adults')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Взрослых'])->label('Кол-во взрослых') ?>
             </label>
 
             <label class="select">
-                <?php echo $form->field($model, 'nights')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Ночей'])->label(false) ?>
+                <?php echo $form->field($model, 'childrens')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Детей'])->label('Кол-во детей') ?>
             </label>
 
-            <?php
+            <label class="select">
+                <?php echo $form->field($model, 'days')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Дней'])->label('Кол-во дней') ?>
+            </label>
+
+            <label class="select">
+                <?php echo $form->field($model, 'nights')->dropDownList(array_combine (range(1,20),range(1,20)), ['prompt' => 'Ночей'])->label('Кол-во ночей') ?>
+            </label>
+
+            <label class="select">
+                <?php
                 $transports = Transports::find()->all();
                 $items = ArrayHelper::map($transports,'id','type');
-            ?>
+                ?>
+                <?php echo $form->field($model, 'transport_type')->dropDownList($items, ['prompt' => 'Вид транспорта'])->label('Вид транспорта') ?>
+            </label>
 
             <label class="select">
-                <?php echo $form->field($model, 'transport_type')->dropDownList($items, ['prompt' => 'Вид транспорта'])->label(false) ?>
+                <?= $form->field($model, 'price')->textInput(['placeholder'=>'Цена'])->label('Цена') ?>
             </label>
+
+            <label class="select">
+                <?php echo $form->field($model, 'date')->widget(\yii\jui\DatePicker::classname(), [
+                    'language' => 'ru',
+                    'dateFormat' => 'yyyy-MM-dd',
+                    'options' => ['placeholder' => 'Дата'],
+                ])->label('Дата') ?>
+            </label>
+
+            <label class="select"></label>
         </div>
 
         <div class="section">

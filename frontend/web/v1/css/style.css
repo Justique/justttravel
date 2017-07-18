@@ -2551,3 +2551,7 @@ a p {
 .daterangepicker .ranges button {
    width: 235px;
 }
+
+.user-application-form .columns-4 .select label {
+    font-size: 12px;
+}
