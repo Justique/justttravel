@@ -9,7 +9,7 @@ use common\models\ToursFavorits;
 use common\models\ToursOrder;
 use common\models\Countries;
 use common\models\Cities;
-use Yii;
+use yii;
 use yii\data\Sort;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -96,12 +96,12 @@ class DefaultController extends Controller
         $model = new ToursOrder();
         $find = $model->find()->where(['user_id'=>yii::$app->request->post('ToursOrder')['user_id'],'tour_id'=>yii::$app->request->post('ToursOrder')['tour_id']])->one();
         if($find){
-                echo yii\helpers\Json::encode(
-                    [
-                        'closeModal'=>'#order_tour',
-                        'error'=>'Вы уже заказали этот тур! '
-                    ]
-                );
+            echo yii\helpers\Json::encode(
+                [
+                    'closeModal'=>'#order_tour',
+                    'error'=>'Вы уже заказали этот тур! '
+                ]
+            );
         }else{
             if($model->load(yii::$app->request->post()) && $model->save()){
                 $message_text = "
@@ -114,7 +114,7 @@ class DefaultController extends Controller
                     <b>Примерная дата:</b>$model->date<br>
                     <b>Комментарий:</b>$model->comment<br>
                 ";
-                Yii::$app->mailer->compose()
+                \Yii::$app->mailer->compose()
                     ->setTo($model->tour->tourfirm->touroperator->email)
                     ->setReplyTo([$model->email => $model->name])
                     ->setSubject('Заказ тура с сайта justtravel.by')
