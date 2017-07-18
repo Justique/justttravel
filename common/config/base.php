@@ -46,9 +46,17 @@ $config = [
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             'useFileTransport' => YII_ENV_DEV,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.yandex.ru',
+                'username' => 'info@justtravel.by',
+                'password' => 'tgxJBIoi',
+                'port' => '465',
+                'encryption' => 'ssl',
+            ],
             'messageConfig' => [
                 'charset' => 'UTF-8',
-                'from' => getenv('ADMIN_EMAIL')
+                'from' => getenv('ROBOT_EMAIL')
             ]
         ],
 
