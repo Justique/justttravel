@@ -8,11 +8,11 @@ use yii\helpers\Html;
             <div class="desc-head">
                 <div class="company-logo-group">
                     <div>
-                        <?php if ($model->tourfirmAttachments ): ?>
+                        <?php if ($model->photo_path): ?>
                             <?= \yii\helpers\Html::img(
                                 Yii::$app->glide->createSignedUrl([
                                     'glide/index',
-                                    'path' => $model->tourfirmAttachments[0]->path,
+                                    'path' => $model->photo_path,
                                     'w' => 250,
                                     'q' => getenv('IMAGE_QUALITY')
                                 ], true)

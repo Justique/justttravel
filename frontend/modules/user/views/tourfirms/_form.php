@@ -80,6 +80,15 @@ use yii\web\JsExpression;
             </div>
         </div>
         <div class="block">
+            <?php echo $form->field($model, 'photo_upload')->widget(
+                Upload::className(),
+                [
+                    'url' => ['/file-storage/upload'],
+                    'maxFileSize' => 5000000, // 5 MiB
+                ]);
+            ?>
+        </div>
+        <div class="block">
             <?php echo $form->field($model, 'attachments')->widget(
                 Upload::className(),
                 [

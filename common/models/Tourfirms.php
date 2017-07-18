@@ -12,6 +12,7 @@ use yii\behaviors\SluggableBehavior;
  * This is the model class for table "tbl_tourfirms".
  *
  * @property integer $id
+ * @property string $photo_path
  * @property float $rating
  * @property string $description
  * @property string $address
@@ -21,6 +22,9 @@ use yii\behaviors\SluggableBehavior;
 class Tourfirms extends \yii\db\ActiveRecord
 {
     public $attachments;
+
+    public $photo_upload;
+
     /**
      * @inheritdoc
      */
@@ -117,6 +121,11 @@ class Tourfirms extends \yii\db\ActiveRecord
                 'nameAttribute' => 'name',
             ],
             [
+                'class' => UploadBehavior::className(),
+                'attribute' => 'photo_upload',
+                'pathAttribute' => 'photo_path',
+            ],
+            [
                 'class'=>SluggableBehavior::className(),
                 'attribute'=>'name',
                 'immutable' => true
@@ -137,12 +146,12 @@ class Tourfirms extends \yii\db\ActiveRecord
     {
         return [
             [['touroperator_id', 'radius'], 'integer'],
-            [['description','legal_info','slug'], 'string'],
+            [['photo_path', 'description','legal_info','slug'], 'string'],
             [['rating'], 'number'],
             [['name'], 'required'],
             [['name'], 'unique'],
             [['address', 'name'], 'string', 'max' => 200],
-            [['attachments','longitude', 'latitude'], 'safe']
+            [['attachments', 'photo_upload', 'longitude', 'latitude'], 'safe']
         ];
     }
 
@@ -153,6 +162,7 @@ class Tourfirms extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'photo_upload' => 'Логотип',
             'rating' => 'Рейтинг',
             'description' => 'Описание',
             'address' => 'Адрес',
