@@ -9,7 +9,7 @@ use common\models\ToursFavorits;
 use common\models\ToursOrder;
 use common\models\Countries;
 use common\models\Cities;
-use yii;
+use Yii;
 use yii\data\Sort;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -104,6 +104,22 @@ class DefaultController extends Controller
                 );
         }else{
             if($model->load(yii::$app->request->post()) && $model->save()){
+                $message_text = "
+                    <b>Имя:</b>$model->name<br>
+                    <b>Email:</b>$model->email<br>
+                    <b>Телефон:</b>$model->phone<br>
+                    <b>Skype/Viber/WhatsApp:</b>$model->skype<br>
+                    <b>Кол-во детей:</b>$model->count_kids<br>
+                    <b>Кол-во взрослых:</b>$model->count_old<br>
+                    <b>Примерная дата:</b>$model->date<br>
+                    <b>Комментарий:</b>$model->comment<br>
+                ";
+                Yii::$app->mailer->compose()
+                    ->setTo($model->tour->tourfirm->touroperator->email)
+                    ->setReplyTo([$model->email => $model->name])
+                    ->setSubject('Заказ тура с сайта justtravel.by')
+                    ->setHtmlBody($message_text)
+                    ->send();
                 echo yii\helpers\Json::encode(
                     [
                         'closeModal'=>'#order_tour',
