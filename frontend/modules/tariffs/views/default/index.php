@@ -41,10 +41,6 @@ $this->title = 'Тарифы';
         <?php endforeach; ?>
     </div><!-- .tariffs-box -->
 
-    <div class="c-text">
-        <p>Описательный текст</p>
-    </div>
-
     <div class="c-discount">
         <div class="discount-header"><span><img src="v1/img/percent.jpg" alt=""></span>Скидки на размещение</div>
         <div class="discount-row">

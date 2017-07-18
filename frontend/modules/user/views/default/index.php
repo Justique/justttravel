@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php echo $form->field($model, 'fullname')->textInput(['maxlength' => 255, 'class' => 'user-form', 'placeholder' => 'Ваше имя'])->label(false) ?>
         </div>
         <div class="block">
-            <?php echo $form->field($model, 'phone')->textInput(['maxlength' => 255, 'class' => 'user-form', 'placeholder' => 'Тлефон'])->label(false) ?>
+            <?php echo $form->field($model, 'phone')->textInput(['maxlength' => 255, 'class' => 'user-form', 'placeholder' => 'Телефон'])->label(false) ?>
         </div>
         <div class="block">
             <?php echo $form->field($model, 'address')->textInput(['maxlength' => 255, 'class' => 'user-form', 'placeholder' => 'Фактический адрес'])->label(false) ?>

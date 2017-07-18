@@ -82,6 +82,7 @@ class UserapplicationController extends Controller
     public function actionCreate()
     {
         $model = new UserApplication();
+        $model->is_active = 1;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
