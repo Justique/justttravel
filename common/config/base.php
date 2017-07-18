@@ -49,8 +49,8 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.yandex.ru',
-                'username' => 'info@justtravel.by',
-                'password' => 'tgxJBIoi',
+                'username' => getenv('ROBOT_EMAIL'),
+                'password' => getenv('ROBOT_PASSWORD'),
                 'port' => '465',
                 'encryption' => 'ssl',
             ],
