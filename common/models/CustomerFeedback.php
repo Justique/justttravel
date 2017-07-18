@@ -17,6 +17,7 @@ use yii\db\Expression;
  * @property string $phone
  * @property string $question
  * @property integer $date_create
+ * @property Tourfirms $tourfirm
  */
 class CustomerFeedback extends \yii\db\ActiveRecord
 {
@@ -71,4 +72,7 @@ class CustomerFeedback extends \yii\db\ActiveRecord
         return new \common\models\query\CustomerFeedbackQuery(get_called_class());
     }
 
+    public function getTourfirm(){
+        return $this->hasOne(Tourfirms::className(), ['id'=>'tourfirm_id']);
+    }
 }

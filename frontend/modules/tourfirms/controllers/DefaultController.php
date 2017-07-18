@@ -234,11 +234,23 @@ class DefaultController extends Controller
     public function actionFeedback(){
         $model = new CustomerFeedback;
         if($model->load(Yii::$app->request->post()) && $model->save()){
-                echo Json::encode(
-                    [
-                        'success'=>' '
-                    ]
-                );
+            $message_text = "
+                    <b>Имя:</b>$model->name<br>
+                    <b>Email:</b>$model->email<br>
+                    <b>Телефон:</b>$model->phone<br>
+                    <b>Вопрос:</b>$model->question<br>
+                ";
+            Yii::$app->mailer->compose()
+                ->setTo($model->tourfirm->touroperator->email)
+                ->setReplyTo([$model->email => $model->name])
+                ->setSubject('Сообщение с сайта justtravel.by')
+                ->setHtmlBody($message_text)
+                ->send();
+            echo Json::encode(
+                [
+                    'success'=>' '
+                ]
+            );
         }
     }
 
