@@ -85,7 +85,7 @@ class Tours extends \yii\db\ActiveRecord
             [
                 'class'=>SluggableBehavior::className(),
                 'attribute'=>'title',
-                'immutable' => true
+                'immutable' => false
             ],
 
             /*[
