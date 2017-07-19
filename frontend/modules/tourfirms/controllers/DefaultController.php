@@ -262,7 +262,7 @@ class DefaultController extends Controller
 
     public function actionArticle($slug) {
         $model = Tourfirms::find()->andWhere(['slug'=>$slug])->one();
-        $query = Article::find()->where(['status' => 1, 'tourfirm_id'=>$model->id]);
+        $query = Article::find()->where(['status' => 1, 'user_id' => $model->touroperator_id]);
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize'=>10]);
         $models = $query->offset($pages->offset)

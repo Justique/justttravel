@@ -107,7 +107,7 @@ $this->beginContent('@frontend/views/layouts/base.php')
                             'label' => '<span class="pic"><i class="fa fa-newspaper-o"></i></span><span class="hideable">Новости</span>',
                             'url' => ['/user/news/index'],
                             'linkOptions' => [],
-                            'visible' => userModel()->isUserTourOperator()|| userModel()->isUserTourManager()
+                            'visible' => userModel()->isUserTourOperator()
                         ],
 //                        [
 //                            'label' => '<span class="pic"><i class="fa fa-tachometer"></i></span><span class="hideable">Контактные данные</span>',
