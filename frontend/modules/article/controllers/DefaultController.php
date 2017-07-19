@@ -14,7 +14,7 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $query = Article::find()->where(['status' => 1])->orderBy('created_at DESC');
+        $query = Article::find()->where(['status' => 1])->andWhere(['is_big' => 0])->orderBy('created_at DESC');
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount' => $countQuery->count()]);
         $models = $query->offset($pages->offset)
