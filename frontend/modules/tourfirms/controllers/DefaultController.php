@@ -267,7 +267,6 @@ class DefaultController extends Controller
         $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize'=>10]);
         $models = $query->offset($pages->offset)
             ->limit($pages->limit)
-            ->where(['tourfirm_id' => $model->id])
             ->all();
 
         return $this->render('news', [
