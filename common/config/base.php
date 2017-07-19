@@ -31,7 +31,8 @@ $config = [
         ],
 
         'formatter'=>[
-            'class'=>'yii\i18n\Formatter'
+            'class'=>'yii\i18n\Formatter',
+            'timeZone' => 'Europe/Minsk',
         ],
 
         'glide' => [
