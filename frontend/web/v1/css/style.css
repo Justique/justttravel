@@ -2555,3 +2555,23 @@ a p {
 .user-application-form .columns-4 .select label {
     font-size: 12px;
 }
+
+.tour-promo {
+    background: #fffcea;
+    max-width: 980px;
+    margin: 0 auto 40px;
+    padding: 20px 10px 20px;
+    font-weight: 600;
+}
+
+.tour-promo h2 {
+    margin-bottom: 15px;
+}
+
+.tour-promo p {
+   margin-bottom: 20px;
+}
+
+.tour-promo ul {
+    margin-bottom: 20px;
+}

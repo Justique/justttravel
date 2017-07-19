@@ -75,7 +75,7 @@ class ToursSearch extends Tours
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 5,
+                'pageSize' => 15,
             ],
             'sort'=> ['defaultOrder' => ['published_at' => SORT_DESC]]
         ]);
