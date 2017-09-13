@@ -108,7 +108,11 @@ class SignInController extends \yii\web\Controller
 
             ]
         ]);
-
+		if (Yii::$app->request->isAjax && $signup->load(Yii::$app->request->post())) 
+		{
+			Yii::$app->response->format = Response::FORMAT_JSON;
+			return ActiveForm::validate($signup);
+		}
         if ($model->load(Yii::$app->request->post())) {
             $user = $model->getModel('signup')->signup( $model->getModel('profile'));
             if ($user && Yii::$app->getUser()->login($user)) {

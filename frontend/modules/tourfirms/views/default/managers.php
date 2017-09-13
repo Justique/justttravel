@@ -1,3 +1,8 @@
+
+<?php
+use yii\helpers\Html;
+$this->title = $model->name . '- Менеджеры';
+?>
 <section class="company-page with-rating">
 <div class="content-wrapper">
 <?php if(isset($model[0])){ ?>

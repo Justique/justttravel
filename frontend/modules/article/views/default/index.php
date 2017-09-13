@@ -6,7 +6,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
-
+$this->title = 'Статьи';
+$this->params['breadcrumbs'][] = ['label' => Yii::t('frontend', 'Articles'), 'url' => ['index']];
 ?>
 <section class="all-news">
     <div class="content-wrapper">

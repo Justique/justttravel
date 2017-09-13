@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+$this->title = $model->name . '- Контакты';
 ?>
 <section class="company-page with-rating">
     <div class="content-wrapper">

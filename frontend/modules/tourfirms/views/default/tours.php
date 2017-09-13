@@ -4,6 +4,7 @@ use frontend\modules\tours\Module as Module3;
 use frontend\modules\tourfirms\Module as Module4;
 use frontend\modules\user\Module;
 
+$this->title = $model->name . '- Туры';
 ?>
 <section class="company-page with-rating">
     <div class="content-wrapper">

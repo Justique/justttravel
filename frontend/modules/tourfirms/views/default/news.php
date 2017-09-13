@@ -1,6 +1,9 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+
+
+$this->title = $model->name . '- Новости и акции';
 ?>
 <section class="company-page with-rating">
 <section class="all-news">

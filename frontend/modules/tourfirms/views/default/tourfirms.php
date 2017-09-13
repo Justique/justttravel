@@ -6,7 +6,7 @@ use yii\widgets\LinkPager;
 /* @var $this \yii\web\View */
 /* @var $cities common\models\Cities[] */
 
-$this->title = 'Турфирмы';
+$this->title = 'Justtravel.by - Турфирмы';
 ?>
 
 <section class="tours-page">

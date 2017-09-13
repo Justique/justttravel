@@ -1,6 +1,8 @@
 <?php
 use yii\widgets\ListView;
 use yii\widgets\LinkPager;
+
+$this->title = 'Justtravel.by - Визы';
 ?>
 <section class="visa-page">
     <div class="content-wrapper with-counter">

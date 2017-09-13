@@ -10,7 +10,7 @@ use yii\widgets\LinkPager;
 /* @var $cities common\models\Cities[] */
 /* @var $countries common\models\Countries[] */
 
-$this->title = 'Туры';
+$this->title = 'Justtravel.by - Туры';
 ?>
 <div class="content-wrapper with-counter">
 <h1>Все туры<span class="country-count"><?php echo  $dataProvider->getTotalCount() ?></span></h1>

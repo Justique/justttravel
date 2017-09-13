@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+$this->title = $model->name . '- Информация';
 ?>
 <section class="company-page with-rating">
     <div class="content-wrapper">

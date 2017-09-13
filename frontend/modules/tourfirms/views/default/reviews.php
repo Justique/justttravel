@@ -1,6 +1,7 @@
 <?php
 use common\models\ReviewsVotes;
 
+$this->title = $model->name . '- Отзывы';
 ?>
 <section class="company-page with-rating">
     <div class="content-wrapper">

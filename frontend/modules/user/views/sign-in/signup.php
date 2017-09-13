@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <section class="register-page">
     <div class="content-wrapper">
         <h1>Регистрация</h1>
-        <?php $form = ActiveForm::begin(['id' => 'register', 'options' => [
+        <?php $form = ActiveForm::begin(['id' => 'register', 'enableAjaxValidation' => true,'options' => [
             'class' => 'user-form',
         ]]); ?>
         <div class="button-line" id="reg-block">

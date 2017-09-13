@@ -3,6 +3,8 @@ use common\models\Cities;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Html;
 use yii\widgets\MaskedInput;
+
+$this->title = 'Тур в '.$model->country->name . ' '.$model->city->city;
 ?>
 <section class="tour-full-page">
     <div class="content-wrapper">
