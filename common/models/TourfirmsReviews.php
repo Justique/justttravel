@@ -13,6 +13,7 @@ use trntv\filekit\behaviors\UploadBehavior;
  * @property integer $id
  * @property string $comment
  * @property integer $user_id
+ * @property integer $vote
  * @property integer $tourfirm_id
  * @property integer $date_create
  */
@@ -78,8 +79,8 @@ class TourfirmsReviews extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tourfirm_id','user_id'], 'required'],
-            [['user_id', 'tourfirm_id', 'date_create','status'], 'integer'],
+            [['tourfirm_id','user_id', 'vote'], 'required'],
+            [['user_id', 'tourfirm_id', 'date_create','status', 'vote'], 'integer'],
             [['comment'], 'string', 'max' => 255],
             [['thumbnail','thumbnail_path', 'thumbnail_base_url'], 'safe'],
         ];
@@ -97,6 +98,7 @@ class TourfirmsReviews extends \yii\db\ActiveRecord
             'tourfirm_id' => 'Турфирма',
             'status' => 'Статус',
             'date_create' => 'Дата',
+            'vote' => 'Оценка',
             'thumbnail' => 'Картинка',
         ];
     }
@@ -117,7 +119,9 @@ class TourfirmsReviews extends \yii\db\ActiveRecord
     public function getTourfirm() {
         return $this->hasOne(Tourfirms::className(), ['id'=>'tourfirm_id']);
     }
-    
+    public function getVotes() {
+        return $this->hasMany(TourfirmVotes::className(), ['review_id'=> 'id']);
+    }
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);

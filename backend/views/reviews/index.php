@@ -8,6 +8,8 @@ use yii\grid\GridView;
 
 $this->title = Yii::t('backend', 'Reviews');
 $this->params['breadcrumbs'][] = $this->title;
+yii\bootstrap\Modal::begin(['id' =>'modal']);
+yii\bootstrap\Modal::end();
 ?>
 <div class="reviews-index">
 
@@ -27,6 +29,16 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->tourfirm->name;
                 }
             ],
+			[
+            'attribute' => 'thumbnail_path',
+				'format' => 'html',
+				'label' => 'Изображение',
+				'value' => function($model)
+					  { 
+						   return  Html::a('Просмотреть', [], ['class' => 'btn btn-success', 'id' => 'popupModal', 'data-img' => '/storage/web/source/'.$model->thumbnail_path]);      
+					  },
+				'format' => 'raw'
+			],
             'comment:text',
             'date_create:datetime',
             [
@@ -50,6 +62,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
             ],
         ],
-    ]); ?>
+    ]); 
+	
+	
+	$this->registerJs("$(function() {
+	   $('#popupModal').click(function(e) {
+		 e.preventDefault();
+		 $('#modal').modal('show').find('.modal-content')
+		 .html('<img src=\"'+$(this).data('img')+'\">');
+		 return false;
+	   });
+	});");
+	?>
 
 </div>

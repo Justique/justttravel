@@ -68,7 +68,7 @@ $config = [
             'password' => getenv('DB_PASSWORD'),
             'tablePrefix' => getenv('DB_TABLE_PREFIX'),
             'charset' => 'utf8',
-            'enableSchemaCache' => 60,
+            'enableSchemaCache' => false,
         ],
 
         'log' => [

@@ -1,7 +1,7 @@
 <h1>
     <?php echo $model->name ?>
     <div>
-        <span class="rating-grade <?php echo \frontend\modules\tourfirms\Module::getStyleForReviews((float)$model->rating) ?>"><?php echo (float)$model->rating ?></span>
+        <span class="rating-grade <?php echo \frontend\modules\tourfirms\Module::getStyleForReviews($model) ?>"><?php echo \frontend\modules\tourfirms\Module::getCountForReviews($model) ?></span>
         <?php if(user()->id){ ?>
             <a class="ajax-link" href="/tourfirms/isvotestourfirm?tourfirm_id=<?php echo $model->id ?>">рейтинг фирмы</a>
         <?php }else{ ?>

@@ -1,7 +1,7 @@
 <?php
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Html;
-
+$this->title = $model->name . ' - оставить отзыв';
 ?>
 <style>
     .img_button_upload{
@@ -28,15 +28,15 @@ use yii\bootstrap\Html;
         </div>
             <div class="graduation">
                     <span>Ваша оценка</span>
-                    <input id="grade-1" type="radio" name="TourfirmVotes[vote]" value="1">
+                    <input id="grade-1" type="radio" name="TourfirmsReviews[vote]" value="1">
                     <label for="grade-1">1</label>
-                    <input id="grade-2" type="radio" name="TourfirmVotes[vote]" value="2">
+                    <input id="grade-2" type="radio" name="TourfirmsReviews[vote]" value="2">
                     <label for="grade-2">2</label>
-                    <input id="grade-3" type="radio" name="TourfirmVotes[vote]" value="3">
+                    <input id="grade-3" type="radio" name="TourfirmsReviews[vote]" value="3">
                     <label for="grade-3">3</label>
-                    <input id="grade-4" type="radio" name="TourfirmVotes[vote]" value="4">
+                    <input id="grade-4" type="radio" name="TourfirmsReviews[vote]" value="4">
                     <label for="grade-4">4</label>
-                    <input id="grade-5" type="radio" name="TourfirmVotes[vote]" value="5">
+                    <input id="grade-5" type="radio" name="TourfirmsReviews[vote]" value="5">
                     <label for="grade-5">5</label>
             </div>
          <?php if(!$reviews){ ?>

@@ -14,7 +14,7 @@ $this->title = 'Тур в '.$model->country->name . ' '.$model->city->city;
             <div class="tour-name">
                 <a href="" class="blue"><?php echo $model->title ?></a>
                 <div class="tour-rate">
-                    <span class="rating-grade <?php echo \frontend\modules\tourfirms\Module::getStyleForReviews((float)$model->tourfirm->rating) ?>"><?php echo (float)$model->tourfirm->rating ?></span>
+                    <span class="rating-grade <?php echo \frontend\modules\tourfirms\Module::getStyleForReviews($model->tourfirm) ?>"><?php echo \frontend\modules\tourfirms\Module::getCountForReviews($model->tourfirm) ?></span>
                     <?php if(user()->id){ ?>
                         <a class="ajax-link" href="/tourfirms/isvotestourfirm?tourfirm_id=<?php echo $model->tourfirm_id ?>">рейтинг фирмы</a>
                     <?php }else{ ?>

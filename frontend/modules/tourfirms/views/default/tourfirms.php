@@ -36,7 +36,7 @@ $this->title = 'Justtravel.by - Турфирмы';
                     <a href="/tourfirm/<?php echo $item->slug."/info"?>" class="title"><?php echo $item->name ?></a>
                     <div>
                         <div class="tour-rate">
-                            <span class="rating-grade <?php echo \frontend\modules\tourfirms\Module::getStyleForReviews((float)$item->rating) ?>"><?php echo (float)$item->rating ?></span>
+                            <span class="rating-grade <?php echo \frontend\modules\tourfirms\Module::getStyleForReviews($item) ?>"><?php echo \frontend\modules\tourfirms\Module::getCountForReviews($item) ?></span>
                             <?php if(user()->id){ ?>
                                 <a class="ajax-link" href="/tourfirms/isvotestourfirm?tourfirm_id=<?php echo $item->id ?>">рейтинг фирмы</a>
                             <?php }else{ ?>

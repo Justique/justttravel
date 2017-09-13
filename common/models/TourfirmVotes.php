@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $user_id
  * @property integer $tourfirm_id
+ * @property integer $review_id
  * @property integer $vote
  *
  * @property Tourfirms $tourfirm
@@ -30,8 +31,8 @@ class TourfirmVotes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'tourfirm_id', 'vote'], 'required'],
-            [['user_id', 'tourfirm_id', 'vote'], 'integer']
+            [['user_id', 'tourfirm_id', 'vote', 'review_id'], 'required'],
+            [['user_id', 'tourfirm_id', 'vote', 'review_id'], 'integer']
         ];
     }
 
@@ -45,6 +46,7 @@ class TourfirmVotes extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'tourfirm_id' => 'Tourfirm ID',
             'vote' => 'Vote',
+            'review_id' => 'Review ID'
         ];
     }
 
@@ -65,10 +67,11 @@ class TourfirmVotes extends \yii\db\ActiveRecord
         return new \common\models\query\TourfirmVotesQuery(get_called_class());
     }
 
-    public static function saveTourfirmVotes($vote, $tourfirm_id){
+    public static function saveTourfirmVotes($vote, $tourfirm_id, $review_id){
         $model= new TourfirmVotes();
         $model->tourfirm_id = $tourfirm_id;
         $model->vote = $vote;
+        $model->review_id = $review_id;
         $model->user_id = user()->id;
         $model->save();
     }

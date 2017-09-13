@@ -142,9 +142,7 @@ class DefaultController extends Controller
     }
 
     public function actionCreatereviews(){
-        if(yii::$app->request->post('TourfirmVotes')['vote']){
-            TourfirmVotes::saveTourfirmVotes(yii::$app->request->post('TourfirmVotes')['vote'],yii::$app->request->post('TourfirmsReviews')['tourfirm_id']);
-        }
+
             $model = new TourfirmsReviews();
             $find = $model->find()->where(['user_id'=>yii::$app->request->post('TourfirmsReviews')['user_id'],'tourfirm_id'=>yii::$app->request->post('TourfirmsReviews')['tourfirm_id']])->one();
                 if(isset(yii::$app->request->post('TourfirmsReviews')['comment'])) {
@@ -157,6 +155,7 @@ class DefaultController extends Controller
                         );
                     } else {
                         if ($model->load(yii::$app->request->post()) && $model->save()) {
+							//TourfirmVotes::saveTourfirmVotes(yii::$app->request->post('TourfirmVotes')['vote'],yii::$app->request->post('TourfirmsReviews')['tourfirm_id'], $model->id);
                             echo Json::encode(
                                 [
                                     'closeModal' => '#leave-report-form',
