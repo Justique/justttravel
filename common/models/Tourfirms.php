@@ -6,8 +6,8 @@ use common\models\query\TourfirmsQuery;
 use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
 use yii\behaviors\SluggableBehavior;
-
-
+use himiklab\sitemap\behaviors\SitemapBehavior;
+use yii\helpers\Url;
 /**
  * This is the model class for table "tbl_tourfirms".
  *
@@ -108,6 +108,23 @@ class Tourfirms extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
+			'sitemap' => [
+				'class' => SitemapBehavior::className(),
+				'scope' => function ($model) {
+					/** @var \yii\db\ActiveQuery $model */
+					$model->select(['name', 'slug']);
+					
+				},
+				'dataClosure' => function ($model) {
+					/** @var self $model */
+					return [
+						'loc' => Url::to('tourfirm/'.$model->slug, true),
+						'name' => $model->name,
+						'changefreq' => SitemapBehavior::CHANGEFREQ_DAILY,
+						'priority' => 0.8
+					];
+				}
+			],
             [
                 'class' => UploadBehavior::className(),
                 'attribute' => 'attachments',

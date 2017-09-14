@@ -76,8 +76,9 @@ return [
         ['pattern'=>'profile/toursfavorites','route'=>'/user/toursfavorites/index'],
         ['pattern'=>'profile/userapplication','route'=>'/user/userapplication/index'],
         ['pattern'=>'profile/tariff','route'=>'/user/tariff/index'],
-
-
+		
+		// Sitemap
+		['pattern' => 'sitemap', 'route' => 'sitemap/default/index', 'suffix' => '.xml'],
         // Api
         ['class' => 'yii\rest\UrlRule', 'controller' => 'api/v1/article', 'only' => ['index', 'view', 'options']],
         ['class' => 'yii\rest\UrlRule', 'controller' => 'api/v1/user', 'only' => ['index', 'view', 'options']]
