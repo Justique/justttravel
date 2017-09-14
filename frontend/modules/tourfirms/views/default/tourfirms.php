@@ -2,7 +2,10 @@
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
-
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
+use yii\web\JsExpression;
 /* @var $this \yii\web\View */
 /* @var $cities common\models\Cities[] */
 
@@ -13,19 +16,27 @@ $this->title = 'Justtravel.by - Турфирмы';
     <div class="content-wrapper with-counter">
         <h1>Туристические фирмы<span class="country-count"><?php echo $dataProvider->getTotalCount() ?></span></h1>
         <p>Все туристические фирмы Беларуси</p>
-        <?php $form = ActiveForm::begin([
-            'id' => 'tour-country-filter',
-            'options'=>[
-                'class'=>'regular-form'
-            ]
-        ]) ?>
-            <?= Html::dropDownList('TourfirmsSearch[city_id]', null, $cities, [
-                'id' => 'tourfirms-city',
-                'prompt' => 'Выберите город',
-                'options' => [
-                    Yii::$app->request->get('TourfirmsSearch')['city_id'] => ['selected ' => true]
-                ]
-            ]) ?>
+        <?php $form = ActiveForm::begin(['id' => 'tour-country-filter','options'=>['class'=>'regular-form' ]]) ?>
+
+			<?php echo $form->field($model, 'city_id')->widget(Select2::classname(), [
+				'options' => [
+					'id'=>'tourfirms-city', 
+					'class' => 'is-select2',
+					'value' => Yii::$app->request->get('s')
+					
+				],
+				'pluginOptions' => [
+					'placeholder' => 'Выберите город',
+					'allowClear' => true,
+					'minimumInputLength' => 2,
+					'ajax' => [
+						'url' => Url::to(['/site/search-cities']),
+						'dataType' => 'json',
+						'data' => new JsExpression('function(params) { return {q:params.term, pid:3}; }')
+					],
+				],
+			])->label(false);
+			?>
         <?php ActiveForm::end() ?>
         <p class="sort">Сортировать по:<?php echo $sort->link('name')?><?php echo $sort->link('rating')?></p>
         <div class="tourfirms">

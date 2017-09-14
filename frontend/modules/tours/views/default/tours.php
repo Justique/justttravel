@@ -5,12 +5,18 @@ use frontend\modules\user\Module;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\LinkPager;
-
+use kartik\select2\Select2;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
+use yii\web\JsExpression;
+use common\models\Cities;
 /* @var $this \yii\web\View */
 /* @var $cities common\models\Cities[] */
 /* @var $countries common\models\Countries[] */
 
 $this->title = 'Justtravel.by - Туры';
+$current  = Cities::find()->where(['id'=>Yii::$app->request->get('ToursSearch')['city_id']])->asArray()->one();
+
 ?>
 <div class="content-wrapper with-counter">
 <h1>Все туры<span class="country-count"><?php echo  $dataProvider->getTotalCount() ?></span></h1>
@@ -26,7 +32,7 @@ $this->title = 'Justtravel.by - Туры';
 ]) ?>
 
     <div style="width: 250px; display: inline-block;">
-        <?= Html::dropDownList('ToursSearch[city_id]', null, $cities, [
+        <?/*= Html::dropDownList('ToursSearch[city_id]', null, $cities, [
             'id' => 'tours-city',
             'prompt' => 'Выберите ваш город',
             'options' => isset(Yii::$app->request->get('ToursSearch')['city_id'])
@@ -34,10 +40,31 @@ $this->title = 'Justtravel.by - Туры';
                     Yii::$app->request->get('ToursSearch')['city_id'] => ['selected ' => true]
                 ]
                 : []
-        ]) ?>
+        ]) */
+		?>
+		<?php echo $form->field($model, 'city_id')->widget(Select2::classname(), [
+			'initValueText' => $current['city']." (".$current['region'].")",
+			'options' => [
+				'id'=>'tours-city', 
+				'class' => 'is-select2',
+				//Yii::$app->request->get('ToursSearch')['city_id'] => ['selected ' => true]
+				
+			],
+			'pluginOptions' => [
+				'placeholder' => 'Выберите ваш город',
+				'allowClear' => true,
+				'minimumInputLength' => 2,
+				'ajax' => [
+					'url' => Url::to(['/site/search-cities']),
+					'dataType' => 'json',
+					'data' => new JsExpression('function(params) { return {q:params.term, pid:3}; }')
+				],
+			],
+		])->label(false);
+		?>
     </div>
     <div style="width: 250px; display: inline-block;">
-        <?= Html::dropDownList('ToursSearch[country_to_id]', null, $countries, [
+        <?/*= Html::dropDownList('ToursSearch[country_to_id]', null, $countries, [
             'id' => 'tours-country',
             'prompt' => 'Выберите страну',
             'options' => isset(Yii::$app->request->get('ToursSearch')['country_to_id'])
@@ -45,7 +72,22 @@ $this->title = 'Justtravel.by - Туры';
                     Yii::$app->request->get('ToursSearch')['country_to_id'] => ['selected ' => true]
                 ]
                 : []
-        ]) ?>
+        ]) */?>
+		
+		<?php echo $form->field($model, 'country_to_id')->widget(Select2::classname(), [
+			'data' => $countries,
+			'language' => 'ru',
+			'options' => [
+				'placeholder' => 'Выберите страну',
+				'class' => 'select user-form firm-form is-select2', 
+				'id'=>'tours-country',
+				Yii::$app->request->get('ToursSearch')['country_to_id'] => ['selected ' => true]
+			],
+			'pluginOptions' => [
+				'allowClear' => false
+			],
+		])->label(false);
+		?>
     </div>
 
 <?php ActiveForm::end() ?>

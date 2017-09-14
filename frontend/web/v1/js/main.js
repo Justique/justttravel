@@ -199,7 +199,7 @@ function update_content_size() {
 }
 
 $(function() {
-    $("select").dropdown();
+    $("select:not(.is-select2)").dropdown();
 });
 
 // tabs

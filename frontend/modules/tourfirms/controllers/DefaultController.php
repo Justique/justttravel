@@ -42,6 +42,7 @@ class DefaultController extends Controller
         return $this->render('tourfirms', [
             'dataProvider' => $dataProvider,
             'sort' => $sort,
+            'model' => $searchModel,
             'cities' => ArrayHelper::map(Cities::findAll(['country_id' => 3]), 'id', 'city')
         ]);
     }

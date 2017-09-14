@@ -9,6 +9,7 @@ use common\models\Tours;
 use common\models\UserIformation;
 use frontend\models\ContactForm;
 use Yii;
+use yii\db\Query;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Json;
 use yii\web\Controller;
@@ -82,7 +83,24 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-    
+    public function actionCitylist($q = null, $id = null) {
+		\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+		$out = ['results' => ['id' => '', 'text' => '']];
+		if (!is_null($q)) {
+			$query = new Query;
+			$query->select('id, city AS text')
+				->from('tbl_cities')
+				->where(['like', 'city', $q])
+				->limit(20);
+			$command = $query->createCommand();
+			$data = $command->queryAll();
+			$out['results'] = array_values($data);
+		}
+		elseif ($id > 0) {
+			$out['results'] = ['id' => $id, 'text' => City::find($id)->name];
+		}
+		return $out;
+	}
     /**
      * 
      */

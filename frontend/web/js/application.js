@@ -7,8 +7,9 @@ $(window).load(function(){
         $('#tour-country-filter').submit();
     });
     $("select#tourfirms-city").change(function(){
-        var $val = $(this).children(":selected").attr('value');
-        document.location.href="/tourfirms?TourfirmsSearch[city_id]="+$val;
+        var $val = $(this).children(":selected").attr('value');	
+        var $label = $(this).children(":selected").html();
+        document.location.href="/tourfirms?TourfirmsSearch[city_id]="+$val+"&s="+$label;
     });
 });
 

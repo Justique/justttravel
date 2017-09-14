@@ -6,6 +6,8 @@ use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\web\JsExpression;
+use frontend\controllers\SiteController;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -35,14 +37,23 @@ $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(
     </label>
     <label class="select">
         <?php
-        echo $form->field($model, 'country_to_id')->dropDownList($countries, [
+       /* echo $form->field($model, 'country_to_id')->dropDownList($countries, [
             'prompt' => 'Страна назначения','class' => 'select user-form firm-form', 'id'=>'cat-id'.$model->id
         ])->label(false);
+		*/
+		echo $form->field($model, 'country_to_id')->widget(Select2::classname(), [
+			'data' => ArrayHelper::map(SiteController::getCountries(),'country_id','name'),
+			'language' => 'ru',
+			'options' => ['placeholder' => 'Страна назначения','class' => 'select user-form firm-form is-select2', 'id'=>'cat-id'],
+			'pluginOptions' => [
+				'allowClear' => false
+			],
+		])->label(false);
         ?>
        
     </label>
     <label class="select">
-        <?php echo $form->field($model, 'city_to_id')->widget(DepDrop::classname(), [
+        <?php /*echo $form->field($model, 'city_to_id')->widget(DepDrop::classname(), [
             'type' => 1,
             'options' => ['id'=>'subcat-id'.$model->id],
             'pluginOptions'=>[
@@ -53,18 +64,42 @@ $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(
             'pluginEvents' => [
                 "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
             ]
-        ])->label(false);
+        ])->label(false);*/
+		
+		echo $form->field($model, 'city_to_id')->widget(Select2::classname(), [
+			'options' => ['id'=>'subcat-id', 'class' => 'is-select2'],
+			'pluginOptions' => [
+				'placeholder' => 'Выберите город назначения',
+				'allowClear' => true,
+				'minimumInputLength' => 1,
+				'ajax' => [
+					'url' => Url::to(['/site/search-cities']),
+					'dataType' => 'json',
+					'data' => new JsExpression('function(params) { return {q:params.term, pid:$("#cat-id").val()}; }')
+				],
+			],
+		])->label(false);
+		
         ?>
     </label>
     <label class="select">
         <?php
-        echo $form->field($model, 'country_from_id')->dropDownList($countries, [
+        /*echo $form->field($model, 'country_from_id')->dropDownList($countries, [
             'prompt' => 'Страна вылета','class' => 'select user-form firm-form', 'id'=>'cat-id-id'.$model->id
-        ])->label(false);
+        ])->label(false);*/
+		
+		echo $form->field($model, 'country_from_id')->widget(Select2::classname(), [
+			'data' => ArrayHelper::map(SiteController::getCountries(),'country_id','name'),
+			'language' => 'ru',
+			'options' => ['placeholder' => 'Страна вылета','class' => 'select user-form firm-form is-select2', 'id'=>'cat-id-id'],
+			'pluginOptions' => [
+				'allowClear' => false
+			],
+		])->label(false);
         ?>
     </label>
     <label class="select">
-        <?php echo $form->field($model, 'city_from_id')->widget(DepDrop::classname(), [
+        <?php /*echo $form->field($model, 'city_from_id')->widget(DepDrop::classname(), [
             'type' => 1,
             'options' => ['id'=>'subcat-id-id'.$model->id],
             'pluginOptions'=>[
@@ -75,7 +110,21 @@ $countries = ArrayHelper::map(frontend\controllers\SiteController::getCountries(
             'pluginEvents' => [
                 "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
             ]
-        ])->label(false);
+        ])->label(false);*/
+		
+		echo $form->field($model, 'city_from_id')->widget(Select2::classname(), [
+			'options' => ['id'=>'subcat-id-id', 'class' => 'is-select2'],
+			'pluginOptions' => [
+				'placeholder' => 'Выберите город вылета',
+				'allowClear' => true,
+				'minimumInputLength' => 2,
+				'ajax' => [
+					'url' => Url::to(['/site/search-cities']),
+					'dataType' => 'json',
+					'data' => new JsExpression('function(params) { return {q:params.term, pid:$("#cat-id-id").val()}; }')
+				],
+			],
+		])->label(false);
         ?>
     </label>
     <label class="select">

@@ -7,11 +7,11 @@ use kartik\depdrop\DepDrop;
 use kartik\daterange\DateRangePicker;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use kartik\select2\Select2;
 use yii\helpers\Url;
 use yii\jui\DatePicker;
 use yii\web\JsExpression;
 use yii\widgets\ActiveForm;
-
 $countries = ArrayHelper::map(SiteController::getCountries(),'country_id','name');
 
 ?>
@@ -20,22 +20,28 @@ $countries = ArrayHelper::map(SiteController::getCountries(),'country_id','name'
 $m = new  Tours();
 ?>
 <?php
-echo $form->field($m, 'TourSearchFilter[country_to_id]')->dropDownList($countries, [
-    'prompt' => 'Любая страна','class' => 'select user-form firm-form', 'id'=>'cat-id'
+
+echo $form->field($m, 'TourSearchFilter[country_to_id]')->widget(Select2::classname(), [
+    'data' => ArrayHelper::map(SiteController::getCountries(),'country_id','name'),
+    'language' => 'ru',
+    'options' => ['placeholder' => 'Любая страна','class' => 'select user-form firm-form is-select2', 'id'=>'cat-id', 'name' => 'ToursSearch[country_to_id]'],
+    'pluginOptions' => [
+        'allowClear' => false
+    ],
 ])->label(false);
 ?>
-<?php echo $form->field($m, 'TourSearchFilter[city_to_id]')->widget(DepDrop::classname(), [
-    'type' => 1,
-    'options' => ['id'=>'subcat-id', 'placeholder' => 'Любой курорт',],
-    'pluginOptions'=>[
-        'depends'=>['cat-id'],
+<?php echo $form->field($m, 'TourSearchFilter[city_to_id]')->widget(Select2::classname(), [
+    'options' => ['id'=>'subcat-id', 'class' => 'is-select2', 'name' => 'ToursSearch[city_to_id]'],
+    'pluginOptions' => [
         'placeholder' => 'Любой курорт',
-        'url' => Url::to(['/site/cities']),
-        
+        'allowClear' => true,
+        'minimumInputLength' => 1,
+        'ajax' => [
+            'url' => Url::to(['/site/search-cities']),
+            'dataType' => 'json',
+            'data' => new JsExpression('function(params) { return {q:params.term, pid:$("#cat-id").val()}; }')
+        ],
     ],
-    'pluginEvents' => [
-        "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
-    ]
 ])->label(false);
 ?>
 
@@ -50,24 +56,28 @@ echo $form->field($m, 'TourSearchFilter[country_to_id]')->dropDownList($countrie
     ]) ?>
 </div>
 
-<?php
-echo $form->field($m, 'TourSearchFilter[country_from_id]')->dropDownList($countries, [
-    'prompt' => 'Любая страна','class' => 'select user-form firm-form', 'id'=>'cat-id-id'
+<?php echo $form->field($m, 'TourSearchFilter[country_from_id]')->widget(Select2::classname(), [
+    'data' => ArrayHelper::map(SiteController::getCountries(),'country_id','name'),
+    'language' => 'ru',
+    'options' => ['placeholder' => 'Из любой страны','class' => 'select user-form firm-form is-select2', 'id'=>'cat-id-id', 'name' => 'ToursSearch[country_from_id]'],
+    'pluginOptions' => [
+        'allowClear' => false
+    ],
 ])->label(false);
 ?>
 
-
-<?php echo $form->field($m, 'TourSearchFilter[city_from_id]')->widget(DepDrop::classname(), [
-    'type' => 1,
-    'options' => ['id'=>'subcat-id-id', 'placeholder' => 'Из любого города',],
-    'pluginOptions'=>[
-        'depends'=>['cat-id-id'],
+<?php echo $form->field($m, 'TourSearchFilter[city_from_id]')->widget(Select2::classname(), [
+    'options' => ['id'=>'subcat-id-id', 'class' => 'is-select2', 'name' => 'ToursSearch[city_id]'],
+    'pluginOptions' => [
         'placeholder' => 'Из любого города',
-        'url' => Url::to(['/site/cities'])
+        'allowClear' => true,
+        'minimumInputLength' => 2,
+        'ajax' => [
+            'url' => Url::to(['/site/search-cities']),
+            'dataType' => 'json',
+            'data' => new JsExpression('function(params) { return {q:params.term, pid:$("#cat-id-id").val()}; }')
+        ],
     ],
-    'pluginEvents' => [
-        "depdrop.afterChange"=>"function(event, id, value) { $('select').dropdown('update');}",
-    ]
 ])->label(false);
 ?>
 
